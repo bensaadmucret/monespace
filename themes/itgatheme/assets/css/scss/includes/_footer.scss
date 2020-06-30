@@ -1,0 +1,97 @@
+footer {
+  width: 100%;
+  background-color: #fff;
+  color: $secondBackground;
+  margin-top: 50px;
+  line-height: 20px;
+  flex-shrink: 0;
+
+  .inner {
+      padding: 25px 0;
+      position: relative;
+
+      .separateur {
+          position: absolute;
+          display: block;
+          height: 1px;
+          background-color: $MainBackgroundColor;
+          width: 100%;
+          right: 0;
+          top: 50px;
+      }
+      > div {
+          display: flex;
+          font-size: 12px;
+
+          > * {
+            width: 20%;
+            margin: 0 1%;
+          }
+
+          #block-footerbranding-2 {
+            width: 120px;
+            display: flex;
+            align-items: center;
+            padding: 25px;
+            margin:0;
+        }
+      }
+      h2 {
+          font: 400 15px 'Lato', sans-serif;
+          text-transform: uppercase;
+          margin-bottom: 25px;
+      }
+      a {
+          color: $secondBackground;
+          text-decoration: none;
+
+          &:hover {
+            color: $mainBackground;
+          }
+      }
+      ul {
+          list-style-type: none;
+      }
+  }
+
+
+  .sub-footer {
+      background-color: $secondBackground;
+      padding: 12px;
+      font-size: 12px;
+      text-align: center;
+      ul {
+          @extend %flex;
+          flex-wrap: wrap;
+          -webkit-flex-wrap: wrap;
+          justify-content: center;
+          list-style-type: none;
+
+          li {
+              color: #fff;
+              text-transform: uppercase;
+              margin: 0 20px;
+              a {
+                  color: #fff;
+
+                  text-transform: uppercase;
+                  text-decoration: none;
+                  position: relative;
+
+                  &::before {
+                    @extend %before_link;
+                  }
+
+                  &:hover {
+                    color: $lightgray;
+
+                    &::before {
+                      @extend %before_link_hover;
+                      background: $bgLaboratoire;
+                    }
+                  }
+              }
+          }
+      }
+  }
+}

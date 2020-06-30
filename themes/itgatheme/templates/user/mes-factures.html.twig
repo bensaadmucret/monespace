@@ -1,0 +1,42 @@
+<div class="suivi-factures">
+    <div class="header-table">
+        <input type="text" placeholder="Rechercher dans les factures : " name="searchFactures" value=""><span class="searchResultsCount">Nombre de factures : {{ factures|length }}/{{ factures|length }}</span>
+    </div>
+
+    <div class="mesFactures">
+        <table class="tablesorter">
+            <thead>
+            <tr>
+                <th class="Date">Date de la facture</th>
+                <th class="Number">N°</th>
+                <th class="PaymentMean">Type de paiement</th>
+                <th class="NetAmount">Net</th>
+                <th class="TaxesAmount">TVA</th>
+                <th class="TotalAmount">Total</th>
+                <th class="DueDate">Date d'échéance</th>
+                <th class="Voir">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if factures is empty %}
+                <tr class="detailsFacture">
+                    <td data-th="Number" class="Number" colspan="8">Vous n'avez aucune facture</td>
+                </tr>
+            {% else %}
+                {% for facture in factures %}
+                    <tr class="detailsFacture">
+                        <td data-th="Date" class="Date">{{ facture.Date|date('d/m/Y') }}</td>
+                        <td data-th="Number" class="Number">{{ facture.Number }}</td>
+                        <td data-th="PaymentMean" class="PaymentMean">{{ facture.PaymentMean }}</td>
+                        <td data-th="NetAmount" class="NetAmount">{{ facture.NetAmount }}€</td>
+                        <td data-th="TaxesAmount" class="TaxesAmount">{{ facture.TaxesAmount }}€</td>
+                        <td data-th="TotalAmount" class="TotalAmount">{{ facture.TotalAmount }}€</td>
+                        <td data-th="DueDate" class="DueDate">{{ facture.DueDate|date('d/m/Y') }}</td>
+                        <td data-th="Voir" class="Voir"><a class="voir-facture "href="/mon-compte/mes-factures/download/{{ facture.Number }}" title="Voir" target="_blank"></a></td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>

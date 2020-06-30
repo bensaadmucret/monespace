@@ -1,0 +1,402 @@
+<?php
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Component\Utility\Html;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+use Drupal\itga\Controller;
+
+require_once('modules/custom/itga/src/Controller/ItgaController.php');
+
+function itgatheme_preprocess_node(&$variables) {
+    if(!empty($_SESSION['itga']['apiUser'])) {
+        $variables['sessionItga'] = $_SESSION['itga'];
+    
+        foreach ($_SESSION['itga']['apiUser']->Profiles as $profile) {
+        
+            // Si admin du compte (se baser sur le rôle Drupal)
+            $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+            if (in_array('diag_admin_principal', $user->getRoles())
+                || in_array('prel_admin_principal', $user->getRoles())
+                || in_array('diag_admin_delegate', $user->getRoles())
+                || in_array('prel_admin_delegate', $user->getRoles())) {
+                $variables['isAdminItga'] = true;
+            }
+        }
+    
+        $menu_tree = \Drupal::menuTree();
+        $parameters = $menu_tree->getCurrentRouteMenuTreeParameters('main');
+        $subMenuLinks = [];
+        $main_menu_top_level = $menu_tree->load('main', $parameters);
+
+        $userRoles = \Drupal::currentUser()->getRoles();
+
+        foreach ($main_menu_top_level as $item) {
+            if ($item->inActiveTrail) {
+                if (strtolower($item->link->getTitle()) <> 'laboratoire') {
+                    foreach ($item->subtree as $subItem) {
+                        $menuItemContent = MenuLinkContent::load($subItem->link->getPluginDefinition()["metadata"]["entity_id"]);
+                        $menuItemContent = $menuItemContent->get('menu_item_roles')->getValue();
+        
+        
+                        $isMenuAccess = true;
+        
+                        if (count($menuItemContent) > 0) {
+                            $menuRoles = [];
+                            foreach ($menuItemContent as $menuRole) {
+                                $menuRoles[] = $menuRole['target_id'];
+                            }
+            
+                            $rolesCommuns = array_intersect($userRoles, $menuRoles);
+            
+                            // S'il y a des rôles en communs ou que c'est une page de contenu classique (12 rôles)
+                            if (count($rolesCommuns) <= 0 && count($menuRoles) != 12) {
+                                $isMenuAccess = false;
+                            }
+                        }
+        
+                        if ($subItem->link->isEnabled() && $isMenuAccess) {
+                            $subMenuLinks[$subItem->link->getWeight()] = ['url' => $subItem->link->getUrlObject()->toString(), 'title' => $subItem->link->getTitle(), 'class' => $subItem->inActiveTrail];
+                        }
+                    }
+                }
+            }
+        }
+        ksort($subMenuLinks);
+        
+        $variables['subMenuLinks'] = $subMenuLinks;
+    }
+}
+
+function itgatheme_preprocess(&$variables) {
+    $routeName = \Drupal::routeMatch()->getRouteName();
+    $node = \Drupal::routeMatch()->getParameter('node');
+    $allowedRoutes = [
+        'itga.signin',
+        'itga.signinajax',
+        'itga.signin.dejaclient',
+        'user.login',
+        'itga.premiereconnexion',
+        'itga.premiereconnexionajax',
+        'itga.premiereconnexionfinalise',
+        'itga.premiereconnexionfinaliseajax',
+        'entity.webform.canonical',
+        'entity.node.canonical', // On permet l'accès au node en non connecté mais on check le nid plus bas pour n'autoriser que certain node
+    ];
+
+    $variables['base_path'] = base_path();
+    
+    $allowedNids = [46];
+    
+    //echo '<pre>'; print_r($routeName); echo '</pre>'; exit;
+    if((\Drupal::currentUser()->isAnonymous() || empty($_SESSION['itga']))){
+        if(!in_array($routeName, $allowedRoutes)){
+            header('location: /signin');
+            exit;
+        } else {
+            if($routeName == 'entity.node.canonical' && !in_array($node->id(), $allowedNids)){
+                header('location: /signin');
+                exit;
+            }
+        }
+    }
+
+    
+    if(!empty($_SESSION['itga'])) { $variables['sessionItga'] = $_SESSION['itga']; }
+    
+    if(empty($_SESSION['itga']['agence']) && !empty($_SESSION['itga']['apiAccount']->AgencyId)) {
+        $nidAgence = \Drupal::entityQuery('node')
+            ->condition('type', 'agence')
+            ->condition('status', 1);
+    
+        $nidAgence->condition('field_id_itga', $_SESSION['itga']['apiAccount']->AgencyId);
+    
+        $nidAgence = array_values($nidAgence->execute());
+        
+        if (!empty($nidAgence)) {
+            $nidAgence = $nidAgence[0];
+            $_SESSION['itga']['agence'] = \Drupal\node\Entity\Node::load($nidAgence);
+        } else {
+            $_SESSION['itga']['agence'] = \Drupal\node\Entity\Node::load(54);
+        }
+    }
+    
+    $userRoles = \Drupal::currentUser()->getRoles();
+    
+    if(!empty($node)){
+        if(count($node->field_roles) > 0){
+            $allowedRoles = [];
+            foreach($node->field_roles as $nodeRole){
+                $allowedRoles[] = $nodeRole->target_id;
+            }
+            
+            $rolesCommuns = array_intersect($userRoles, $allowedRoles);
+            
+            if(count($rolesCommuns) <= 0) {
+                throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
+            }
+        }
+    }
+    
+    $webform = \Drupal::routeMatch()->getParameter('webform');
+    if(!empty($webform)){
+        $webformId = $webform->get('id');
+        $allowedRoles = [];
+        $forceAllowed = false;
+        switch($webformId) {
+            case 'commande_consommables':
+                $allowedRoles[] = 'diag_admin_principal';
+                $allowedRoles[] = 'diag_admin_delegate';
+                $allowedRoles[] = 'diag_manager_lab';
+                $allowedRoles[] = 'diag_cmd_conso';
+                $allowedRoles[] = 'prel_admin_principal';
+                $allowedRoles[] = 'prel_admin_delegate';
+                $allowedRoles[] = 'prel_manager_lab';
+                break;
+                
+            case 'nouvel_utilisateur':
+                $allowedRoles[] = 'diag_admin_principal';
+                $allowedRoles[] = 'diag_admin_delegate';
+                $allowedRoles[] = 'prel_admin_principal';
+                $allowedRoles[] = 'prel_admin_delegate';
+                break;
+    
+            case 'deja_client_itga':
+                $forceAllowed = true;
+                break;
+                
+            case 'contact':
+                $forceAllowed = true;
+                break;
+
+            case 'je_ne_suis_pas_client_itga':
+                $forceAllowed = true;
+                break;
+        }
+        
+        if(!$forceAllowed) {
+            $rolesCommuns = array_intersect($userRoles, $allowedRoles);
+            if (count($rolesCommuns) <= 0) {
+                throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
+            }
+        }
+    }
+}
+
+
+
+function itgatheme_preprocess_page(&$variables) {
+
+    $site_config = \Drupal::config('system.site');
+
+    if(!empty($_SESSION['itga'])) { $variables['sessionItga'] = $_SESSION['itga']; }
+    
+    $variables['logopath'] = '/' . drupal_get_path('theme', 'itgatheme') . '/assets/images/logo.svg';
+    $variables['base_path'] = base_path();
+
+    $menu_tree = \Drupal::menuTree();
+    $parameters = $menu_tree->getCurrentRouteMenuTreeParameters('menu-top');
+    $userRoles = \Drupal::currentUser()->getRoles();
+    
+    $subMenuLinks = [];
+    $main_menu_top_level = $menu_tree->load('menu-top', $parameters);
+    foreach ($main_menu_top_level as $item) {
+        if ($item->inActiveTrail) {
+            foreach ($item->subtree as $subItem) {
+                $menuItemContent = MenuLinkContent::load($subItem->link->getPluginDefinition()["metadata"]["entity_id"]);
+                $menuItemContent = $menuItemContent->get('menu_item_roles')->getValue();
+                
+                $isMenuAccess = true;
+                
+                if(count($menuItemContent) > 0) {
+                    $menuRoles = [];
+                    foreach ($menuItemContent as $menuRole) {
+                        $menuRoles[] = $menuRole['target_id'];
+                    }
+                    
+                    $rolesCommuns = array_intersect($userRoles, $menuRoles);
+                    
+                    if(count($rolesCommuns) <= 0){
+                        $isMenuAccess = false;
+                    }
+                }
+                
+                if ($subItem->link->isEnabled() && $isMenuAccess) {
+                    $subMenuLinks[$subItem->link->getWeight()] = ['url' => $subItem->link->getUrlObject()->toString(), 'title' => $subItem->link->getTitle(), 'class' => $subItem->inActiveTrail];
+                }
+            }
+        }
+    }
+    ksort($subMenuLinks);
+    
+    
+    // Spécial laboratoire
+    $menu_tree = \Drupal::menuTree();
+    $parameters = $menu_tree->getCurrentRouteMenuTreeParameters('main');
+    $main_menu_top_level = $menu_tree->load('main', $parameters);
+    
+    foreach ($main_menu_top_level as $item) {
+        if ($item->inActiveTrail && strtolower($item->link->getTitle()) == 'laboratoire') {
+            foreach ($item->subtree as $subItem) {
+                $menuItemContent = MenuLinkContent::load($subItem->link->getPluginDefinition()["metadata"]["entity_id"]);
+                $menuItemContent = $menuItemContent->get('menu_item_roles')->getValue();
+                
+                $isMenuAccess = true;
+                
+                if(count($menuItemContent) > 0) {
+                    $menuRoles = [];
+                    foreach ($menuItemContent as $menuRole) {
+                        $menuRoles[] = $menuRole['target_id'];
+                    }
+
+                    $rolesCommuns = array_intersect($userRoles, $menuRoles);
+
+                    // S'il y a des rôles en communs ou que c'est une page de contenu classique (12 rôles)
+                    if(count($rolesCommuns) <= 0 && count($menuRoles) != 12){
+                        $isMenuAccess = false;
+                    }
+                }
+                
+                if ($subItem->link->isEnabled() && $isMenuAccess) {
+                    $subMenuLinks[$subItem->link->getWeight()] = ['url' => $subItem->link->getUrlObject()->toString(), 'title' => $subItem->link->getTitle(), 'class' => $subItem->inActiveTrail];
+                }
+            }
+        }
+    }
+    ksort($subMenuLinks);
+    
+    
+    $variables['subMenuLinks'] = $subMenuLinks;
+    
+    
+    $nids = \Drupal::entityQuery('node')
+        ->condition('type', 'actualite')
+        ->condition('status', 1)
+        ->range(0, 3);
+    $nids = $nids->execute();
+
+    $variables['relatedActus'] = $nids;
+}
+
+function itgatheme_preprocess_page_title(&$variables) {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if (!empty($node)) {
+        $variables['nodeType'] = $node->getType();
+    }
+}
+
+
+function itgatheme_preprocess_html(&$variables) {
+    $variables['path_info']['args'] = false;
+    $path = \Drupal::service('path.current')->getPath();
+    $path_args = explode('/', $path);
+    if (count($path_args) >= 3) {
+        $variables['path_info']['args'] = Html::cleanCssIdentifier(ltrim($path, '/'));
+    }
+
+
+    // Gestion des pop-in
+
+    // PROD
+    $popinLogout = \Drupal\node\Entity\Node::load(49);
+    $popinFirstConnexionAdminPrincipalWithoutAccount = \Drupal\node\Entity\Node::load(51);
+    $popinFirstConnexionAdminDelegate = \Drupal\node\Entity\Node::load(78);
+    $popinFirstConnexionAdminPrincipalWithAccount = \Drupal\node\Entity\Node::load(77);
+    $popinFirstConnexionDefault = \Drupal\node\Entity\Node::load(50);
+
+    if(!empty($popinLogout)){
+        $_SESSION['itga']['popin']['logout']['content'] = $popinLogout->get('field_content')->value;
+        $_SESSION['itga']['popin']['logout']['button_label'] = $popinLogout->get('field_button_label')->value;
+    }
+
+    if (!empty($popinFirstConnexionAdminPrincipalWithAccount)){
+        $_SESSION['itga']['popin']['FirstConnexionAdminPrincipalWithAccount']['content'] = $popinFirstConnexionAdminPrincipalWithAccount->get('field_content')->value;
+    }
+    if (!empty($popinFirstConnexionAdminPrincipalWithoutAccount)){
+        $_SESSION['itga']['popin']['FirstConnexionAdminPrincipalWithoutAccount']['content'] = $popinFirstConnexionAdminPrincipalWithoutAccount->get('field_content')->value;
+    }
+    if (!empty($popinFirstConnexionAdminDelegate)){
+        $_SESSION['itga']['popin']['FirstConnexionAdminDelegate']['content'] = $popinFirstConnexionAdminDelegate->get('field_content')->value;
+    }
+    if (!empty($popinFirstConnexionDefault)){
+        $_SESSION['itga']['popin']['FirstConnexionDefault']['content'] = $popinFirstConnexionDefault->get('field_content')->value;
+    }
+
+
+    if(!empty($_SESSION['itga'])) { $variables['sessionItga'] = $_SESSION['itga']; }
+
+
+}
+
+
+function itgatheme_form_submit(array $form, $form_states) {
+    
+    if(!empty($form['#webform_id'])){
+        switch($form['#webform_id']){
+            case 'commande_consommables':
+                $htmlCommande = 'Sachet amiante ITGA (Lot de 100 sachets) : ' . $_POST['sachet_amiante_itga'] . '<br />Sachet amiante pour l\'application I-DEMAT (Compatible iOS Android) : ' . $_POST['sachet_amiante_pour_l_application_i_demat_compatible_ios_android'] . '<br />Sachet amiante pour l\'application I-DEMAT (Lot de 50 sachets) : ' . $_POST['lots_de_50_sachets_commandes'];
+                $params = [
+                    'subject' => 'Nouvelle commande de consommable',
+                    'toEmail' => $_SESSION['itga']['apiAccount']->Manager->Email,
+                    'toName' => '',
+                    'keys' => [
+                        'date' => date('d/m/Y H:i:s'),
+                        'user' => trim($_SESSION['itga']['apiUser']->FirstName . ' ' . $_SESSION['itga']['apiUser']->LastName) . ' ' . $_SESSION['itga']['apiAccount']->Account,
+                        'commande' => $htmlCommande
+                    ]
+                ];
+                itga_send_mail('commande-consommable', $params);
+                break;
+    
+            case 'contact':
+                unset($_POST['form_build_id']);
+                unset($_POST['form_token']);
+                unset($_POST['form_id']);
+                unset($_POST['_triggering_element_name']);
+                unset($_POST['_triggering_element_value']);
+                unset($_POST['_drupal_ajax']);
+    
+                $html = new Controller\ItgaController();
+                $html = $html->cleanDisplayForEmail();
+    
+                $params = [
+                    'subject' => 'Formulaire de contact - MonEspace.ITGA !',
+                    'toEmail' => $_SESSION['itga']['apiAccount']->Manager->Email,
+                    'toName' => '',
+                    'keys' => [
+                        'date' => date('d/m/Y H:i:s'),
+                        'user' => trim($_SESSION['itga']['apiUser']->FirstName . ' ' . $_SESSION['itga']['apiUser']->LastName) . ' ' . $_SESSION['itga']['apiAccount']->Account,
+                        'droits' => $html
+                    ]
+                ];
+                itga_send_mail('contact', $params);
+                break;
+        }
+    }
+}
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function itgatheme_form_alter(&$form, $form_state, $form_id) {
+    //echo '<pre>dddd'; print_r($form_id); echo '</pre>'; exit;
+    switch($form_id){
+        case 'webform_submission_contact_add_form':
+            foreach (array_keys($form['actions']) as $action) {
+                if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+                    $form['actions'][$action]['#submit'][] = 'itgatheme_form_submit';
+                }
+            }
+            break;
+            
+        case 'webform_submission_commande_consommables_add_form':
+    
+            foreach (array_keys($form['actions']) as $action) {
+                if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+                    $form['actions'][$action]['#submit'][] = 'itgatheme_form_submit';
+                }
+            }
+            break;
+    }
+}

@@ -1,0 +1,17 @@
+core: 8.x
+type: theme
+
+name: itgatheme
+description: 'Custom ITGA Theme'
+package: 'itga'
+
+regions:
+ header: Header
+ leftCol: Left column
+ content: Content
+ footer: Footer
+ subfooter: Sub Footer
+ textuser: Texte gestion des comptes
+
+libraries:
+  - 'itgatheme/global-styling'

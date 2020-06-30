@@ -1,0 +1,410 @@
+#block-itgatheme-content {
+  background: #FFFFFF;
+  padding: 30px;
+
+  .webform-element-help {
+    width: 18px;
+  }
+
+  .webform-confirmation {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+
+  .contact-form,
+  .webform-submission-form {
+
+    .webform-likert-label {
+      display: none;
+    }
+
+    h2 {
+      font: 600 24px 'Lato', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font: 600 20px 'Lato', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    .webform-progress-tracker .progress-step.is-active .progress-marker {
+      background: $mainBackground;
+    }
+
+    .description {
+      font: 400 14px 'Lato', sans-serif;
+      margin: 5px;
+      color: #666;
+    }
+
+      div[role='alert'] {
+          margin-bottom: 15px;
+          color: $bgNotif;
+      }
+
+      .js-form-type-radio {
+          padding: 5px 0;
+      }
+
+      .validation_commande_conso,
+      .fake-submit,
+      input[type="submit"] {
+          background: none;
+          border: 0;
+          color: inherit;
+          font: inherit;
+          line-height: normal;
+          overflow: visible;
+          padding: 0;
+          -webkit-appearance: button;
+          border: 0;
+          padding: 0;
+          //end reset
+          text-align: center;
+          display: inline-block;
+          color: #fff;
+          font: 400 20px 'Lato', sans-serif;
+          padding: 10px 20px;
+          margin: 25px auto 0;
+          text-decoration: none;
+          text-transform: uppercase;
+          position: relative;
+          cursor: pointer;
+          background-color: $bgFormations;
+          @extend %transition;
+
+          &:hover {
+            background: $HoverBtn;
+          }
+      }
+
+    #edit-fake-submit {
+      text-align: center;
+
+      .fake-submit {
+        -webkit-appearance: none;
+        margin: auto;
+        margin-top: 20px;
+      }
+    }
+
+
+    #edit-validation-commande-conso {
+      text-align: center;
+
+      .validation_commande_conso {
+        -webkit-appearance: none;
+      }
+    }
+
+
+      padding: 60px 245px;
+
+
+      .form-item.js-form-type-textfield,
+      .form-item.js-form-type-tel,
+      .form-item.js-form-type-email {
+          display: flex;
+          flex-direction: column;
+          margin: 10px 0 30px;
+
+          label {
+              position: relative;
+
+              &.form-required{
+                  position: relative;
+
+                  &:before {
+                      content: "*";
+                      color: $bgNotif;
+                      position: absolute;
+                      right: 5px;
+                      top: 5px;
+                  }
+              }
+              span {
+                  position: absolute;
+                  top: 20px;
+                  transition: all .2s ease-in-out;
+                  color: #2d2c2c;
+                  left: 15px;
+                  font: 400 14px 'Lato', sans-serif;
+              }
+          }
+          input {
+            padding: 10px 15px;
+            color: #2d2c2c;
+            overflow: auto;
+            outline: none;
+            box-shadow: none;
+            background: $lightgray;
+            border: 0;
+            display: block;
+            font: 400 14px 'Lato', sans-serif;
+            border-top: 2px solid #fff;
+            height: 55px;
+            @extend %transition;
+
+              &[data-validate-field='text'],
+              &[data-validate-field='email'],
+              &[data-validate-field='phone'] {
+                background-image: url(../images/asterisk-symbol.svg);
+                background-size: 7px;
+                background-position: right 10px top 10px;
+                background-repeat: no-repeat;
+              }
+
+              &.required.error {
+                  border-bottom: 1px solid $bgNotif;
+              }
+
+              &:focus {
+                border-top: 2px solid $mainBackground;
+                background: #f9f9f9;
+              }
+          }
+      }
+      .form-item.focused {
+          label {
+              span {
+                  top: -18px;
+                  font-size: 13px;
+                  left: 0;
+                  font-weight: 600;
+                  color: $mainBackground;
+              }
+          }
+      }
+
+
+      .form-actions {
+          text-align: center;
+      }
+      #edit-submit {
+          background-color: $bgFormations;
+      }
+      #edit-preview {
+          display: none;
+      }
+      .fieldset-legend {
+          font-size: 18px;
+          font-weight: 700;
+          color: $mainBackground;
+          margin: 15px 0;
+          display: block;
+      }
+  }
+
+
+
+  // Contact form
+
+  .webform-submission-contact-form,
+  .webform-submission-je_ne_suis_pas_client_itga-form {
+    input[type="submit"] {
+      display: none;
+    }
+  }
+
+
+}
+
+
+
+
+
+
+
+#block-itgatheme-content .webform-submission-commande_consommables-form {
+  .form-item.focused {
+    label {
+      span {
+        top: 0;
+      }
+    }
+  }
+
+  input[type="submit"] {
+    display: none;
+  }
+}
+
+
+
+.user-logged-in.path-contact,
+.user-logged-in.path-webform-contact {
+  #edit-name {
+      label {
+          span {
+              display: block;
+              font-size: 10px;
+              color: #b5b5b5;
+              padding: 15px 0;
+              font-weight: 400;
+          }
+      }
+  }
+  #edit-mail {
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #b5b5b5;
+      label {
+          span {
+              display: block;
+              font-size: 10px;
+              color: #b5b5b5;
+              padding: 15px 0;
+              font-weight: 400;
+          }
+      }
+  }
+  #edit-copy {
+      font-size: 14px;
+      margin: 20px 0 20px 0;
+  }
+  #block-itgatheme-content {
+      .webform-submission-form {
+/*          .form-item.js-form-type-email.js-form-item-email,
+          .form-item.js-form-type-textfield.js-form-item-votre-prenom,
+          .form-item.js-form-type-textfield.js-form-item-name {
+              label {
+                  span {
+                    top: -18px;
+                    font-size: 13px;
+                    left: 0;
+                    font-weight: 600;
+                    color: $mainBackground;
+                  }
+              }
+          }*/
+      }
+  }
+}
+
+/* radio */
+.js-webform-radios-other,
+.js-form-item-likert {
+  margin-bottom: 30px;
+
+  > label {
+    span {
+      font: 600 13px 'Lato', sans-serif;
+      color: #003684;
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+/* more */
+.js-webform-element-more {
+  display: block;
+  margin-top: 10px;
+  background: #f9f9f9;
+  padding: 7px;
+
+  .webform-element-more--link {
+    text-align: center;
+    font: 600 14px 'Lato', sans-serif;
+  }
+}
+
+/* rating */
+.js-form-type-webform-rating,
+.js-form-type-color {
+  margin-bottom: 30px;
+
+  label {
+    span {
+      font: 600 13px 'Lato', sans-serif;
+      color: #003684;
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+
+/* select */
+
+#block-itgatheme-content .js-form-type-select {
+  margin-bottom: 30px;
+
+  select {
+    background: $lightgray;
+    border: 0;
+    cursor: pointer;
+    font: 400 14px 'Lato', sans-serif;
+    padding: 15px;
+    width: 100%;
+    outline: none;
+    height: 55px;
+  }
+
+  label {
+    span {
+      font: 600 13px 'Lato', sans-serif;
+      color: #003684;
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+
+
+
+
+/* textarea */
+
+#block-itgatheme-content .textarea-wrapper {
+  textarea {
+      width: 100%;
+      padding: 15px;
+      color: #2d2c2c;
+      overflow: auto;
+      outline: none;
+      box-shadow: none;
+      background: $lightgray;
+      border: 0;
+      display: block;
+      font: 400 14px 'Lato', sans-serif;
+      height: 252px;
+      resize: none;
+      @extend %transition;
+
+      &:focus {
+        border-top: 2px solid $mainBackground;
+        background: #f9f9f9;
+      }
+  }
+}
+
+.js-form-type-textarea {
+  margin: 10px 0 30p;
+  label {
+      position: relative;
+      span {
+          position: absolute;
+          top: 20px;
+          left: 15px;
+          transition: all .2s ease-in-out;
+          font: 400 14px 'Lato', sans-serif;
+          color: #2d2c2c;
+      }
+  }
+
+  &.focused {
+    label span {
+      top: -18px;
+      font-size: 13px;
+      left: 0;
+      font-weight: 600;
+      color: $mainBackground;
+  }
+}
+}

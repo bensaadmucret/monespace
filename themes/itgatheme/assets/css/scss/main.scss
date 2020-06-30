@@ -1,0 +1,39 @@
+@charset 'UTF-8';
+
+/*
+Theme Name: ITGA
+Author: Expertime
+Description: Thème ITGA
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Condensed:300,400,600,700');
+
+// Base stuff
+@import 'includes/variables';
+@import 'includes/custom';
+@import 'includes/grillade-flex';
+@import 'includes/elements';
+
+// Themes
+//@import 'includes/home';
+@import 'includes/sign-in';
+
+// Components
+@import 'includes/header';
+@import 'includes/footer';
+@import 'includes/block-paragraph';
+@import 'includes/responsive-paragraph';
+@import 'includes/form';
+@import 'includes/account';
+@import 'includes/news';
+
+// Responsive
+@import 'includes/menu-mobile';
+@import 'includes/responsive';
+
+//Vendor
+@import 'includes/slick-theme';
+@import 'includes/bootstrap.min';
+/*@import 'includes/bootstrap-theme.min';*/

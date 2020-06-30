@@ -1,0 +1,41 @@
+{%
+    set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+<div{{ attributes.addClass(classes) }}>
+    {#<div class="slider-title">
+        <h4>{{ content.field_titre|field_value }}</h4>
+    </div> #}
+    <div class="slider">
+        {% for item in content.field_slides['#items'] %}
+            {% if item.entity.field_image.value %}
+                {% for lien in item.entity.field_liens %}
+                    {% if lien.uri is not empty %}
+                        <a target="{{ lien.options.attributes.target }}" href="{{ lien.uri }}">
+                    {% endif %}
+                {% endfor %}
+
+                <div class="slide slide-media" style="background-image:url({{ file_url(item.entity.field_image.entity.fileuri) }});">
+                    <h2>{{ item.entity.field_titre.value }}</h2>
+                    <div class="overlay">
+                    </div>
+                </div>
+
+
+                {% for lien in item.entity.field_liens %}
+                    {% if lien.uri is not empty %}
+                        </a>
+                    {% endif %}
+                {% endfor %}
+
+            {% elseif item.entity.field_id_youtube.value  %}
+                <div class="slide slide-media video-wrapper">
+                    <iframe class="embed-player" src="https://www.youtube.com/embed/{{ item.entity.field_id_youtube.value }}?enablejsapi=1&controls=0&fs=0&iv_load_policy=3&rel=0&showinfo=0&loop=1" frameborder="0" allowfullscreen></iframe>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

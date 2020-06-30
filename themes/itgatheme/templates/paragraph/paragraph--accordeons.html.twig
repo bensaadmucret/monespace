@@ -1,0 +1,24 @@
+{%
+    set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+<div{{ attributes.addClass(classes) }}>
+    <div class="accordion">
+        {% for item in content.field_liste_accordeon['#items'] %}
+        <div class="accordion-item">
+            <div class="accordion-single">
+                <h3>
+                    {{ item.entity.field_titre.value }}
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 48.1 29.2" style="enable-background:new 0 0 48.1 29.2;" xml:space="preserve">
+                      <polyline class="st0" points="45.7,2.8 23.7,24.8 1.7,2.8 "></polyline>
+                    </svg>
+                </h3>
+            </div>
+            <div class="accordion-content">{{ item.entity.field_texte.value|raw }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

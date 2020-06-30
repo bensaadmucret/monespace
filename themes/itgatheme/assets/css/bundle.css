@@ -1,0 +1,4792 @@
+/* line 3, themes/itga/css/elements.scss */
+
+.btn {
+  display: inline-block;
+  font-weight: 300;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+/* line 22, themes/itga/css/elements.scss */
+
+.dropdown {
+  position: relative;
+}
+
+/* line 25, themes/itga/css/elements.scss */
+
+.dropdown>button {
+  outline: none;
+  cursor: pointer;
+  padding-right: 40px;
+  background-image: url("../../images/drop-down-arrow.svg");
+  background-size: 15px;
+  background-position: right 15px center;
+  background-repeat: no-repeat;
+}
+
+/* line 34, themes/itga/css/elements.scss */
+
+.dropdown>button.active {
+  background-image: url("../../images/drop-up-arrow.svg");
+}
+
+/* line 39, themes/itga/css/elements.scss */
+
+.dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: 0px;
+  min-width: 160px;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,0.15);
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+  background-clip: padding-box;
+  width: 100%;
+}
+
+/* line 56, themes/itga/css/elements.scss */
+
+.dropdown .dropdown-menu .dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  text-decoration: none;
+  color: #5b5959;
+  cursor: pointer;
+}
+
+/* line 64, themes/itga/css/elements.scss */
+
+.dropdown .dropdown-menu .dropdown-item:hover {
+  background: #e5e5e5;
+}
+
+/* line 69, themes/itga/css/elements.scss */
+
+.dropdown .dropdown-menu.active {
+  display: block;
+}
+/* line 2, themes/itga/css/custom.scss */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 8, themes/itga/css/custom.scss */
+
+body {
+  position: relative;
+}
+
+/* line 12, themes/itga/css/custom.scss */
+
+#content {
+  width: 100%;
+  vertical-align: top;
+  position: relative;
+}
+
+/* line 17, themes/itga/css/custom.scss */
+
+#content #block-itga-breadcrumbs ul {
+  display: flex;
+  list-style-type: none;
+  margin-left: -25px;
+}
+
+/* line 21, themes/itga/css/custom.scss */
+
+#content #block-itga-breadcrumbs ul li {
+  margin-left: 10px;
+}
+
+/* line 23, themes/itga/css/custom.scss */
+
+#content #block-itga-breadcrumbs ul li a {
+  color: #003684;
+  text-decoration: none;
+}
+
+/* line 27, themes/itga/css/custom.scss */
+
+#content #block-itga-breadcrumbs ul li:first-child:before {
+  content: "";
+}
+
+/* line 30, themes/itga/css/custom.scss */
+
+#content #block-itga-breadcrumbs ul li:before {
+  content: ">";
+}
+
+/* line 36, themes/itga/css/custom.scss */
+
+#content .submenu-container {
+  height: 60px;
+  line-height: 100px;
+}
+
+/* line 39, themes/itga/css/custom.scss */
+
+#content .submenu-container ul.submenu_page {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  padding: 15px 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* line 47, themes/itga/css/custom.scss */
+
+#content .submenu-container ul.submenu_page li a {
+  color: #807e7e;
+  text-decoration: none;
+  padding-bottom: 5px;
+}
+
+/* line 51, themes/itga/css/custom.scss */
+
+#content .submenu-container ul.submenu_page li a:hover {
+  border-bottom: 1px solid #807e7e;
+}
+
+/* line 58, themes/itga/css/custom.scss */
+
+#content h1 {
+  text-transform: uppercase;
+}
+
+
+/* line 66, themes/itga/css/custom.scss */
+
+body {
+  background: #eee;
+  font-family: 'Lato', sans-serif;
+}
+
+/* line 69, themes/itga/css/custom.scss */
+
+body .menu-mobile {
+  display: none;
+}
+
+/* line 72, themes/itga/css/custom.scss */
+
+body .overlay {
+  display: none;
+  opacity: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: #5b5959;
+  -webkit-transition: all .1s ease-in-out;
+  -moz-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
+}
+
+/* line 83, themes/itga/css/custom.scss */
+
+body .overlay.visible {
+  opacity: 0.5;
+  display: block;
+  z-index: 9;
+}
+
+/* line 88, themes/itga/css/custom.scss */
+
+body header {
+  background: #FFFFFF;
+  border-bottom: 1px solid #5b5959;
+}
+
+/* line 91, themes/itga/css/custom.scss */
+
+body header .container {
+  height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* line 97, themes/itga/css/custom.scss */
+
+body header .container a img {
+  width: 186px;
+  height: 65px;
+}
+
+/* line 103, themes/itga/css/custom.scss */
+
+body header .container nav h2 {
+  display: none;
+}
+
+/* line 106, themes/itga/css/custom.scss */
+
+body header .container nav>ul {
+  display: flex;
+  list-style-type: none;
+}
+
+/* line 109, themes/itga/css/custom.scss */
+
+body header .container nav>ul li {
+  position: relative;
+}
+
+/* line 111, themes/itga/css/custom.scss */
+
+body header .container nav>ul li:hover ul {
+  display: block;
+}
+
+/* line 114, themes/itga/css/custom.scss */
+
+body header .container nav>ul li ul.hidden {
+  display: none;
+}
+
+/* line 117, themes/itga/css/custom.scss */
+
+body header .container nav>ul li ul {
+  position: absolute;
+  top: 85px;
+  left: 0;
+  background: #5b5959;
+  width: 165px;
+  display: none;
+  z-index: 99;
+  list-style-type: none;
+}
+
+/* line 126, themes/itga/css/custom.scss */
+
+body header .container nav>ul li ul li a,
+body header .container nav>ul li ul li span {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  color: white;
+  font-size: 14px;
+  text-decoration: none;
+  padding: 0 15px;
+  text-indent: 0;
+}
+
+/* line 137, themes/itga/css/custom.scss */
+
+body header .container nav>ul li ul li a:hover,
+body header .container nav>ul li ul li span:hover {
+  background: #003684;
+  cursor: pointer;
+}
+
+/* line 143, themes/itga/css/custom.scss */
+
+body header .container nav>ul li a {
+  display: block;
+  height: 85px;
+  width: 75px;
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: center;
+  text-indent: 80px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* line 153, themes/itga/css/custom.scss */
+
+body header .container nav>ul li a:focus {
+  outline: none;
+  outline-style: none;
+  box-shadow: none;
+  border-color: transparent;
+}
+
+/* line 159, themes/itga/css/custom.scss */
+
+body header .container nav>ul li a.fidelity {
+  background-image: url("../../images/giftbox.svg");
+  cursor: default;
+}
+
+/* line 164, themes/itga/css/custom.scss */
+
+body header .container nav>ul li a.cart {
+  background-image: url("../../images/cart.svg");
+}
+
+/* line 166, themes/itga/css/custom.scss */
+
+body header .container nav>ul li a.cart:hover {
+  background-image: url("../../images/cart-hover.svg");
+}
+
+/* line 170, themes/itga/css/custom.scss */
+
+body header .container nav>ul li a.account {
+  background-image: url("../../images/user.svg");
+}
+
+/* line 172, themes/itga/css/custom.scss */
+
+body header .container nav>ul li a.account:hover {
+  background-image: url("../../images/user-hover.svg");
+}
+
+/* line 176, themes/itga/css/custom.scss */
+
+body header .container nav>ul li a.notif {
+  background-image: url("../../images/envelope.svg");
+  position: relative;
+}
+
+/* line 179, themes/itga/css/custom.scss */
+
+body header .container nav>ul li a.notif .counter {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  top: 20px;
+  right: 15px;
+  background: #fe4a49;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+}
+
+/* line 193, themes/itga/css/custom.scss */
+
+body header .container nav>ul li a.notif:hover {
+  background-image: url("../../images/envelope-hover.svg");
+}
+
+/* line 197, themes/itga/css/custom.scss */
+
+body header .container nav>ul li a.more {
+  background-image: url("../../images/more.svg");
+  background-size: 20px;
+}
+
+/* line 200, themes/itga/css/custom.scss */
+
+body header .container nav>ul li a.more:hover {
+  background-image: url("../../images/more-hover.svg");
+}
+
+/* line 208, themes/itga/css/custom.scss */
+
+body header .container>ul {
+  display: flex;
+  list-style-type: none;
+}
+
+/* line 211, themes/itga/css/custom.scss */
+
+body header .container>ul li {
+  position: relative;
+}
+
+/* line 213, themes/itga/css/custom.scss */
+
+body header .container>ul li a {
+  display: block;
+  height: 85px;
+  width: 75px;
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: center;
+}
+
+/* line 220, themes/itga/css/custom.scss */
+
+body header .container>ul li a.fidelity {
+  background-image: url("../../images/giftbox.svg");
+}
+
+/* line 223, themes/itga/css/custom.scss */
+
+body header .container>ul li a.cart {
+  background-image: url("../../images/cart.svg");
+}
+
+/* line 225, themes/itga/css/custom.scss */
+
+body header .container>ul li a.cart:hover {
+  background-image: url("../../images/cart-hover.svg");
+}
+
+/* line 229, themes/itga/css/custom.scss */
+
+body header .container>ul li a.account {
+  background-image: url("../../images/user.svg");
+}
+
+/* line 231, themes/itga/css/custom.scss */
+
+body header .container>ul li a.account:hover {
+  background-image: url("../../images/user-hover.svg");
+}
+
+/* line 235, themes/itga/css/custom.scss */
+
+body header .container>ul li a.notif {
+  background-image: url("../../images/envelope.svg");
+  position: relative;
+}
+
+/* line 238, themes/itga/css/custom.scss */
+
+body header .container>ul li a.notif .counter {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  top: 20px;
+  right: 15px;
+  background: #fe4a49;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+}
+
+/* line 252, themes/itga/css/custom.scss */
+
+body header .container>ul li a.notif:hover {
+  background-image: url("../../images/envelope-hover.svg");
+}
+
+/* line 256, themes/itga/css/custom.scss */
+
+body header .container>ul li a.more {
+  background-image: url("../../images/more.svg");
+}
+
+/* line 258, themes/itga/css/custom.scss */
+
+body header .container>ul li a.more:hover {
+  background-image: url("../../images/more-hover.svg");
+}
+
+/* line 269, themes/itga/css/custom.scss */
+
+#block-itga-main-menu {
+  position: fixed;
+  top: 151px;
+  left: 0px;
+  width: 86px;
+  z-index: 999;
+}
+
+/* line 275, themes/itga/css/custom.scss */
+
+.toolbar-fixed #block-itga-main-menu {
+  top: 190px;
+}
+
+/* line 279, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li {
+  display: block;
+  clear: both;
+  position: relative;
+}
+
+/* line 283, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li:first-child a {
+  background-color: #003684;
+  background-image: url("../../images/nav-icon-home.svg");
+}
+
+/* line 286, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li:first-child a a+ul a {
+  background-color: #003684;
+}
+
+/* line 289, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li:first-child a a+ul>li:hover>a {
+  background-color: #003684;
+}
+
+/* line 293, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>ul {
+  position: absolute;
+  left: 86px;
+  top: 0;
+  list-style-type: none;
+  display: none;
+}
+
+/* line 299, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>ul a {
+  display: block;
+  width: 165px;
+  padding: 10px;
+  padding-left: 12px;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+/* line 308, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li:hover ul {
+  display: block;
+}
+
+/* line 310, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li:hover ul li {
+  position: relative;
+}
+
+/* line 312, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li:hover ul li ul {
+  display: none;
+  list-style-type: none;
+}
+
+/* line 316, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li:hover ul li:hover ul {
+  display: block;
+  position: absolute;
+  left: 165px;
+  top: 0;
+}
+
+/* line 324, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li:last-child ul {
+  bottom: 0;
+  top: auto;
+}
+
+/* line 328, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>a {
+  display: block;
+  width: 86px;
+  height: 80px;
+  text-indent: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
+  background-position: center;
+  background-size: 30px;
+  background-repeat: no-repeat;
+}
+
+/* line 339, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>a.laboratoire {
+  background-color: #5386e4;
+  background-image: url("../../images/nav-icon-labo.svg");
+}
+
+/* line 342, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>a.laboratoire+ul a {
+  background-color: #7fa5eb;
+}
+
+/* line 345, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>a.laboratoire+ul a:hover {
+  background-color: #5386e4;
+}
+
+/* line 349, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>a.formations {
+  background-color: #f6bd60;
+  background-image: url("../../images/nav-icon-formations.svg");
+}
+
+/* line 352, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>a.formations+ul a {
+  background-color: #f9d190;
+}
+
+/* line 355, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>a.formations+ul li:hover>a {
+  background-color: #f6bd60;
+}
+
+/* line 359, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>a.applications {
+  background-color: #8cb369;
+  background-image: url("../../images/nav-icon-software.svg");
+}
+
+/* line 362, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>a.applications+ul a {
+  background-color: #a6c48b;
+}
+
+/* line 365, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>a.applications+ul li:hover>a {
+  background-color: #8cb369;
+}
+
+/* line 369, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>a.materiel {
+  background-color: #fe4a49;
+  background-image: url("../../images/nav-icon-materiel.svg");
+}
+
+/* line 372, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>a.materiel+ul a {
+  background-color: #fe7c7c;
+}
+
+/* line 375, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>a.materiel+ul li:hover>a {
+  background-color: #fe4a49;
+}
+
+/* line 379, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>a.et-aussi {
+  background-color: #795c5f;
+  background-image: url("../../images/nav-icon-more.svg");
+}
+
+/* line 382, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>a.et-aussi+ul a {
+  background-color: #957377;
+}
+
+/* line 385, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>a.et-aussi+ul li:hover>a {
+  background-color: #795c5f;
+}
+
+/* line 387, themes/itga/css/custom.scss */
+
+#block-itga-main-menu>ul>li>a.et-aussi+ul li:hover>a+ul li a {
+  background: #795c5f;
+}
+
+/* line 398, themes/itga/css/custom.scss */
+
+#block-itga-breadcrumbs {
+  background: white;
+  padding: 0 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin: 65px 0 15px 0;
+}
+
+/* line 405, themes/itga/css/custom.scss */
+
+#block-itga-breadcrumbs ul {
+  list-style-type: none;
+}
+
+/* line 407, themes/itga/css/custom.scss */
+
+#block-itga-breadcrumbs ul li {
+  margin-left: 10px;
+}
+
+/* line 409, themes/itga/css/custom.scss */
+
+#block-itga-breadcrumbs ul li a {
+  color: #003684;
+  text-decoration: none;
+}
+
+/* line 413, themes/itga/css/custom.scss */
+
+#block-itga-breadcrumbs ul li:first-child:before {
+  content: "";
+}
+
+/* line 416, themes/itga/css/custom.scss */
+
+#block-itga-breadcrumbs ul li:before {
+  content: ">";
+}
+
+/* line 424, themes/itga/css/custom.scss */
+
+.page-node-type-page #block-itga-page-title {
+  background: #003684;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+}
+
+/* line 430, themes/itga/css/custom.scss */
+
+.page-node-type-page #block-itga-page-title h1 {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  color: #FFFFFF;
+}
+
+/* line 436, themes/itga/css/custom.scss */
+
+.page-node-type-page #block-itga-content {
+  background: #FFFFFF;
+  padding: 30px;
+}
+
+/* line 443, themes/itga/css/custom.scss */
+
+.page-node-type-home-page header {
+  margin-bottom: 50px;
+}
+
+/* line 446, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent {
+  padding: 15px 0;
+}
+
+/* line 448, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent #block-itga-content {
+  padding: 0;
+  background: #eee;
+}
+
+/* line 452, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section {
+  margin-bottom: 25px;
+}
+
+/* line 454, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .agencecompte {
+  padding-right: 25px;
+}
+
+/* line 456, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .agencecompte h2 {
+  font-size: 18px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+/* line 462, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .agencecompte .compte .top {
+  background-color: #003684;
+  height: 80px;
+  padding: 23px 10px 15px 15px;
+}
+
+/* line 467, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .agencecompte .compte .top h2:before {
+  content: '';
+  background-image: url("../../images/user-white.svg");
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin: 0 15px;
+}
+
+/* line 477, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .agencecompte .compte .infos-compte {
+  padding: 15px;
+  background-color: #FFF;
+  height: 260px;
+  border-right: 1px solid #e5e5e5;
+}
+
+/* line 482, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .agencecompte .compte .infos-compte .nom {
+  margin: 10px 15px 15px 15px;
+}
+
+/* line 484, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .agencecompte .compte .infos-compte .nom p {
+  font-size: 24px;
+  color: #003684;
+  padding-bottom: 10px;
+  font-weight: 700;
+}
+
+/* line 489, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .agencecompte .compte .infos-compte .nom p:last-child {
+  font-weight: 700;
+  border-bottom: 1px solid #020b15;
+  padding-bottom: 34px;
+  display: inline-block;
+}
+
+/* line 497, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .agencecompte .compte .infos-compte .detail {
+  margin: 20px 15px 15px 15px;
+}
+
+/* line 499, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .agencecompte .compte .infos-compte .detail p {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 0;
+  color: #5b5959;
+}
+
+/* line 505, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .agencecompte .compte .infos-compte .detail a {
+  font-size: 12px;
+  color: #5b5959;
+}
+
+/* line 513, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .agencecompte .agence .top {
+  background-color: #003684;
+  height: 80px;
+  padding: 23px 10px 15px 15px;
+}
+
+/* line 518, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .agencecompte .agence .top h2:before {
+  content: '';
+  background-image: url("../../images/location.svg");
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin: 0 15px;
+}
+
+/* line 528, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .agencecompte .agence .mapadresse {
+  padding: 15px;
+  background-color: #FFF;
+  height: 260px;
+}
+
+/* line 532, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .agencecompte .agence .mapadresse .map-home {
+  padding: 15px 30px 15px 30px;
+}
+
+/* line 535, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .agencecompte .agence .mapadresse .adresse-home {
+  padding-left: 30px;
+}
+
+/* line 537, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .agencecompte .agence .mapadresse .adresse-home p {
+  font-size: 12px;
+  padding: 2px 0;
+  color: #5b5959;
+}
+
+/* line 547, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .monprogramme .top {
+  background: #5b5959;
+  padding: 23px 10px 15px 15px;
+  height: 80px;
+}
+
+/* line 551, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .monprogramme .top h2 {
+  font-size: 18px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+/* line 555, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .monprogramme .top h2:before {
+  content: '';
+  background-image: url("../../images/giftbox-white.svg");
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin: 0 15px;
+}
+
+/* line 565, themes/itga/css/custom.scss */
+
+.page-node-type-home-page #pageContent section .monprogramme .box-body {
+  background-color: #FFFFFF;
+  height: 260px;
+  background-position: cover;
+  background-position: fill;
+}
+
+/* line 575, themes/itga/css/custom.scss */
+
+.page-node-type-home-page .monprogramme .top {
+  background: #5b5959;
+  padding: 23px 10px 15px 15px;
+  height: 80px;
+}
+
+/* line 579, themes/itga/css/custom.scss */
+
+.page-node-type-home-page .monprogramme .top h2 {
+  font-size: 18px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+/* line 583, themes/itga/css/custom.scss */
+
+.page-node-type-home-page .monprogramme .top h2:before {
+  content: '';
+  background-image: url("../../images/giftbox-white.svg");
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin: 0 15px;
+}
+
+/* line 593, themes/itga/css/custom.scss */
+
+.page-node-type-home-page .monprogramme .box-body {
+  background-color: #FFFFFF;
+  height: 260px;
+  background-position: center;
+  background-size: cover;
+}
+
+/* line 602, themes/itga/css/custom.scss */
+
+section.bottom {
+  margin-bottom: 25px;
+}
+
+/* line 604, themes/itga/css/custom.scss */
+
+section.bottom .box:last-child {
+  background: #FFFFFF;
+}
+
+/* line 606, themes/itga/css/custom.scss */
+
+section.bottom .box:last-child img {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 610, themes/itga/css/custom.scss */
+
+section.bottom .box:last-child div {
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  background-color: #FFFFFF;
+}
+
+/* line 618, themes/itga/css/custom.scss */
+
+section.bottom .actus-container {
+  background: #FFFFFF;
+  margin-right: 25px;
+}
+
+/* line 621, themes/itga/css/custom.scss */
+
+section.bottom .actus-container .actus-content {
+  position: relative;
+}
+
+/* line 623, themes/itga/css/custom.scss */
+
+section.bottom .actus-container .actus-content a {
+  position: absolute;
+  bottom: -3px;
+  right: 5px;
+  color: rgba(0,0,0,0.7);
+  font-size: 14px;
+}
+
+/* line 631, themes/itga/css/custom.scss */
+
+section.bottom .actus-container .actus-featured {
+  padding: 20px 20px 50px 20px;
+  border-right: 1px solid #e5e5e5;
+}
+
+/* line 634, themes/itga/css/custom.scss */
+
+section.bottom .actus-container .actus-featured h2 {
+  color: #5b5959;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+/* line 638, themes/itga/css/custom.scss */
+
+section.bottom .actus-container .actus-featured h2:before {
+  content: '';
+  background-image: url("../../images/shout.svg");
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin: 0 15px;
+}
+
+/* line 647, themes/itga/css/custom.scss */
+
+section.bottom .actus-container .actus-featured .img-actu-home {
+  display: block;
+  height: 75px;
+}
+
+/* line 651, themes/itga/css/custom.scss */
+
+section.bottom .actus-container .actus-featured h3 {
+  text-align: center;
+  margin: auto;
+  margin: 20px 0;
+  text-transform: uppercase;
+}
+
+/* line 657, themes/itga/css/custom.scss */
+
+section.bottom .actus-container .actus-featured .actus-content p {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* line 662, themes/itga/css/custom.scss */
+
+section.bottom .actus-container .actus-listing {
+  position: relative;
+}
+
+/* line 664, themes/itga/css/custom.scss */
+
+section.bottom .actus-container .actus-listing .actus-feed {
+  padding: 15px;
+}
+
+/* line 666, themes/itga/css/custom.scss */
+
+section.bottom .actus-container .actus-listing .actus-feed ul {
+  padding: 10px;
+  list-style-type: none;
+}
+
+/* line 669, themes/itga/css/custom.scss */
+
+section.bottom .actus-container .actus-listing .actus-feed ul li {
+  font-weight: 700;
+  color: #020b15;
+  margin: 13px;
+}
+
+/* line 673, themes/itga/css/custom.scss */
+
+section.bottom .actus-container .actus-listing .actus-feed ul li a {
+  text-decoration: none;
+  color: #003684;
+}
+
+/* line 677, themes/itga/css/custom.scss */
+
+section.bottom .actus-container .actus-listing .actus-feed ul li:before {
+  content: '>';
+  height: 20px;
+  width: 15px;
+  color: #20abe7;
+  display: inline-block;
+  margin-right: -2px;
+}
+
+/* line 688, themes/itga/css/custom.scss */
+
+section.bottom .actus-container .actus-listing .actus-btn {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #003684;
+}
+
+/* line 693, themes/itga/css/custom.scss */
+
+section.bottom .actus-container .actus-listing .actus-btn:hover {
+  background-color: #20abe7;
+}
+
+/* line 696, themes/itga/css/custom.scss */
+
+section.bottom .actus-container .actus-listing .actus-btn a {
+  display: block;
+  padding: 20px;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  text-decoration: none;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* line 714, themes/itga/css/custom.scss */
+
+section.bottom .slider-no-title .slider-title {
+  display: none;
+}
+
+/* line 721, themes/itga/css/custom.scss */
+
+section.middle {
+  margin-bottom: 25px;
+}
+
+/* line 724, themes/itga/css/custom.scss */
+
+section.middle .box .slider-title {
+  display: none;
+}
+
+/* line 727, themes/itga/css/custom.scss */
+
+section.middle .box .slider {
+  transition: all .2s ease;
+  height: 315px;
+}
+
+/* line 730, themes/itga/css/custom.scss */
+
+section.middle .box .slider.slick-initialized {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* line 734, themes/itga/css/custom.scss */
+
+section.middle .box .slider .video-wrapper {
+  position: relative;
+  height: 315px;
+}
+
+/* line 738, themes/itga/css/custom.scss */
+
+section.middle .box .slider .video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 745, themes/itga/css/custom.scss */
+
+section.middle .box .slider .slide {
+  height: 315px;
+  position: relative;
+  background-size: cover;
+}
+
+/* line 749, themes/itga/css/custom.scss */
+
+section.middle .box .slider .slide h2 {
+  position: absolute;
+  color: #fff;
+  text-align: center;
+  padding-top: 150px;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 24px;
+  width: 100%;
+}
+
+/* line 759, themes/itga/css/custom.scss */
+
+section.middle .box .slider .slide .overlay {
+  background-color: rgba(0,0,0,0.5);
+  height: 100%;
+}
+
+/* line 764, themes/itga/css/custom.scss */
+
+section.middle .box .slider .slide-media {
+  animation: slideOut 0.4s cubic-bezier(0.4, 0.29, 0.01, 1);
+}
+
+/* line 767, themes/itga/css/custom.scss */
+
+section.middle .box .slider .slide-media.slick-active {
+  animation: slideIn 2.4s cubic-bezier(0.4, 0.29, 0.01, 1);
+}
+
+/* line 770, themes/itga/css/custom.scss */
+
+section.middle .box .slider .slick-prev,
+section.middle .box .slider .slick-next {
+  position: absolute;
+  z-index: 99;
+  width: 40px;
+  height: 40px;
+}
+
+/* line 777, themes/itga/css/custom.scss */
+
+section.middle .box .slider .slick-prev {
+  left: 40px;
+}
+
+/* line 780, themes/itga/css/custom.scss */
+
+section.middle .box .slider .slick-next {
+  right: 40px;
+}
+
+/* line 783, themes/itga/css/custom.scss */
+
+section.middle .box .slider .slick-prev::before {
+  content: url("../../images/slider-prev.png") !important;
+}
+
+/* line 786, themes/itga/css/custom.scss */
+
+section.middle .box .slider .slick-next::before {
+  content: url("../../images/slider-next.png") !important;
+}
+
+/* line 791, themes/itga/css/custom.scss */
+
+section.middle .box.first {
+  margin-right: 25px;
+}
+
+@keyframes slideIn {
+  from {
+    filter: blur(5px);
+  }
+
+  to {
+    filter: blur(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    filter: blur(0);
+  }
+
+  to {
+    filter: blur(5px);
+  }
+}
+
+/* line 818, themes/itga/css/custom.scss */
+
+.path-actualites h2 {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 400;
+  padding: 15px 0;
+}
+
+/* line 824, themes/itga/css/custom.scss */
+
+.path-actualites .tags {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  width: 100%;
+  padding-top: 25px;
+}
+
+/* line 830, themes/itga/css/custom.scss */
+
+.path-actualites .tags a {
+  font-size: 16px;
+  font-weight: 700;
+  color: #5b5959;
+  padding: 15px;
+  text-decoration: none;
+  position: relative;
+  width: 200px;
+}
+
+/* line 838, themes/itga/css/custom.scss */
+
+.path-actualites .tags a:hover:after {
+  display: block;
+}
+
+/* line 841, themes/itga/css/custom.scss */
+
+.path-actualites .tags a:after {
+  display: none;
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100px;
+  background-color: #5b5959;
+  bottom: 10px;
+  left: 48px;
+}
+
+/* line 853, themes/itga/css/custom.scss */
+
+.path-actualites .tags a.active:after {
+  display: block;
+}
+
+/* line 858, themes/itga/css/custom.scss */
+
+.path-actualites .tags a.home_actus:after {
+  display: block;
+}
+
+/* line 863, themes/itga/css/custom.scss */
+
+.path-actualites #block-itga-page-title {
+  display: none;
+}
+
+/* line 865, themes/itga/css/custom.scss */
+
+.path-actualites #block-itga-page-title h1 {
+  display: none;
+}
+
+/* line 869, themes/itga/css/custom.scss */
+
+.path-actualites #block-itga-content {
+  background: #eee;
+}
+
+/* line 875, themes/itga/css/custom.scss */
+
+.page-node-type-actualite #block-itga-page-title {
+  background: #003684;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+/* line 882, themes/itga/css/custom.scss */
+
+.page-node-type-actualite #block-itga-page-title h1 {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+/* line 888, themes/itga/css/custom.scss */
+
+.page-node-type-actualite #block-itga-page-title a {
+  display: block;
+  background-color: #f9b21e;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  text-decoration: none;
+}
+
+/* line 895, themes/itga/css/custom.scss */
+
+.page-node-type-actualite #block-itga-page-title a:last-child {
+  display: none;
+}
+
+/* line 900, themes/itga/css/custom.scss */
+
+.page-node-type-actualite section.header-actu {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+/* line 903, themes/itga/css/custom.scss */
+
+.page-node-type-actualite section.header-actu img {
+  width: 100%;
+}
+
+/* line 906, themes/itga/css/custom.scss */
+
+.page-node-type-actualite section.header-actu .field--name-field-tags-actu {
+  position: relative;
+  height: 100%;
+}
+
+/* line 909, themes/itga/css/custom.scss */
+
+.page-node-type-actualite section.header-actu .field--name-field-tags-actu .field__items {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+/* line 913, themes/itga/css/custom.scss */
+
+.page-node-type-actualite section.header-actu .field--name-field-tags-actu .field__items .field__item {
+  display: block;
+  background-color: #003684;
+  padding: 5px 10px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+/* line 921, themes/itga/css/custom.scss */
+
+.page-node-type-actualite section.header-actu .field--name-field-tags-actu .field__items .field__item:before {
+  content: "/";
+  display: inline-block;
+  padding-right: 5px;
+}
+
+/* line 926, themes/itga/css/custom.scss */
+
+.page-node-type-actualite section.header-actu .field--name-field-tags-actu .field__items .field__item a {
+  color: #FFFFFF;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+/* line 935, themes/itga/css/custom.scss */
+
+.page-node-type-actualite #block-itga-content {
+  background: #FFFFFF;
+  padding: 30px;
+}
+
+/* line 942, themes/itga/css/custom.scss */
+
+.actu-grid article {
+  margin: 15px;
+}
+
+/* line 944, themes/itga/css/custom.scss */
+
+.actu-grid article .article_thumb {
+  height: 210px;
+  background-size: cover;
+  position: relative;
+}
+
+/* line 948, themes/itga/css/custom.scss */
+
+.actu-grid article .article_thumb:after {
+  opacity: .1;
+  background-color: #fff;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  transform-origin: left;
+  transition: width .2s ease-in-out;
+}
+
+/* line 960, themes/itga/css/custom.scss */
+
+.actu-grid article .article_thumb:hover::after {
+  width: 100%;
+}
+
+/* line 964, themes/itga/css/custom.scss */
+
+.actu-grid article .article_detail {
+  background: #FFFFFF;
+  height: 120px;
+  padding: 15px;
+  position: relative;
+}
+
+/* line 969, themes/itga/css/custom.scss */
+
+.actu-grid article .article_detail h2 {
+  font-size: 18px;
+}
+
+/* line 971, themes/itga/css/custom.scss */
+
+.actu-grid article .article_detail h2 a {
+  color: #020b15;
+  text-decoration: none;
+}
+
+/* line 976, themes/itga/css/custom.scss */
+
+.actu-grid article .article_detail .post_tags {
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 5px;
+}
+
+/* line 984, themes/itga/css/custom.scss */
+
+.actu-grid article .article_detail .post_tags span {
+  display: inline-block;
+  background-color: #003684;
+  padding: 5px 10px;
+  margin: 2px;
+}
+
+/* line 989, themes/itga/css/custom.scss */
+
+.actu-grid article .article_detail .post_tags span a {
+  color: #FFFFFF;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* line 1002, themes/itga/css/custom.scss */
+
+.page-node-type-agence #content {
+  position: relative;
+}
+
+/* line 1005, themes/itga/css/custom.scss */
+
+.page-node-type-agence #content .submenu-container ul.submenu_page {
+  display: none;
+}
+
+/* line 1010, themes/itga/css/custom.scss */
+
+.page-node-type-agence #block-itga-page-title {
+  background: #003684;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+/* line 1017, themes/itga/css/custom.scss */
+
+.page-node-type-agence #block-itga-page-title h1 {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+/* line 1023, themes/itga/css/custom.scss */
+
+.page-node-type-agence #block-itga-page-title a {
+  display: block;
+  background-color: #f9b21e;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  text-decoration: none;
+}
+
+/* line 1030, themes/itga/css/custom.scss */
+
+.page-node-type-agence #block-itga-page-title a:last-child {
+  display: none;
+}
+
+/* line 1035, themes/itga/css/custom.scss */
+
+.page-node-type-agence #block-itga-content {
+  background: #FFFFFF;
+  padding: 30px;
+}
+
+/* line 1039, themes/itga/css/custom.scss */
+
+.page-node-type-agence article {
+  font-family: 'Lato', sans-serif;
+}
+
+/* line 1041, themes/itga/css/custom.scss */
+
+.page-node-type-agence article h2 {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+/* line 1045, themes/itga/css/custom.scss */
+
+.page-node-type-agence article .mot p {
+  font-size: 14px;
+  color: #2d2c2c;
+  line-height: 24px;
+}
+
+/* line 1050, themes/itga/css/custom.scss */
+
+.page-node-type-agence article .responsable {
+  font-weight: 700;
+  text-align: right;
+}
+
+/* line 1054, themes/itga/css/custom.scss */
+
+.page-node-type-agence article section.video_agence {
+  margin: auto;
+  text-align: center;
+  padding: 15px 0;
+}
+
+/* line 1059, themes/itga/css/custom.scss */
+
+.page-node-type-agence article section.map_adresse {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 300px;
+  padding: 15px 0 30px 0;
+}
+
+/* line 1065, themes/itga/css/custom.scss */
+
+.page-node-type-agence article section.map_adresse .google-map {
+  width: 640px;
+  height: 300px;
+}
+
+/* line 1068, themes/itga/css/custom.scss */
+
+.page-node-type-agence article section.map_adresse .google-map iframe {
+  height: 301px;
+}
+
+/* line 1075, themes/itga/css/custom.scss */
+
+.page-node-type-agence article section.equipe .accordion h3 {
+  background-color: #5b5959;
+  color: #fff;
+  padding: 15px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* line 1082, themes/itga/css/custom.scss */
+
+.page-node-type-agence article section.equipe .accordion h3 img.chevron {
+  float: right;
+  width: 25px;
+  height: 25px;
+  -webkit-transition: all .1s ease-in-out;
+  -moz-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
+  transform: rotate(0);
+}
+
+/* line 1092, themes/itga/css/custom.scss */
+
+.page-node-type-agence article section.equipe .accordion h3.rotated img {
+  transform: rotate(90deg);
+}
+
+/* line 1095, themes/itga/css/custom.scss */
+
+.page-node-type-agence article section.equipe .accordion .accordion-item {
+  display: block;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* line 1099, themes/itga/css/custom.scss */
+
+.page-node-type-agence article section.equipe .accordion .accordion-item .member-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* line 1104, themes/itga/css/custom.scss */
+
+.page-node-type-agence article section.equipe .accordion .accordion-item .member-list .member-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: calc((100% / 3) - 60px);
+  margin-bottom: 60px;
+}
+
+/* line 1111, themes/itga/css/custom.scss */
+
+.page-node-type-agence article section.equipe .accordion .accordion-item .member-list .member-item .member-image {
+  width: 110px;
+  height: 110px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* line 1117, themes/itga/css/custom.scss */
+
+.page-node-type-agence article section.equipe .accordion .accordion-item .member-list .member-item .member-content {
+  font-size: 16px;
+  width: calc(100% - 115px);
+}
+
+/* line 1120, themes/itga/css/custom.scss */
+
+.page-node-type-agence article section.equipe .accordion .accordion-item .member-list .member-item .member-content p:first-child,
+.page-node-type-agence article section.equipe .accordion .accordion-item .member-list .member-item .member-content p:nth-child(2) {
+  margin-bottom: 10px;
+}
+
+/* line 1124, themes/itga/css/custom.scss */
+
+.page-node-type-agence article section.equipe .accordion .accordion-item .member-list .member-item .member-content p {
+  margin: 0;
+}
+
+/* line 1129, themes/itga/css/custom.scss */
+
+.page-node-type-agence article section.equipe .accordion .accordion-item .member-list .flex-fix {
+  flex: 0 0 28%;
+}
+
+/* line 1140, themes/itga/css/custom.scss */
+
+.path-agences #block-itga-page-title {
+  margin-top: 50px;
+}
+
+/* line 1144, themes/itga/css/custom.scss */
+
+.path-agences .carte-agence img {
+  width: 100%;
+}
+
+/* line 1149, themes/itga/css/custom.scss */
+
+.path-agences .accordion h3 {
+  background-color: #5b5959;
+  color: #fff;
+  padding: 15px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* line 1156, themes/itga/css/custom.scss */
+
+.path-agences .accordion h3 img.chevron {
+  float: right;
+  width: 25px;
+  height: 25px;
+  -webkit-transition: all .1s ease-in-out;
+  -moz-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
+  transform: rotate(0);
+}
+
+/* line 1166, themes/itga/css/custom.scss */
+
+.path-agences .accordion h3.rotated img {
+  transform: rotate(90deg);
+}
+
+/* line 1169, themes/itga/css/custom.scss */
+
+.path-agences .accordion .accordion-item {
+  display: block;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* line 1173, themes/itga/css/custom.scss */
+
+.path-agences .accordion .accordion-item .accordion-content {
+  padding: 0 60px;
+}
+
+/* line 1175, themes/itga/css/custom.scss */
+
+.path-agences .accordion .accordion-item .accordion-content h4 {
+  padding: 20px 0 15px 0;
+}
+
+/* line 1177, themes/itga/css/custom.scss */
+
+.path-agences .accordion .accordion-item .accordion-content h4 a {
+  color: #000;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* line 1182, themes/itga/css/custom.scss */
+
+.path-agences .accordion .accordion-item .accordion-content h4:hover {
+  text-decoration: underline;
+}
+
+/* line 1186, themes/itga/css/custom.scss */
+
+.path-agences .accordion .accordion-item .accordion-content p {
+  font-size: 14px;
+  padding: 2px 0;
+}
+
+/* line 1191, themes/itga/css/custom.scss */
+
+.path-agences .accordion .accordion-item .member-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* line 1196, themes/itga/css/custom.scss */
+
+.path-agences .accordion .accordion-item .member-list .member-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: calc((100% / 3) - 60px);
+  margin-bottom: 60px;
+}
+
+/* line 1203, themes/itga/css/custom.scss */
+
+.path-agences .accordion .accordion-item .member-list .member-item .member-image {
+  width: 95px;
+  height: 95px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* line 1209, themes/itga/css/custom.scss */
+
+.path-agences .accordion .accordion-item .member-list .member-item .member-content {
+  font-size: 16px;
+  width: calc(100% - 115px);
+}
+
+/* line 1212, themes/itga/css/custom.scss */
+
+.path-agences .accordion .accordion-item .member-list .member-item .member-content p:first-child,
+.path-agences .accordion .accordion-item .member-list .member-item .member-content p:nth-child(2) {
+  margin-bottom: 10px;
+}
+
+/* line 1216, themes/itga/css/custom.scss */
+
+.path-agences .accordion .accordion-item .member-list .member-item .member-content p {
+  margin: 0;
+}
+
+/* line 1221, themes/itga/css/custom.scss */
+
+.path-agences .accordion .accordion-item .member-list .flex-fix {
+  flex: 0 0 28%;
+}
+
+/* line 1229, themes/itga/css/custom.scss */
+
+#block-itga-page-title {
+  background: #003684;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+/* line 1236, themes/itga/css/custom.scss */
+
+#block-itga-page-title h1 {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+/* line 1244, themes/itga/css/custom.scss */
+
+#block-itga-content {
+  background: #FFFFFF;
+  padding: 30px;
+}
+
+/* line 1247, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form,
+#block-itga-content .webform-submission-form {
+  padding: 60px 245px;
+}
+
+/* line 1250, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form div[role='alert'],
+#block-itga-content .webform-submission-form div[role='alert'] {
+  margin-bottom: 15px;
+  color: #fe4a49;
+}
+
+/* line 1255, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form .js-form-type-radio,
+#block-itga-content .webform-submission-form .js-form-type-radio {
+  padding: 5px 0;
+}
+
+/* line 1258, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form input[type="submit"],
+#block-itga-content .webform-submission-form input[type="submit"] {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  -webkit-appearance: button;
+  border: 0;
+  padding: 0;
+  text-align: center;
+  display: inline-block;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 15px;
+  margin: 15px auto;
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative;
+  cursor: pointer;
+  background-color: #f6bd60;
+}
+
+/* line 1287, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form textarea,
+#block-itga-content .webform-submission-form textarea {
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border-bottom: 1px solid #b5b5b5;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+}
+
+/* line 1300, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form .form-item.js-form-type-select select,
+#block-itga-content .webform-submission-form .form-item.js-form-type-select select {
+  float: right;
+  width: 70%;
+  padding: 5px;
+  margin-top: -5px;
+}
+
+/* line 1307, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form .form-item.js-form-type-select label span,
+#block-itga-content .webform-submission-form .form-item.js-form-type-select label span {
+  font-size: 14px;
+  color: #2d2c2c;
+}
+
+/* line 1313, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form .form-item.js-form-type-textfield,
+#block-itga-content .contact-form .form-item.js-form-type-tel,
+#block-itga-content .contact-form .form-item.js-form-type-email,
+#block-itga-content .webform-submission-form .form-item.js-form-type-textfield,
+#block-itga-content .webform-submission-form .form-item.js-form-type-tel,
+#block-itga-content .webform-submission-form .form-item.js-form-type-email {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+/* line 1319, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form .form-item.js-form-type-textfield label,
+#block-itga-content .contact-form .form-item.js-form-type-tel label,
+#block-itga-content .contact-form .form-item.js-form-type-email label,
+#block-itga-content .webform-submission-form .form-item.js-form-type-textfield label,
+#block-itga-content .webform-submission-form .form-item.js-form-type-tel label,
+#block-itga-content .webform-submission-form .form-item.js-form-type-email label {
+  position: relative;
+}
+
+/* line 1322, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form .form-item.js-form-type-textfield label.form-required,
+#block-itga-content .contact-form .form-item.js-form-type-tel label.form-required,
+#block-itga-content .contact-form .form-item.js-form-type-email label.form-required,
+#block-itga-content .webform-submission-form .form-item.js-form-type-textfield label.form-required,
+#block-itga-content .webform-submission-form .form-item.js-form-type-tel label.form-required,
+#block-itga-content .webform-submission-form .form-item.js-form-type-email label.form-required {
+  position: relative;
+}
+
+/* line 1325, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form .form-item.js-form-type-textfield label.form-required:before,
+#block-itga-content .contact-form .form-item.js-form-type-tel label.form-required:before,
+#block-itga-content .contact-form .form-item.js-form-type-email label.form-required:before,
+#block-itga-content .webform-submission-form .form-item.js-form-type-textfield label.form-required:before,
+#block-itga-content .webform-submission-form .form-item.js-form-type-tel label.form-required:before,
+#block-itga-content .webform-submission-form .form-item.js-form-type-email label.form-required:before {
+  content: "*";
+  color: #fe4a49;
+  position: absolute;
+  left: -15px;
+  top: 27px;
+}
+
+/* line 1333, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form .form-item.js-form-type-textfield label span,
+#block-itga-content .contact-form .form-item.js-form-type-tel label span,
+#block-itga-content .contact-form .form-item.js-form-type-email label span,
+#block-itga-content .webform-submission-form .form-item.js-form-type-textfield label span,
+#block-itga-content .webform-submission-form .form-item.js-form-type-tel label span,
+#block-itga-content .webform-submission-form .form-item.js-form-type-email label span {
+  position: absolute;
+  top: 25px;
+  -webkit-transition: all .1s ease-in-out;
+  -moz-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
+  font-size: 14px;
+  color: #2d2c2c;
+}
+
+/* line 1343, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form .form-item.js-form-type-textfield input,
+#block-itga-content .contact-form .form-item.js-form-type-tel input,
+#block-itga-content .contact-form .form-item.js-form-type-email input,
+#block-itga-content .webform-submission-form .form-item.js-form-type-textfield input,
+#block-itga-content .webform-submission-form .form-item.js-form-type-tel input,
+#block-itga-content .webform-submission-form .form-item.js-form-type-email input {
+  margin-top: 10px;
+  padding: 15px;
+  color: #2d2c2c;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border-bottom: 1px solid #b5b5b5;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  padding-bottom: 0;
+  padding-left: 0;
+  margin-bottom: 15px;
+}
+
+/* line 1361, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form .form-item.js-form-type-textfield input.required.error,
+#block-itga-content .contact-form .form-item.js-form-type-tel input.required.error,
+#block-itga-content .contact-form .form-item.js-form-type-email input.required.error,
+#block-itga-content .webform-submission-form .form-item.js-form-type-textfield input.required.error,
+#block-itga-content .webform-submission-form .form-item.js-form-type-tel input.required.error,
+#block-itga-content .webform-submission-form .form-item.js-form-type-email input.required.error {
+  border-bottom: 1px solid #fe4a49;
+}
+
+/* line 1368, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form .form-item.focused label span,
+#block-itga-content .webform-submission-form .form-item.focused label span {
+  top: 0;
+  font-size: 10px;
+  color: #b5b5b5;
+}
+
+/* line 1375, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form .js-form-type-textarea,
+#block-itga-content .webform-submission-form .js-form-type-textarea {
+  margin: 20px 0 20px 0;
+}
+
+/* line 1377, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form .js-form-type-textarea label,
+#block-itga-content .webform-submission-form .js-form-type-textarea label {
+  position: relative;
+}
+
+/* line 1379, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form .js-form-type-textarea label span,
+#block-itga-content .webform-submission-form .js-form-type-textarea label span {
+  position: absolute;
+  top: 25px;
+  -webkit-transition: all .1s ease-in-out;
+  -moz-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
+  font-size: 14px;
+  color: #2d2c2c;
+}
+
+/* line 1390, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form .js-form-type-textarea .textarea-wrapper textarea,
+#block-itga-content .webform-submission-form .js-form-type-textarea .textarea-wrapper textarea {
+  width: 100%;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  padding: 15px;
+  padding-left: 0;
+  height: 252px;
+}
+
+/* line 1402, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form .js-form-type-textarea.focused label span,
+#block-itga-content .webform-submission-form .js-form-type-textarea.focused label span {
+  top: 0;
+  font-size: 10px;
+  color: #b5b5b5;
+}
+
+/* line 1409, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form .form-actions,
+#block-itga-content .webform-submission-form .form-actions {
+  text-align: center;
+}
+
+/* line 1412, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form #edit-submit,
+#block-itga-content .webform-submission-form #edit-submit {
+  background-color: #f6bd60;
+}
+
+/* line 1415, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form #edit-preview,
+#block-itga-content .webform-submission-form #edit-preview {
+  display: none;
+}
+
+/* line 1418, themes/itga/css/custom.scss */
+
+#block-itga-content .contact-form .fieldset-legend,
+#block-itga-content .webform-submission-form .fieldset-legend {
+  font-size: 18px;
+  font-weight: 700;
+  color: #003684;
+  margin: 15px 0;
+  display: block;
+}
+
+/* line 1430, themes/itga/css/custom.scss */
+
+.user-logged-in.path-contact #edit-name,
+.user-logged-in.path-webform-contact #edit-name {
+  margin-top: 10px;
+  border-bottom: 1px solid #b5b5b5;
+}
+
+/* line 1434, themes/itga/css/custom.scss */
+
+.user-logged-in.path-contact #edit-name label span,
+.user-logged-in.path-webform-contact #edit-name label span {
+  display: block;
+  font-size: 10px;
+  color: #b5b5b5;
+  padding: 15px 0;
+  font-weight: 400;
+}
+
+/* line 1443, themes/itga/css/custom.scss */
+
+.user-logged-in.path-contact #edit-mail,
+.user-logged-in.path-webform-contact #edit-mail {
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #b5b5b5;
+}
+
+/* line 1450, themes/itga/css/custom.scss */
+
+.user-logged-in.path-contact #edit-mail label span,
+.user-logged-in.path-webform-contact #edit-mail label span {
+  display: block;
+  font-size: 10px;
+  color: #b5b5b5;
+  padding: 15px 0;
+  font-weight: 400;
+}
+
+/* line 1459, themes/itga/css/custom.scss */
+
+.user-logged-in.path-contact #edit-copy,
+.user-logged-in.path-webform-contact #edit-copy {
+  font-size: 14px;
+  margin: 20px 0 20px 0;
+}
+
+/* line 1469, themes/itga/css/custom.scss */
+
+.user-logged-in.path-contact #block-itga-content .webform-submission-form .form-item.js-form-type-email.js-form-item-email label span,
+.user-logged-in.path-contact #block-itga-content .webform-submission-form .form-item.js-form-type-textfield.js-form-item-votre-prenom label span,
+.user-logged-in.path-contact #block-itga-content .webform-submission-form .form-item.js-form-type-textfield.js-form-item-name label span,
+.user-logged-in.path-webform-contact #block-itga-content .webform-submission-form .form-item.js-form-type-email.js-form-item-email label span,
+.user-logged-in.path-webform-contact #block-itga-content .webform-submission-form .form-item.js-form-type-textfield.js-form-item-votre-prenom label span,
+.user-logged-in.path-webform-contact #block-itga-content .webform-submission-form .form-item.js-form-type-textfield.js-form-item-name label span {
+  top: 0;
+  font-size: 10px;
+  color: #b5b5b5;
+}
+
+/* line 1480, themes/itga/css/custom.scss */
+
+footer {
+  width: 100%;
+  background-color: #fff;
+  color: #5b5959;
+  margin-top: 50px;
+}
+
+/* line 1485, themes/itga/css/custom.scss */
+
+footer .inner {
+  padding: 25px 0;
+  border-right: 1px solid #eee;
+  border-left: 1px solid #eee;
+  position: relative;
+}
+
+/* line 1490, themes/itga/css/custom.scss */
+
+footer .inner .separateur {
+  position: absolute;
+  display: block;
+  height: 1px;
+  background-color: #eee;
+  width: 90%;
+  right: 0;
+  top: 50px;
+}
+
+/* line 1499, themes/itga/css/custom.scss */
+
+footer .inner>div {
+  display: flex;
+  font-size: 12px;
+}
+
+/* line 1503, themes/itga/css/custom.scss */
+
+footer .inner h2 {
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+/* line 1509, themes/itga/css/custom.scss */
+
+footer .inner a {
+  color: #5b5959;
+  text-decoration: none;
+}
+
+/* line 1513, themes/itga/css/custom.scss */
+
+footer .inner ul {
+  list-style-type: none;
+}
+
+/* line 1517, themes/itga/css/custom.scss */
+
+footer #block-footerbranding {
+  width: 120px;
+  display: flex;
+  align-items: center;
+  padding: 25px;
+}
+
+/* line 1523, themes/itga/css/custom.scss */
+
+footer #block-agencefooter {
+  width: 250px;
+}
+
+/* line 1526, themes/itga/css/custom.scss */
+
+footer nav#block-itga-footer {
+  width: 200px;
+}
+
+/* line 1529, themes/itga/css/custom.scss */
+
+footer #block-views-block-liste-actus-footer-block-1 {
+  width: 200px;
+}
+
+/* line 1532, themes/itga/css/custom.scss */
+
+footer .sub-footer {
+  background-color: #5b5959;
+  padding: 15px;
+}
+
+/* line 1535, themes/itga/css/custom.scss */
+
+footer .sub-footer ul {
+  display: flex;
+  list-style-type: none;
+}
+
+/* line 1538, themes/itga/css/custom.scss */
+
+footer .sub-footer ul li {
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0 25px;
+}
+
+/* line 1542, themes/itga/css/custom.scss */
+
+footer .sub-footer ul li a {
+  color: #fff;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+/* line 1555, themes/itga/css/custom.scss */
+
+.path-webform-commande-consommables #block-itga-content .webform-submission-form {
+  padding: 20px;
+}
+
+/* line 1557, themes/itga/css/custom.scss */
+
+.path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item {
+  position: relative;
+}
+
+/* line 1559, themes/itga/css/custom.scss */
+
+.path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item .description {
+  position: absolute;
+  right: 20px;
+  top: 48%;
+}
+
+/* line 1564, themes/itga/css/custom.scss */
+
+.path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item input.form-number {
+  position: absolute;
+  right: 170px;
+  top: 48%;
+  padding: 5px;
+}
+
+/* line 1571, themes/itga/css/custom.scss */
+
+.path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item label span {
+  display: block;
+  position: relative;
+}
+
+/* line 1574, themes/itga/css/custom.scss */
+
+.path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item label span h3 {
+  position: absolute;
+  left: 30px;
+  padding: 10px;
+  background: #FFF;
+  top: -22px;
+}
+
+/* line 1581, themes/itga/css/custom.scss */
+
+.path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item label span .detail {
+  padding: 20px;
+  border: 1px solid #000;
+  height: 200px;
+  margin-top: -1px;
+}
+
+/* line 1586, themes/itga/css/custom.scss */
+
+.path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item label span .detail em {
+  display: block;
+  text-align: left;
+  width: 65%;
+  font-size: 12px;
+}
+
+/* line 1597, themes/itga/css/custom.scss */
+
+.path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item-lots-de-50-sachets-commandes h3 {
+  display: none;
+}
+
+/* line 1601, themes/itga/css/custom.scss */
+
+.path-webform-commande-consommables #block-itga-content .webform-submission-form .form-item-sachet-amiante-itga {
+  margin-bottom: 60px;
+}
+
+/* line 1610, themes/itga/css/custom.scss */
+
+.ui-dialog.ui-widget.ui-widget-content {
+  border: none;
+  font-family: 'Lato', sans-serif;
+  padding: 0;
+}
+
+/* line 1616, themes/itga/css/custom.scss */
+
+.ui-dialog-titlebar {
+  background-color: #003684;
+  color: #fff;
+}
+
+/* line 1619, themes/itga/css/custom.scss */
+
+.ui-dialog-titlebar span {
+  text-transform: uppercase;
+}
+
+/* line 1624, themes/itga/css/custom.scss */
+
+.ui-button,
+.ui-button:hover {
+  border: none;
+  background-color: #003684;
+  font-weight: normal;
+  color: #fff;
+}
+
+/* line 1630, themes/itga/css/custom.scss */
+
+
+/* line 1641, themes/itga/css/custom.scss */
+
+.custom-modal {
+  display: none;
+  position: fixed;
+  margin: auto;
+  z-index: 99999;
+  width: 100%;
+}
+
+/* line 1647, themes/itga/css/custom.scss */
+
+.custom-modal .custom-modal-body {
+  margin: auto;
+}
+
+/* line 1652, themes/itga/css/custom.scss */
+
+#modal-first-connection-admin.custom-modal,
+#modal-first-connection-nonadmin.custom-modal,
+#modal-logout {
+  top: 30%;
+}
+
+/* line 1656, themes/itga/css/custom.scss */
+
+#modal-first-connection-admin.custom-modal .custom-modal-body,
+#modal-first-connection-nonadmin.custom-modal .custom-modal-body,
+#modal-logout .custom-modal-body {
+  height: 300px;
+  width: 700px;
+  background-color: #fff;
+  padding: 30px;
+  position: relative;
+}
+
+/* line 1663, themes/itga/css/custom.scss */
+
+#modal-first-connection-admin.custom-modal .custom-modal-body .close-modal,
+#modal-first-connection-nonadmin.custom-modal .custom-modal-body .close-modal,
+#modal-logout .custom-modal-body .close-modal {
+  position: absolute;
+  font-family: "Arial";
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+
+/* line 1671, themes/itga/css/custom.scss */
+
+#modal-first-connection-admin.custom-modal .custom-modal-body .modal-inner,
+#modal-first-connection-nonadmin.custom-modal .custom-modal-body .modal-inner,
+#modal-logout .custom-modal-body .modal-inner {
+  text-align: center;
+}
+
+/* line 1673, themes/itga/css/custom.scss */
+
+#modal-first-connection-admin.custom-modal .custom-modal-body .modal-inner .guide,
+#modal-first-connection-nonadmin.custom-modal .custom-modal-body .modal-inner .guide,
+#modal-logout .custom-modal-body .modal-inner .guide {
+  margin: 5px;
+}
+
+/* line 1675, themes/itga/css/custom.scss */
+
+#modal-first-connection-admin.custom-modal .custom-modal-body .modal-inner .guide a,
+#modal-first-connection-nonadmin.custom-modal .custom-modal-body .modal-inner .guide a,
+#modal-logout .custom-modal-body .modal-inner .guide a {
+  color: #5b5959;
+}
+
+/* line 1678, themes/itga/css/custom.scss */
+
+#modal-first-connection-admin.custom-modal .custom-modal-body .modal-inner .guide a.cta,
+#modal-first-connection-nonadmin.custom-modal .custom-modal-body .modal-inner .guide a.cta,
+#modal-logout .custom-modal-body .modal-inner .guide a.cta {
+  text-align: center;
+  display: inline-block;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 15px;
+  margin: 15px auto;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: #f6bd60;
+}
+
+/* line 1690, themes/itga/css/custom.scss */
+
+#modal-first-connection-admin.custom-modal .custom-modal-body .modal-inner form,
+#modal-first-connection-nonadmin.custom-modal .custom-modal-body .modal-inner form,
+#modal-logout .custom-modal-body .modal-inner form {
+  text-align: center;
+}
+
+/* line 1692, themes/itga/css/custom.scss */
+
+#modal-first-connection-admin.custom-modal .custom-modal-body .modal-inner form input[type="submit"],
+#modal-first-connection-nonadmin.custom-modal .custom-modal-body .modal-inner form input[type="submit"],
+#modal-logout .custom-modal-body .modal-inner form input[type="submit"] {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  -webkit-appearance: button;
+  border: 0;
+  padding: 0;
+  text-align: center;
+  display: inline-block;
+  color: #fff;
+  font-weight: 700;
+  padding: 15px 70px;
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative;
+  cursor: pointer;
+  background-color: #003684;
+  margin: 20px auto;
+}
+
+/* line 1726, themes/itga/css/custom.scss */
+
+#modal-first-connection-nonadmin.custom-modal .custom-modal-body {
+  height: 250px;
+}
+
+/* line 1732, themes/itga/css/custom.scss */
+
+#modal-logout .custom-modal-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 170px;
+}
+
+/* line 1741, themes/itga/css/custom.scss */
+
+.custom-modal.visible {
+  display: block;
+}
+
+/* line 1745, themes/itga/css/custom.scss */
+
+.checkbox-exp {
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+/* line 1750, themes/itga/css/custom.scss */
+
+.checkbox-exp [type="checkbox"] {
+  display: none;
+}
+
+/* line 1753, themes/itga/css/custom.scss */
+
+.checkbox-exp [type="checkbox"]:not(:checked)+label::before,
+.checkbox-exp [type="checkbox"]:checked+label::before {
+  background: white none repeat scroll 0 0;
+  border: 1px solid #aaa;
+  content: "";
+  height: 15px;
+  left: 10px;
+  position: absolute;
+  top: 5px;
+  width: 15px;
+}
+
+/* line 1764, themes/itga/css/custom.scss */
+
+.checkbox-exp [type="checkbox"]:not(:checked)+label::after {
+  opacity: 0;
+  transform: scale(o);
+}
+
+/* line 1768, themes/itga/css/custom.scss */
+
+.checkbox-exp [type="checkbox"]:checked+label::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* line 1772, themes/itga/css/custom.scss */
+
+.checkbox-exp [type="checkbox"]:not(:checked)+label::after,
+.checkbox-exp [type="checkbox"]:checked+label::after {
+  color: #003684;
+  content: "✔";
+  font-size: 20px;
+  left: 12px;
+  line-height: 0.8;
+  position: absolute;
+  top: 4px;
+  transition: all 0.2s ease 0s;
+}
+
+/* line 1783, themes/itga/css/custom.scss */
+
+.checkbox-exp [type="checkbox"]:not(:checked)+label,
+.checkbox-exp [type="checkbox"]:checked+label {
+  cursor: pointer;
+  padding-left: 35px;
+  position: relative;
+  margin-right: 30px;
+}
+
+/* line 1790, themes/itga/css/custom.scss */
+
+.checkbox-exp label {
+  cursor: pointer;
+  font-weight: normal;
+  margin-bottom: 0;
+  min-height: 20px;
+  padding-left: 20px;
+  font-size: 16px;
+  font-weight: normal;
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+}
+
+/* line 1791, themes/itga/css/custom.scss */
+
+.checkbox-exp label a {
+  color: #5b5959;
+  margin-left: 5px;
+}
+
+/* line 1814, themes/itga/css/custom.scss */
+
+.labo-suivi-commandes table {
+  border-spacing: 0;
+  width: 100%;
+}
+
+/* line 1818, themes/itga/css/custom.scss */
+
+.labo-suivi-commandes table th {
+  font-weight: bold;
+  font-size: 11px;
+  padding: 15px;
+}
+
+/* line 1823, themes/itga/css/custom.scss */
+
+.labo-suivi-commandes table th.ReferenceClientEchantillon {
+  min-width: 200px;
+  max-width: 100%;
+}
+
+/* line 1828, themes/itga/css/custom.scss */
+
+.labo-suivi-commandes table th:focus {
+  outline: none;
+}
+
+/* line 1835, themes/itga/css/custom.scss */
+
+.labo-suivi-commandes table tr>td {
+  font-size: 11px;
+  padding: 10px 10px;
+  border-bottom: 1px solid #d3d3d3;
+  text-align: center;
+}
+
+/* line 1842, themes/itga/css/custom.scss */
+
+.labo-suivi-commandes table tr>td.ref {
+  width: 50px;
+}
+
+/* line 1846, themes/itga/css/custom.scss */
+
+.labo-suivi-commandes table tr>td a {
+  color: #eee;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #003684;
+  text-decoration: none;
+}
+
+/* line 1857, themes/itga/css/custom.scss */
+
+.labo-suivi-commandes table tr.detail-commande {
+  padding: 0;
+}
+
+/* line 1860, themes/itga/css/custom.scss */
+
+.labo-suivi-commandes table tr.detail-commande>td {
+  background: #e5e5e5;
+  padding: 0;
+}
+
+/* line 1866, themes/itga/css/custom.scss */
+
+.labo-suivi-commandes table tr.detail-commande tbody tr:last-child td {
+  border: none;
+}
+
+/* line 1875, themes/itga/css/custom.scss */
+
+.labo-suivi-commandes table tr.opened td {
+  background: #e5e5e5;
+}
+
+/* line 1887, themes/itga/css/custom.scss */
+
+.header-table {
+  display: flex;
+  height: 55px;
+  align-items: center;
+  justify-content: flex-end;
+  background: #e5e5e5;
+  border-top: 1px solid #f6f6f6;
+  padding: 0 15px;
+}
+
+/* line 1896, themes/itga/css/custom.scss */
+
+.header-table input[type="text"] {
+  padding: .375rem .75rem;
+  flex-grow: 2;
+  outline: none;
+}
+
+/* line 1902, themes/itga/css/custom.scss */
+
+.header-table .searchResultsCount {
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+/* line 1907, themes/itga/css/custom.scss */
+
+.header-table .dropdown {
+  margin-left: 10px;
+  color: #e5e5e5;
+}
+
+/* line 1912, themes/itga/css/custom.scss */
+
+.header-table .export-excel {
+  display: block;
+  width: 33px;
+  height: 33px;
+  background-image: url("../../images/excel.svg");
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+  margin-left: 10px;
+}
+
+/* line 1927, themes/itga/css/custom.scss */
+
+.detail-commande .header-detail-commande {
+  background: #003684;
+  display: flex;
+  align-items: center;
+  height: 55px;
+  color: #FFFFFF;
+  padding: 0 15px;
+}
+
+/* line 1935, themes/itga/css/custom.scss */
+
+.detail-commande .header-detail-commande input[type="text"] {
+  padding: .375rem .75rem;
+  flex-grow: 2;
+  margin: 0 10px;
+  outline: none;
+}
+
+/* line 1944, themes/itga/css/custom.scss */
+
+.detail-commande .detailsEchantillon {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+  border: 1px solid rgba(0,0,0,0.15);
+}
+
+/* line 1948, themes/itga/css/custom.scss */
+
+.detail-commande .detailsEchantillon tr:hover {
+  background: #fff;
+}
+
+/* line 1954, themes/itga/css/custom.scss */
+
+.loader-wrapper {
+  position: fixed;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255,255,255,0.7);
+}
+/* line 3, themes/itga/css/block-paragraph.scss */
+
+.paragraph {
+  font-size: 14px;
+  color: #2d2c2c;
+  font-family: 'Lato', sans-serif;
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+
+/* line 9, themes/itga/css/block-paragraph.scss */
+
+.paragraph p {
+  margin-bottom: 20px;
+}
+
+/* line 12, themes/itga/css/block-paragraph.scss */
+
+.paragraph p strong {
+  font-weight: 700;
+}
+
+/* line 15, themes/itga/css/block-paragraph.scss */
+
+.paragraph ul {
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+/* line 19, themes/itga/css/block-paragraph.scss */
+
+.paragraph a.cta {
+  text-align: center;
+  display: inline-block;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 15px;
+  margin: 15px auto;
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative;
+}
+
+/* line 30, themes/itga/css/block-paragraph.scss */
+
+.paragraph a.cta::after {
+  opacity: .1;
+  background-color: #fff;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  transform-origin: left;
+  transition: width .2s ease-in-out;
+}
+
+/* line 42, themes/itga/css/block-paragraph.scss */
+
+.paragraph a.cta:hover::after {
+  width: 100%;
+}
+
+/* line 45, themes/itga/css/block-paragraph.scss */
+
+.paragraph a.cta.bleufonce {
+  background-color: #003684;
+}
+
+/* line 48, themes/itga/css/block-paragraph.scss */
+
+.paragraph a.cta.bleuclair {
+  background-color: #5386e4;
+}
+
+/* line 51, themes/itga/css/block-paragraph.scss */
+
+.paragraph a.cta.jaune {
+  background-color: #f6bd60;
+}
+
+/* line 54, themes/itga/css/block-paragraph.scss */
+
+.paragraph a.cta.vert {
+  background-color: #8cb369;
+}
+
+/* line 57, themes/itga/css/block-paragraph.scss */
+
+.paragraph a.cta.rouge {
+  background-color: #fe4a49;
+}
+
+/* line 60, themes/itga/css/block-paragraph.scss */
+
+.paragraph a.cta.brun {
+  background-color: #795c5f;
+}
+
+/* line 63, themes/itga/css/block-paragraph.scss */
+
+.paragraph ul li {
+  margin: 10px 30px;
+}
+
+/* line 68, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--texte-a-droite-image-a-gauche,
+.paragraph--type--texte-a-gauche-image-a-droite {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* line 73, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--texte-a-droite-image-a-gauche>div,
+.paragraph--type--texte-a-gauche-image-a-droite>div {
+  width: 48%;
+}
+
+/* line 75, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--texte-a-droite-image-a-gauche>div>img,
+.paragraph--type--texte-a-gauche-image-a-droite>div>img {
+  width: 100%;
+}
+
+/* line 81, themes/itga/css/block-paragraph.scss */
+
+.iframeContainer {
+  position: relative;
+  padding-top: 25px;
+  margin-bottom: 15px;
+  height: 500px;
+}
+
+/* line 86, themes/itga/css/block-paragraph.scss */
+
+.iframeContainer iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 500px;
+}
+
+/* line 95, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--google-map {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 300px;
+}
+
+/* line 100, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--google-map .google-map {
+  width: 640px;
+  height: 300px;
+}
+
+/* line 103, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--google-map .google-map iframe {
+  height: 301px;
+}
+
+/* line 107, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--google-map .description-google-map {
+  flex-grow: 2;
+  padding-left: 25px;
+}
+
+/* line 110, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--google-map .description-google-map p {
+  margin-bottom: 0;
+}
+
+/* line 117, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--image-full-width img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* line 123, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--citation {
+  padding: 30px;
+  background: #5386e4;
+}
+
+/* line 126, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--citation p {
+  font-size: 14px;
+  color: #FFFFFF;
+  line-height: 24px;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+/* line 136, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--equipe-agence .accordion-item {
+  display: block;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* line 140, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--equipe-agence .accordion-item h3 {
+  background-color: #5b5959;
+  color: #fff;
+  padding: 15px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* line 147, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--equipe-agence .accordion-item h3 img.chevron {
+  float: right;
+  width: 25px;
+  height: 25px;
+  -webkit-transition: all .1s ease-in-out;
+  -moz-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
+  transform: rotate(0);
+}
+
+/* line 157, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--equipe-agence .accordion-item h3.rotated img {
+  transform: rotate(90deg);
+}
+
+/* line 160, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--equipe-agence .accordion-item .accordion-content {
+  width: 100%;
+  padding: 15px;
+  margin: auto;
+}
+
+/* line 164, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--equipe-agence .accordion-item .accordion-content .agence-conteneur {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+}
+
+/* line 170, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--equipe-agence .accordion-item .accordion-content .agence-conteneur .agence-itm {
+  text-align: left;
+  width: 33%;
+  padding: 15px;
+}
+
+/* line 174, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--equipe-agence .accordion-item .accordion-content .agence-conteneur .agence-itm p {
+  margin-bottom: 0 !important;
+}
+
+/* line 181, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--equipe-agence .member-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* line 186, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--equipe-agence .member-list .member-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: calc((100% / 3) - 60px);
+  margin-bottom: 60px;
+}
+
+/* line 193, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--equipe-agence .member-list .member-item .member-image {
+  width: 95px;
+  height: 95px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* line 199, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--equipe-agence .member-list .member-item .member-content {
+  font-size: 16px;
+  width: calc(100% - 115px);
+}
+
+/* line 202, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--equipe-agence .member-list .member-item .member-content p:first-child,
+.paragraph--type--equipe-agence .member-list .member-item .member-content p:nth-child(2) {
+  margin-bottom: 10px;
+}
+
+/* line 206, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--equipe-agence .member-list .member-item .member-content p {
+  margin: 0;
+}
+
+/* line 211, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--equipe-agence .member-list .flex-fix {
+  flex: 0 0 28%;
+}
+
+/* line 219, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--slider .slider-title h4 {
+  font-size: 16px;
+  margin: 25px 0;
+}
+
+/* line 224, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--slider .slide {
+  height: 315px;
+  position: relative;
+  background-size: cover;
+}
+
+/* line 228, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--slider .slide h2 {
+  position: absolute;
+  color: #fff;
+  text-align: center;
+  padding-top: 150px;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 24px;
+  width: 100%;
+}
+
+/* line 238, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--slider .slide .overlay {
+  background-color: rgba(0,0,0,0.5);
+  height: 100%;
+}
+
+/* line 243, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--slider .slick-prev,
+.paragraph--type--slider .slick-next {
+  position: absolute;
+  z-index: 99;
+  width: 40px;
+  height: 40px;
+}
+
+/* line 250, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--slider .slick-prev {
+  left: 40px;
+}
+
+/* line 253, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--slider .slick-next {
+  right: 40px;
+}
+
+/* line 256, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--slider .slick-prev::before {
+  content: url("../../images/slider-prev.png") !important;
+}
+
+/* line 259, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--slider .slick-next::before {
+  content: url("../../images/slider-next.png") !important;
+}
+
+/* line 266, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--accordeons .accordion .accordion-item {
+  display: block;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* line 270, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--accordeons .accordion .accordion-item h3 {
+  background-color: #5b5959;
+  color: #fff;
+  padding: 15px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* line 277, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--accordeons .accordion .accordion-item h3 img.chevron {
+  float: right;
+  width: 25px;
+  height: 25px;
+  -webkit-transition: all .1s ease-in-out;
+  -moz-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
+  transform: rotate(0);
+}
+
+/* line 287, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--accordeons .accordion .accordion-item .accordion-content {
+  width: 100%;
+  padding: 15px;
+  margin: auto;
+  text-align: center;
+}
+
+/* line 292, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--accordeons .accordion .accordion-item .accordion-content .agence-conteneur {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+}
+
+/* line 298, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--accordeons .accordion .accordion-item .accordion-content .agence-conteneur .agence-itm {
+  text-align: left;
+  width: 33%;
+  padding: 15px;
+}
+
+/* line 302, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--accordeons .accordion .accordion-item .accordion-content .agence-conteneur .agence-itm p {
+  margin-bottom: 0 !important;
+}
+
+/* line 308, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--accordeons .accordion .accordion-item h3.rotated img {
+  transform: rotate(90deg);
+}
+
+/* line 316, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--liste-de-fichiers h2 {
+  padding-bottom: 15px;
+  border-bottom: 1px dashed #bbbbbb;
+  position: relative;
+  padding-left: 15px;
+}
+
+/* line 321, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--liste-de-fichiers h2:before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  background-color: #003684;
+  height: 20px;
+  margin-right: 10px;
+  position: absolute;
+  left: 0px;
+  top: 2px;
+}
+
+/* line 333, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--liste-de-fichiers ul {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+/* line 336, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--liste-de-fichiers ul li {
+  margin-left: 0;
+}
+
+/* line 338, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--liste-de-fichiers ul li a {
+  color: #003684;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* line 342, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--liste-de-fichiers ul li a:hover {
+  text-decoration: underline;
+}
+
+/* line 345, themes/itga/css/block-paragraph.scss */
+
+.paragraph--type--liste-de-fichiers ul li a:visited {
+  text-decoration: none;
+  color: #5b5959;
+}
+/* line 2, themes/itga/css/responsive-all.scss */
+
+.container {
+  width: 1200px;
+  padding: 0 35px;
+  margin: 0 auto;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  /* line 10, themes/itga/css/responsive-all.scss */
+
+  body {
+    position: relative;
+  }
+
+  /* line 12, themes/itga/css/responsive-all.scss */
+
+  body nav#block-itga-main-menu {
+    top: 0;
+    left: auto;
+    right: -86px;
+    width: 65px;
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+  }
+
+  /* line 22, themes/itga/css/responsive-all.scss */
+
+  body nav#block-itga-main-menu ul li a {
+    width: 65px;
+    height: 65px;
+  }
+
+  /* line 26, themes/itga/css/responsive-all.scss */
+
+  body nav#block-itga-main-menu ul li ul {
+    left: -165px;
+  }
+
+  /* line 29, themes/itga/css/responsive-all.scss */
+
+  body nav#block-itga-main-menu ul li ul li a {
+    width: 165px;
+    height: auto;
+  }
+
+  /* line 38, themes/itga/css/responsive-all.scss */
+
+  body nav#block-itga-main-menu.visible {
+    right: 0;
+  }
+
+  /* line 41, themes/itga/css/responsive-all.scss */
+
+  body a.menu-mobile {
+    position: fixed;
+    z-index: 99;
+    display: block;
+    top: 10px;
+    background: #5b5959;
+    right: 12px;
+    height: 50px;
+    width: 50px;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+  }
+
+  /* line 54, themes/itga/css/responsive-all.scss */
+
+  body a.menu-mobile .bar {
+    position: relative;
+    left: 21%;
+    top: 19%;
+    bottom: auto;
+    right: auto;
+    height: 1px;
+    width: 29px;
+    background-color: #FFF;
+    margin-top: 15px;
+  }
+
+  /* line 64, themes/itga/css/responsive-all.scss */
+
+  body a.menu-mobile .bar:before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    height: 1px;
+    width: inherit;
+    background-color: #FFF;
+    transform: rotate(0);
+  }
+
+  /* line 73, themes/itga/css/responsive-all.scss */
+
+  body a.menu-mobile .bar:after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    height: 1px;
+    width: inherit;
+    background-color: #FFF;
+    transform: rotate(0);
+  }
+
+  /* line 84, themes/itga/css/responsive-all.scss */
+
+  body a.menu-mobile.opened {
+    left: 0;
+    top: 0;
+    width: 65px;
+    height: 65px;
+  }
+
+  /* line 89, themes/itga/css/responsive-all.scss */
+
+  body a.menu-mobile.opened .bar {
+    position: relative;
+    left: 14%;
+    top: 24%;
+    bottom: auto;
+    right: auto;
+    height: 1px;
+    width: 48px;
+    background-color: #5b5959;
+    margin-top: 15px;
+  }
+
+  /* line 99, themes/itga/css/responsive-all.scss */
+
+  body a.menu-mobile.opened .bar:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 1px;
+    width: inherit;
+    background-color: #FFF;
+    transform: rotate(45deg);
+  }
+
+  /* line 108, themes/itga/css/responsive-all.scss */
+
+  body a.menu-mobile.opened .bar:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 1px;
+    width: inherit;
+    background-color: #FFF;
+    transform: rotate(-45deg);
+  }
+
+  /* line 120, themes/itga/css/responsive-all.scss */
+
+  body header .container {
+    flex-direction: column;
+    align-items: left;
+  }
+
+  /* line 123, themes/itga/css/responsive-all.scss */
+
+  body header .container>div {
+    width: 100%;
+  }
+
+  /* line 127, themes/itga/css/responsive-all.scss */
+
+  body header .container nav>ul {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  /* line 130, themes/itga/css/responsive-all.scss */
+
+  body header .container nav>ul li {
+    position: static;
+  }
+
+  /* line 132, themes/itga/css/responsive-all.scss */
+
+  body header .container nav>ul li ul {
+    top: 135px;
+    width: 100%;
+  }
+
+  /* line 136, themes/itga/css/responsive-all.scss */
+
+  body header .container nav>ul li ul li a {
+    height: 50px;
+  }
+
+  /* line 141, themes/itga/css/responsive-all.scss */
+
+  body header .container nav>ul li a {
+    width: 60px;
+  }
+
+  /* line 150, themes/itga/css/responsive-all.scss */
+
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  /* line 153, themes/itga/css/responsive-all.scss */
+
+  .container #content {
+    position: relative;
+  }
+
+
+
+  /* line 158, themes/itga/css/responsive-all.scss */
+
+  .container #content .submenu-container {
+    position: absolute;
+    top: 25px;
+    width: 100%;
+  }
+
+  /* line 164, themes/itga/css/responsive-all.scss */
+
+  .container #block-itga-breadcrumbs {
+    position: relative;
+  }
+
+  /* line 169, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent {
+    padding: 0;
+  }
+
+  /* line 172, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .agencecompte {
+    padding-right: 0;
+  }
+
+  /* line 177, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .agencecompte .compte .top h2:before {
+    content: '';
+    margin: 0 15px 0 0;
+  }
+
+  /* line 183, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .agencecompte .compte .infos-compte {
+    margin-bottom: 15px;
+  }
+
+  /* line 185, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .agencecompte .compte .infos-compte .nom {
+    margin: 10px 0;
+  }
+
+  /* line 188, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .agencecompte .compte .infos-compte .detail {
+    margin: 20px 0;
+  }
+
+  /* line 196, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .agencecompte .agence .top h2:before {
+    content: '';
+    margin: 0 15px 0 0;
+  }
+
+  /* line 202, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .agencecompte .agence .mapadresse {
+    margin-bottom: 15px;
+  }
+
+  /* line 204, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .agencecompte .agence .mapadresse .map-home {
+    padding: 0;
+  }
+
+  /* line 207, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .agencecompte .agence .mapadresse .adresse-home {
+    padding: 0;
+  }
+
+  /* line 215, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .monprogramme .top h2 {
+    font-size: 16px;
+  }
+
+  /* line 217, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .monprogramme .top h2:before {
+    content: '';
+    margin: 0 10px 0 0;
+  }
+
+  /* line 226, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section.middle .box.first {
+    margin-right: 0;
+  }
+
+  /* line 231, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section.bottom .actus-container {
+    background-color: transparent;
+    margin-right: 0;
+  }
+
+  /* line 234, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section.bottom .actus-container .actus-featured {
+    padding: 20px;
+    margin-bottom: 15px;
+    background-color: #FFFFFF;
+  }
+
+  /* line 238, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section.bottom .actus-container .actus-featured h3 {
+    margin: 10px 0 20px 0;
+  }
+
+  /* line 242, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section.bottom .actus-container .actus-featured .img-actu-home img {
+    width: 100%;
+  }
+
+  /* line 247, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section.bottom .actus-container .actus-listing {
+    background-color: #FFFFFF;
+  }
+
+  /* line 250, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section.bottom .actus-container .actus-listing .actus-feed ul {
+    padding: 0;
+  }
+
+  /* line 254, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section.bottom .actus-container .actus-listing .actus-btn {
+    position: static;
+  }
+
+  /* line 259, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section.bottom .box:last-child {
+    margin-top: 15px;
+  }
+
+  /* line 266, themes/itga/css/responsive-all.scss */
+
+  #block-itga-content .contact-form {
+    padding: 0;
+  }
+
+  /* line 269, themes/itga/css/responsive-all.scss */
+
+  #block-itga-content .webform-submission-form {
+    padding: 0;
+  }
+
+  /* line 271, themes/itga/css/responsive-all.scss */
+
+  #block-itga-content .webform-submission-form input[type="submit"] {
+    background-color: #f6bd60;
+  }
+
+  /* line 278, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-actualite #block-itga-page-title a {
+    padding: 5px 10px;
+    text-align: center;
+  }
+
+  /* line 285, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-actualite section.header-actu .field--name-field-tags-actu .field__items {
+    position: static;
+  }
+
+  /* line 293, themes/itga/css/responsive-all.scss */
+
+  .path-actualites #block-itga-page-title a {
+    padding: 5px 10px;
+    text-align: center;
+  }
+
+  /* line 298, themes/itga/css/responsive-all.scss */
+
+  .path-actualites #block-itga-content {
+    padding: 0;
+  }
+
+  /* line 300, themes/itga/css/responsive-all.scss */
+
+  .path-actualites #block-itga-content .tags {
+    padding-top: 0;
+    flex-direction: column;
+  }
+
+  /* line 303, themes/itga/css/responsive-all.scss */
+
+  .path-actualites #block-itga-content .tags a {
+    width: auto;
+  }
+
+  /* line 305, themes/itga/css/responsive-all.scss */
+
+  .path-actualites #block-itga-content .tags a:after {
+    width: 90%;
+    left: auto;
+  }
+
+  /* line 313, themes/itga/css/responsive-all.scss */
+
+  .path-actualites #block-itga-content .actu-grid article .article_detail {
+    height: auto;
+  }
+
+  /* line 315, themes/itga/css/responsive-all.scss */
+
+  .path-actualites #block-itga-content .actu-grid article .article_detail .post_tags {
+    position: static;
+    text-align: right;
+  }
+
+  /* line 325, themes/itga/css/responsive-all.scss */
+
+  .path-agences #block-itga-content {
+    padding-top: 65px;
+  }
+
+  /* line 329, themes/itga/css/responsive-all.scss */
+
+  .path-agences #block-itga-content .accordion .accordion-item .accordion-content {
+    padding: 0 15px;
+  }
+
+  /* line 337, themes/itga/css/responsive-all.scss */
+
+  .path-node-14 #block-itga-content {
+    padding: 30px 15px;
+  }
+
+  /* line 342, themes/itga/css/responsive-all.scss */
+
+  footer #block-footerbranding {
+    margin: auto;
+    padding-top: 0;
+  }
+
+  /* line 346, themes/itga/css/responsive-all.scss */
+
+  footer #block-agencefooter {
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+  }
+
+  /* line 351, themes/itga/css/responsive-all.scss */
+
+  footer #block-agencefooter h2 {
+    cursor: pointer;
+    margin: 0;
+  }
+
+  /* line 354, themes/itga/css/responsive-all.scss */
+
+  footer #block-agencefooter h2 img.chevron {
+    margin-left: 10px;
+    width: 10px;
+    height: 10px;
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+    transform: rotate(0);
+  }
+
+  /* line 364, themes/itga/css/responsive-all.scss */
+
+  footer #block-agencefooter h2.rotated img {
+    transform: rotate(90deg);
+  }
+
+  /* line 368, themes/itga/css/responsive-all.scss */
+
+  footer nav#block-itga-footer {
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+  }
+
+  /* line 374, themes/itga/css/responsive-all.scss */
+
+  footer nav#block-itga-footer h2 {
+    cursor: pointer;
+    margin: 0;
+  }
+
+  /* line 377, themes/itga/css/responsive-all.scss */
+
+  footer nav#block-itga-footer h2 img.chevron {
+    margin-left: 10px;
+    width: 10px;
+    height: 10px;
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+    transform: rotate(0);
+  }
+
+  /* line 387, themes/itga/css/responsive-all.scss */
+
+  footer nav#block-itga-footer h2.rotated img {
+    transform: rotate(90deg);
+  }
+
+  /* line 391, themes/itga/css/responsive-all.scss */
+
+  footer #block-views-block-liste-actus-footer-block-1 {
+    text-align: center;
+    width: 100%;
+    padding-top: 15px;
+  }
+
+  /* line 395, themes/itga/css/responsive-all.scss */
+
+  footer #block-views-block-liste-actus-footer-block-1 h2 {
+    cursor: pointer;
+    margin: 0;
+  }
+
+  /* line 398, themes/itga/css/responsive-all.scss */
+
+  footer #block-views-block-liste-actus-footer-block-1 h2 img.chevron {
+    margin-left: 10px;
+    width: 10px;
+    height: 10px;
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+    transform: rotate(0);
+  }
+
+  /* line 408, themes/itga/css/responsive-all.scss */
+
+  footer #block-views-block-liste-actus-footer-block-1 h2.rotated img {
+    transform: rotate(90deg);
+  }
+
+  /* line 413, themes/itga/css/responsive-all.scss */
+
+  footer .inner .separateur {
+    display: none;
+  }
+
+  /* line 416, themes/itga/css/responsive-all.scss */
+
+  footer .inner>div {
+    flex-direction: column;
+    margin: 15px;
+  }
+
+  /* line 422, themes/itga/css/responsive-all.scss */
+
+  footer .sub-footer ul {
+    flex-direction: column;
+  }
+
+  /* line 424, themes/itga/css/responsive-all.scss */
+
+  footer .sub-footer ul>li {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* line 432, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-agence #block-itga-page-title {
+    padding: 0 10px;
+  }
+
+  /* line 434, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-agence #block-itga-page-title a {
+    padding: 5px;
+    text-align: center;
+  }
+
+  /* line 440, themes/itga/css/responsive-all.scss */
+
+  section.map_adresse {
+    flex-direction: column;
+  }
+
+  /* line 442, themes/itga/css/responsive-all.scss */
+
+  section.map_adresse .description-google-map {
+    padding-top: 15px;
+  }
+
+  /* line 450, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-agence article section.equipe .accordion h3 {
+    background-color: #5b5959;
+    color: #fff;
+    padding: 15px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  /* line 457, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-agence article section.equipe .accordion h3 img.chevron {
+    float: right;
+    width: 25px;
+    height: 25px;
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+    transform: rotate(0);
+  }
+
+  /* line 468, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-agence article section.equipe .accordion .accordion-item .member-list {
+    flex-direction: column;
+  }
+
+  /* line 470, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-agence article section.equipe .accordion .accordion-item .member-list .member-item {
+    width: auto;
+  }
+
+  /* line 482, themes/itga/css/responsive-all.scss */
+
+  #block-itga-content .webform-submission-form .form-item.js-form-type-select select {
+    float: none;
+    width: 100%;
+    padding: 5px;
+    margin-top: -5px;
+  }
+
+  /* line 492, themes/itga/css/responsive-all.scss */
+
+  .js-form-type-select select {
+    float: none;
+    width: 100%;
+    padding: 5px;
+    margin-top: -5px;
+  }
+
+  /* line 498, themes/itga/css/responsive-all.scss */
+
+  .js-form-type-select label {
+    display: block;
+    padding-bottom: 15px;
+  }
+
+  /* line 505, themes/itga/css/responsive-all.scss */
+
+  .path-webform-commande-consommables #block-itga-content .webform-submission-form {
+    padding: 0;
+  }
+
+  /* line 508, themes/itga/css/responsive-all.scss */
+
+  .path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item input.form-number {
+    right: 80px;
+    top: 79%;
+  }
+
+  /* line 512, themes/itga/css/responsive-all.scss */
+
+  .path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item .description {
+    right: 80px;
+    top: 90%;
+  }
+
+  /* line 518, themes/itga/css/responsive-all.scss */
+
+  .path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item label span h3 {
+    left: 38px;
+    font-size: 16px;
+    padding: 5px;
+  }
+
+  /* line 523, themes/itga/css/responsive-all.scss */
+
+  .path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item label span .detail {
+    height: auto;
+  }
+
+  /* line 525, themes/itga/css/responsive-all.scss */
+
+  .path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item label span .detail em {
+    width: 100%;
+  }
+
+  /* line 535, themes/itga/css/responsive-all.scss */
+
+  .path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item.js-form-item-sachet-amiante-pour-l-application-i-demat-compatible-ios-android label span h3 {
+    left: 14px;
+    width: 210px;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  /* line 541, themes/itga/css/responsive-all.scss */
+
+  .path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item.js-form-item-sachet-amiante-pour-l-application-i-demat-compatible-ios-android label span .detail {
+    padding: 50px 20px 20px 20px;
+  }
+
+  /* line 550, themes/itga/css/responsive-all.scss */
+
+  #modal-first-connection.custom-modal {
+    position: absolute;
+    top: 10px;
+  }
+
+  /* line 553, themes/itga/css/responsive-all.scss */
+
+  #modal-first-connection.custom-modal .custom-modal-body {
+    width: 90%;
+    height: auto;
+  }
+}
+
+@media (min-width: 568px) and (max-width: 767px) {
+  /* line 563, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section {
+    margin-bottom: 25px;
+    flex-direction: column;
+  }
+
+  /* line 568, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .agencecompte .agence .mapadresse {
+    margin-bottom: 15px;
+  }
+
+  /* line 576, themes/itga/css/responsive-all.scss */
+
+  .path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item input.form-number {
+    right: auto;
+    top: 79%;
+    margin-left: 15px;
+  }
+
+  /* line 581, themes/itga/css/responsive-all.scss */
+
+  .path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item .description {
+    right: auto;
+    top: 81%;
+    left: 164px;
+  }
+
+  /* line 586, themes/itga/css/responsive-all.scss */
+
+  section.middle .box .slider .slick-next {
+    right: 20px;
+  }
+
+  /* line 589, themes/itga/css/responsive-all.scss */
+
+  section.middle .box .slider .slick-prev {
+    left: 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  /* line 596, themes/itga/css/responsive-all.scss */
+
+  body {
+    position: relative;
+  }
+
+  /* line 598, themes/itga/css/responsive-all.scss */
+
+  body nav#block-itga-main-menu {
+    top: 0;
+    left: auto;
+    right: -86px;
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+  }
+
+  /* line 607, themes/itga/css/responsive-all.scss */
+
+  body nav#block-itga-main-menu ul li ul {
+    left: -165px;
+  }
+
+  /* line 613, themes/itga/css/responsive-all.scss */
+
+  body nav#block-itga-main-menu.visible {
+    right: 0;
+  }
+
+  /* line 616, themes/itga/css/responsive-all.scss */
+
+  body a.menu-mobile {
+    position: fixed;
+    z-index: 99;
+    display: block;
+    top: 10px;
+    background: #5b5959;
+    right: 12px;
+    height: 60px;
+    width: 60px;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+  }
+
+  /* line 629, themes/itga/css/responsive-all.scss */
+
+  body a.menu-mobile .bar {
+    position: relative;
+    left: 20%;
+    top: 24%;
+    bottom: auto;
+    right: auto;
+    height: 1px;
+    width: 35px;
+    background-color: #FFF;
+    margin-top: 15px;
+  }
+
+  /* line 639, themes/itga/css/responsive-all.scss */
+
+  body a.menu-mobile .bar:before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    height: 1px;
+    width: inherit;
+    background-color: #FFF;
+    transform: rotate(0);
+  }
+
+  /* line 648, themes/itga/css/responsive-all.scss */
+
+  body a.menu-mobile .bar:after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    height: 1px;
+    width: inherit;
+    background-color: #FFF;
+    transform: rotate(0);
+  }
+
+  /* line 659, themes/itga/css/responsive-all.scss */
+
+  body a.menu-mobile.opened {
+    left: 0;
+    top: 0;
+    width: 86px;
+    height: 80px;
+  }
+
+  /* line 664, themes/itga/css/responsive-all.scss */
+
+  body a.menu-mobile.opened .bar {
+    position: relative;
+    left: 20%;
+    top: 24%;
+    bottom: auto;
+    right: auto;
+    height: 1px;
+    width: 48px;
+    background-color: #5b5959;
+    margin-top: 15px;
+  }
+
+  /* line 674, themes/itga/css/responsive-all.scss */
+
+  body a.menu-mobile.opened .bar:before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    height: 1px;
+    width: inherit;
+    background-color: #FFF;
+    transform: rotate(45deg);
+  }
+
+  /* line 683, themes/itga/css/responsive-all.scss */
+
+  body a.menu-mobile.opened .bar:after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    height: 1px;
+    width: inherit;
+    background-color: #FFF;
+    transform: rotate(-45deg);
+  }
+
+  /* line 695, themes/itga/css/responsive-all.scss */
+
+  body header .container {
+    flex-direction: row;
+    align-items: left;
+  }
+
+  /* line 698, themes/itga/css/responsive-all.scss */
+
+  body header .container>a {
+    margin-left: -60px;
+  }
+
+  /* line 703, themes/itga/css/responsive-all.scss */
+
+  body header .container nav>ul li {
+    position: static;
+  }
+
+  /* line 705, themes/itga/css/responsive-all.scss */
+
+  body header .container nav>ul li ul {
+    top: 85px;
+    left: auto;
+    width: auto;
+  }
+
+  /* line 710, themes/itga/css/responsive-all.scss */
+
+  body header .container nav>ul li ul li a {
+    height: 50px;
+  }
+
+  /* line 715, themes/itga/css/responsive-all.scss */
+
+  body header .container nav>ul li a {
+    width: 63px;
+  }
+
+  /* line 724, themes/itga/css/responsive-all.scss */
+
+  .container {
+    width: 80%;
+    padding: 0 10px;
+  }
+
+  /* line 727, themes/itga/css/responsive-all.scss */
+
+  .container #content {
+    position: relative;
+  }
+
+  /* line 729, themes/itga/css/responsive-all.scss */
+
+  .container #content .submenu-container {
+    position: absolute;
+    top: 25px;
+    width: 100%;
+  }
+
+  /* line 735, themes/itga/css/responsive-all.scss */
+
+  .container #block-itga-breadcrumbs {
+    position: relative;
+    margin: 15px 0 15px 0;
+  }
+
+  /* line 741, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-page #block-itga-page-title {
+    margin-top: 40px;
+  }
+
+  /* line 746, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent {
+    padding: 0;
+  }
+
+  /* line 749, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .agencecompte {
+    padding-right: 0;
+  }
+
+  /* line 754, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .agencecompte .compte .top h2:before {
+    content: '';
+    margin: 0 15px 0 0;
+  }
+
+  /* line 760, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .agencecompte .compte .infos-compte {
+    margin-bottom: 15px;
+  }
+
+  /* line 767, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .agencecompte .agence .top h2:before {
+    content: '';
+    margin: 0 15px 0 0;
+  }
+
+  /* line 773, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .agencecompte .agence .mapadresse {
+    margin-bottom: 15px;
+  }
+
+  /* line 781, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .monprogramme .top h2:before {
+    content: '';
+    margin: 0 10px 0 0;
+  }
+
+  /* line 790, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section.bottom .actus-container {
+    background-color: transparent;
+  }
+
+  /* line 792, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section.bottom .actus-container .actus-featured {
+    padding: 20px;
+    margin-bottom: 15px;
+    background-color: #FFFFFF;
+  }
+
+  /* line 797, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section.bottom .actus-container .actus-listing {
+    background-color: #FFFFFF;
+  }
+
+  /* line 800, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section.bottom .actus-container .actus-listing .actus-feed ul {
+    padding: 0;
+  }
+
+  /* line 804, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section.bottom .actus-container .actus-listing .actus-btn {
+    position: static;
+  }
+
+  /* line 813, themes/itga/css/responsive-all.scss */
+
+  #block-itga-content .contact-form {
+    padding: 0;
+  }
+
+  /* line 816, themes/itga/css/responsive-all.scss */
+
+  #block-itga-content .webform-submission-form {
+    padding: 0;
+  }
+
+  /* line 818, themes/itga/css/responsive-all.scss */
+
+  #block-itga-content .webform-submission-form input[type="submit"] {
+    background-color: #f6bd60;
+  }
+
+  /* line 826, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-actualite section.header-actu .field--name-field-tags-actu .field__items {
+    position: static;
+  }
+
+  /* line 833, themes/itga/css/responsive-all.scss */
+
+  section.map_adresse .description-google-map {
+    padding-left: 15px;
+  }
+
+  /* line 844, themes/itga/css/responsive-all.scss */
+
+  .path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item label span .detail em {
+    width: 65%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  /* line 859, themes/itga/css/responsive-all.scss */
+
+  body .container {
+    width: 100%;
+    padding: 0 5px;
+  }
+
+  /* line 866, themes/itga/css/responsive-all.scss */
+
+  body header .container {
+    width: 80%;
+  }
+
+  /* line 872, themes/itga/css/responsive-all.scss */
+
+  section.bottom .actus-container {
+    margin-right: 25px;
+  }
+
+  /* line 879, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section .agencecompte {
+    margin-right: 25px;
+  }
+
+  /* line 885, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section.bottom .actus-container .actus-featured {
+    margin-bottom: 0;
+  }
+
+  /* line 889, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-home-page #pageContent section.bottom .actus-container .actus-listing .actus-btn {
+    position: absolute;
+    bottom: 0px;
+  }
+
+  /* line 900, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-actualite #block-itga-page-title a {
+    padding: 5px 10px;
+    text-align: center;
+  }
+
+  /* line 907, themes/itga/css/responsive-all.scss */
+
+  .page-node-type-actualite section.header-actu .field--name-field-tags-actu .field__items {
+    position: static;
+  }
+
+  /* line 917, themes/itga/css/responsive-all.scss */
+
+  .path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item input.form-number {
+    left: 20px;
+    top: 81%;
+  }
+
+  /* line 921, themes/itga/css/responsive-all.scss */
+
+  .path-webform-commande-consommables #block-itga-content .webform-submission-form .js-form-item .description {
+    left: 170px;
+    top: 83%;
+  }
+}
+@media (min-width: 320px) and (max-width: 767px) {
+  /* line 4, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph ul {
+    margin-left: 0;
+  }
+
+  /* line 6, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph ul li {
+    margin: 5px 15px;
+  }
+
+  /* line 10, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph--type--texte-a-droite-image-a-gauche,
+  .paragraph--type--texte-a-gauche-image-a-droite {
+    flex-direction: column;
+  }
+
+  /* line 13, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph--type--texte-a-droite-image-a-gauche>div,
+  .paragraph--type--texte-a-gauche-image-a-droite>div {
+    width: 100%;
+  }
+
+  /* line 15, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph--type--texte-a-droite-image-a-gauche>div>img,
+  .paragraph--type--texte-a-gauche-image-a-droite>div>img {
+    width: 100%;
+  }
+
+  /* line 20, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph--type--google-map {
+    flex-direction: column;
+  }
+
+  /* line 22, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph--type--google-map .google-map {
+    width: 100%;
+    height: 300px;
+  }
+
+  /* line 25, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph--type--google-map .google-map iframe {
+    height: 301px;
+  }
+
+  /* line 29, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph--type--google-map .description-google-map {
+    padding-top: 15px;
+  }
+
+  /* line 34, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph--type--equipe-agence .member-list {
+    flex-direction: column;
+  }
+
+  /* line 36, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph--type--equipe-agence .member-list .member-item {
+    width: auto;
+    flex-direction: column;
+  }
+
+  /* line 39, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph--type--equipe-agence .member-list .member-item .member-image {
+    margin-bottom: 15px;
+  }
+
+  /* line 42, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph--type--equipe-agence .member-list .member-item .member-content {
+    width: auto;
+  }
+
+  /* line 51, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph--type--accordeons .accordion .accordion-item h3 {
+    position: relative;
+  }
+
+  /* line 53, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph--type--accordeons .accordion .accordion-item h3 img.chevron {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
+
+  /* line 59, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph--type--accordeons .accordion .accordion-item .accordion-content {
+    width: 100%;
+    padding: 15px;
+    margin: auto;
+    text-align: center;
+  }
+
+  /* line 64, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph--type--accordeons .accordion .accordion-item .accordion-content .agence-conteneur {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+  }
+
+  /* line 70, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph--type--accordeons .accordion .accordion-item .accordion-content .agence-conteneur .agence-itm {
+    text-align: left;
+    width: 33%;
+    padding: 15px;
+  }
+
+  /* line 74, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph--type--accordeons .accordion .accordion-item .accordion-content .agence-conteneur .agence-itm p {
+    margin-bottom: 0 !important;
+  }
+
+  /* line 80, themes/itga/css/responsive-paragraph.scss */
+
+  .paragraph--type--accordeons .accordion .accordion-item h3.rotated img {
+    transform: rotate(90deg);
+  }
+}

@@ -1,0 +1,206 @@
+header {
+  background: #FFFFFF;
+  border-bottom: 1px solid #5b5959;
+  margin-bottom: 40px;
+
+  .wrap {
+      height: 85px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      a {
+          img {
+              width: 186px;
+              height: 65px;
+          }
+      }
+      nav {
+          h2 {
+              display: none;
+          }
+          >ul {
+              display: flex;
+              list-style-type: none;
+              li {
+                  position: relative;
+                  &:hover ul {
+                      display: block;
+                  }
+                  ul.hidden {
+                      display: none;
+                  }
+                  ul {
+                      position: absolute;
+                      top: 85px;
+                      left: 0;
+                      background: $secondBackground;
+                      width: 165px;
+                      display: none;
+                      z-index: 99;
+                      list-style-type: none;
+                      li a,
+                      li span {
+                          display: flex;
+                          align-items: center;
+                          height: 40px;
+                          width: 100%;
+                          color: white;
+                          font-size: 14px;
+                          text-decoration: none;
+                          padding: 0 15px;
+                          text-indent: 0;
+                          &:hover {
+                              background: $mainBackground;
+                              cursor: pointer;
+                          }
+                      }
+                  }
+                  a {
+                      display: block;
+                      height: 85px;
+                      width: 75px;
+                      background-repeat: no-repeat;
+                      background-size: 30px;
+                      background-position: center;
+                      text-indent: 80px;
+                      overflow: hidden;
+                      white-space: nowrap;
+                      &:focus {
+                          outline: none;
+                          outline-style: none;
+                          box-shadow: none;
+                          border-color: transparent;
+                      }
+                      &.fidelity {
+                          background-image: url(../images/giftbox.svg);
+                          cursor: default;
+                          //remove preventdefault in itga.js to active it
+                      }
+                      &.cart {
+                          background-image: url(../images/cart.svg);
+                          background-size: 35px;
+                          &:hover {
+                              background-image: url(../images/cart-hover.svg);
+                          }
+                      }
+                      &.account {
+                          background-image: url(../images/user.svg);
+                          &:hover {
+                              background-image: url(../images/user-hover.svg);
+                          }
+                      }
+                      &.notif {
+                          background-image: url(../images/envelope.svg);
+                          position: relative;
+                          .counter {
+                              position: absolute;
+                              width: 20px;
+                              height: 20px;
+                              border-radius: 50%;
+                              top: 20px;
+                              right: 15px;
+                              background: $bgNotif;
+                              display: flex;
+                              align-items: center;
+                              justify-content: center;
+                              color: white;
+                              font-size: 12px;
+                          }
+                          &:hover {
+                              background-image: url(../images/envelope-hover.svg);
+                          }
+                      }
+                      &.more {
+                          background-image: url(../images/more.svg);
+                          background-size: 20px;
+                          &:hover {
+                              background-image: url(../images/more-hover.svg);
+                          }
+                      }
+                  }
+
+                  &:last-child ul {
+                      left: auto;
+                      right: 0;
+                  }
+              }
+          }
+      }
+      >ul {
+          display: flex;
+          list-style-type: none;
+          li {
+              position: relative;
+              a {
+                  display: block;
+                  height: 85px;
+                  width: 75px;
+                  background-repeat: no-repeat;
+                  background-size: 30px;
+                  background-position: center;
+                  &.fidelity {
+                      background-image: url(../images/giftbox.svg);
+                  }
+                  &.cart {
+                      background-image: url(../images/cart.svg);
+                      &:hover {
+                          background-image: url(../images/cart-hover.svg);
+                      }
+                  }
+                  &.account {
+                      background-image: url(../images/user.svg);
+                      &:hover {
+                          background-image: url(../images/user-hover.svg);
+                      }
+                  }
+                  &.notif {
+                      background-image: url(../images/envelope.svg);
+                      position: relative;
+                      .counter {
+                          position: absolute;
+                          width: 20px;
+                          height: 20px;
+                          border-radius: 50%;
+                          top: 20px;
+                          right: 15px;
+                          background: $bgNotif;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          color: white;
+                          font-size: 12px;
+                      }
+                      &:hover {
+                          background-image: url(../images/envelope-hover.svg);
+                      }
+                  }
+                  &.more {
+                      background-image: url(../images/more.svg);
+                      &:hover {
+                          background-image: url(../images/more-hover.svg);
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+/** header webform - non connecté */
+.path-webform-deja-client-itga,
+.path-webform-je-ne-suis-pas-client-itga {
+    align-items: center;
+}
+
+.logo-mon-espace {
+  padding: 15px 0 0;
+  margin: 0 auto;
+  max-width: 1130px;
+  min-width: 1130px;
+  text-align: center;
+
+  img {
+    max-width: 350px;
+      height: 121px;
+  }
+}

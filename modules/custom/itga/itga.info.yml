@@ -1,0 +1,6 @@
+name: ITGA Module
+description: ITGA Modules
+package: Custom
+
+type: module
+core: 8.x

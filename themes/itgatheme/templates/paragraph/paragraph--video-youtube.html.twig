@@ -1,0 +1,13 @@
+{%
+    set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+<div{{ attributes.addClass(classes) }}>
+
+    <div class="iframeContainer">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ content.field_lien_youtube|field_value }}?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+</div>

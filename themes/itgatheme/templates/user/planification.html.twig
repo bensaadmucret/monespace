@@ -1,0 +1,55 @@
+{% if planificationList.msg is empty %}
+    <div class="suivi-factures">
+        <div class="header-table">
+            <input type="text" placeholder="Rechercher dans les planifications : " name="searchFactures" value=""><span class="searchResultsCount">Nombre de planifications : {{ planificationList|length }}</span>
+        </div>
+
+        <div class="mesFactures">
+
+
+            <table class="tablesorter">
+                <thead>
+                    <tr>
+                        <th class="">Statut</th>
+                        <th class="">Date rendu</th>
+                        <th class="">N° de commande</th>
+                        <th class="">Date de commande</th>
+                        <th class="">Référence commande client</th>
+                        <th class="">Client</th>
+                        <th class="">Nombre d'échantillons</th>
+                        <th class=""></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for planification in planificationList %}
+                    <tr class="detailsFacture">
+                        {% if planification.Statut == "APlanifier" %}
+                            <td data-th="Statut" class="">A planifier</td>
+                        {% endif %}
+                        {% if planification.Statut == "Planifiee" %}
+                            <td data-th="Statut" class="">Planifiée</td>
+                        {% endif %}
+                        {% if planification.Statut == "EnProduction" %}
+                            <td data-th="Statut" class="">En production</td>
+                        {% endif %}
+                        <td data-th="Date rendu" class="">{{ planification.DateRendu|date('d/m/Y') }}</td>
+                        <td data-th="N° de commande" class="">{{ planification.NumeroCommandeITGA }}</td>
+                        <td data-th="Date de commande" class="">{{ planification.DateCommande|date('d/m/Y') }}</td>
+                        <td data-th="Référence commande client" class="">{{ planification.ReferenceCommandeClient }}</td>
+                        <td data-th="Client" class="">{{ planification.NomClient }}</td>
+                        <td data-th="Nombre d'échantillons" class="">{{ planification.NombreEchantillons }}</td>
+                        <td>
+                            {% if planification.Statut == "APlanifier" or  planification.Statut == "Planifiee" %}
+                                <a href="mailto:saam@itga.fr?subject=Planification de la commande {{ planification.NumeroCommandeITGA }}">Modifier</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+{% else %}
+    <p class="no-feeds">Vous n'avez pas de planifications de prévues</p>
+{% endif %}

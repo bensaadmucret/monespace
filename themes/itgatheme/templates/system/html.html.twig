@@ -1,0 +1,489 @@
+{#
+/**
+ * @file
+ * Theme override for the basic structure of a single Drupal page.
+ *
+ * Variables:
+ * - logged_in: A flag indicating if user is logged in.
+ * - root_path: The root path of the current page (e.g., node, admin, user).
+ * - node_type: The content type for the current node, if the page is a node.
+ * - head_title: List of text elements that make up the head_title variable.
+ *   May contain one or more of the following:
+ *   - title: The title of the page.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site.
+ * - page_top: Initial rendered markup. This should be printed before 'page'.
+ * - page: The rendered page markup.
+ * - page_bottom: Closing rendered markup. This variable should be printed after
+ *   'page'.
+ * - db_offline: A flag indicating if the database is offline.
+ * - placeholder_token: The token for generating head, css, js and js-bottom
+ *   placeholders.
+ *
+ * @see template_preprocess_html()
+ */
+#}
+{%
+set body_classes = [
+logged_in ? 'user-logged-in',
+not root_path ? 'path-frontpage' : 'path-' ~ root_path|clean_class,
+path_info.args ? 'path-' ~ path_info.args,
+node_type ? 'page-node-type-' ~ node_type|clean_class,
+db_offline ? 'db-offline',
+]
+%}
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+    <head>
+        <title>{{ head_title|safe_join(' | ') }}</title>
+        <head-placeholder token="{{ placeholder_token }}">
+        <css-placeholder token="{{ placeholder_token }}">
+        <js-placeholder token="{{ placeholder_token }}">
+        <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' />
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129670786-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-129670786-1');
+        </script>
+
+        {#<link rel="stylesheet" media="all" href="/themes/itga/css/styles/bundle.css" />
+        <link rel="stylesheet" media="all" href="/themes/itga/css/slick.css" />
+        <link rel="stylesheet" media="all" href="/themes/itga/css/slick-theme.css" />
+        <link rel="stylesheet" media="all" href="/themes/itga/css/grillade-flex.css" />
+
+        <script src="/themes/itga/js/jquery-3.2.1.min.js"></script>
+        <script src="/themes/itga/js/slick.js"></script>
+        <script src="/themes/itga/js/jquery.tablesorter.min.js"></script>
+        <script src="/themes/itga/js/itga.js"></script>
+        <script src="/themes/itga/js/signin.js"></script>
+        <script src="/themes/itga/js/premiere-connexion.js"></script>
+        <script src="/themes/itga/js/mon-compte.js"></script>
+
+
+        <link rel="stylesheet" media="all" href="/themes/itga/assets/css/main.css" />
+            <script src="/themes/itga/assets/js/vendors.min.js"></script>
+            <script src="/themes/itga/assets/js/custom.min.js"></script>#}
+            <base href="/">
+
+
+    </head>
+    <body{{ attributes.addClass(body_classes) }}>
+
+
+
+        {{ page_top }}
+        {{ page }}
+
+
+        {{ page_bottom }}
+
+        <a href="#cd-nav" class="cd-nav-trigger">Menu
+          <span class="cd-nav-icon"></span>
+
+          <svg x="0px" y="0px" width="54px" height="54px" viewBox="0 0 54 54">
+            <circle fill="transparent" stroke="#656e79" stroke-width="1" cx="27" cy="27" r="25" stroke-dasharray="157 157" stroke-dashoffset="157"></circle>
+          </svg>
+        </a>
+
+      <div id="cd-nav" class="cd-nav">
+          <div class="mobile-menu">
+            <div class="titre">MENU</div>
+            <div class="main-menus flex">
+            </div>
+        </div>
+      </div>
+
+
+
+{# modales de connexion #}
+
+          <!-- Modal détail compte -->
+          <div class="modal fade" id="modal-edit-account" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                              viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                              <g>
+                                    <path d="M505.943,6.058c-8.077-8.077-21.172-8.077-29.249,0L6.058,476.693c-8.077,8.077-8.077,21.172,0,29.249
+                                    C10.096,509.982,15.39,512,20.683,512c5.293,0,10.586-2.019,14.625-6.059L505.943,35.306
+                                    C514.019,27.23,514.019,14.135,505.943,6.058z"/>
+                                </g>
+                              <g>
+                                <path d="M505.942,476.694L35.306,6.059c-8.076-8.077-21.172-8.077-29.248,0c-8.077,8.076-8.077,21.171,0,29.248l470.636,470.636
+                                    c4.038,4.039,9.332,6.058,14.625,6.058c5.293,0,10.587-2.019,14.624-6.057C514.018,497.866,514.018,484.771,505.942,476.694z"/>
+                              </g>
+                            </svg>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Modifier mes informations</h4>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                </div>
+            </div>
+          </div>
+
+
+            <!-- Modal modifier son profil -->
+          <div class="modal fade" id="modal-change-information" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                              viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                              <g>
+                                <path d="M505.943,6.058c-8.077-8.077-21.172-8.077-29.249,0L6.058,476.693c-8.077,8.077-8.077,21.172,0,29.249
+                                    C10.096,509.982,15.39,512,20.683,512c5.293,0,10.586-2.019,14.625-6.059L505.943,35.306
+                                    C514.019,27.23,514.019,14.135,505.943,6.058z"/>
+                              </g>
+                              <g>
+                                <path d="M505.942,476.694L35.306,6.059c-8.076-8.077-21.172-8.077-29.248,0c-8.077,8.076-8.077,21.171,0,29.248l470.636,470.636
+                                    c4.038,4.039,9.332,6.058,14.625,6.058c5.293,0,10.587-2.019,14.624-6.057C514.018,497.866,514.018,484.771,505.942,476.694z"/>
+                              </g>
+                            </svg>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Changer mes informations</h4>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal confirmation Ajout de compte -->
+        <div class="modal fade" id="modal-confirm-add-account" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                          <g>
+                              <path d="M505.943,6.058c-8.077-8.077-21.172-8.077-29.249,0L6.058,476.693c-8.077,8.077-8.077,21.172,0,29.249
+                                C10.096,509.982,15.39,512,20.683,512c5.293,0,10.586-2.019,14.625-6.059L505.943,35.306
+                                C514.019,27.23,514.019,14.135,505.943,6.058z"/>
+                          </g>
+                                <g>
+                                    <path d="M505.942,476.694L35.306,6.059c-8.076-8.077-21.172-8.077-29.248,0c-8.077,8.076-8.077,21.171,0,29.248l470.636,470.636
+                                c4.038,4.039,9.332,6.058,14.625,6.058c5.293,0,10.587-2.019,14.624-6.057C514.018,497.866,514.018,484.771,505.942,476.694z"/>
+                                </g>
+                        </svg>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Ajout de compte</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Votre demande a bien été prise en considération. Votre collaborateur recevra un email pour activer son compte personnel MonEspace.ITGA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal confirmation formulaire de contact -->
+        <div class="modal fade" id="modal-contact-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                          <g>
+                              <path d="M505.943,6.058c-8.077-8.077-21.172-8.077-29.249,0L6.058,476.693c-8.077,8.077-8.077,21.172,0,29.249
+                                C10.096,509.982,15.39,512,20.683,512c5.293,0,10.586-2.019,14.625-6.059L505.943,35.306
+                                C514.019,27.23,514.019,14.135,505.943,6.058z"/>
+                          </g>
+                                <g>
+                                    <path d="M505.942,476.694L35.306,6.059c-8.076-8.077-21.172-8.077-29.248,0c-8.077,8.076-8.077,21.171,0,29.248l470.636,470.636
+                                c4.038,4.039,9.332,6.058,14.625,6.058c5.293,0,10.587-2.019,14.624-6.057C514.018,497.866,514.018,484.771,505.942,476.694z"/>
+                                </g>
+                        </svg>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Contact</h4>
+                    </div>
+                    <div class="modal-body">
+                        Voulez-vous envoyer cette demande ?
+                        <div class="guide">
+                            <a class="contact-form-send cta jaune" href="/user/logout">Oui</a>
+
+                            <a class="cta jaune" data-dismiss="modal" aria-label="Close">Non</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal generique -->
+        <div class="modal fade" id="modal-generic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                            <g>
+                              <path d="M505.943,6.058c-8.077-8.077-21.172-8.077-29.249,0L6.058,476.693c-8.077,8.077-8.077,21.172,0,29.249
+                                C10.096,509.982,15.39,512,20.683,512c5.293,0,10.586-2.019,14.625-6.059L505.943,35.306
+                                C514.019,27.23,514.019,14.135,505.943,6.058z"/>
+                            </g>
+                            <g>
+                                <path d="M505.942,476.694L35.306,6.059c-8.076-8.077-21.172-8.077-29.248,0c-8.077,8.076-8.077,21.171,0,29.248l470.636,470.636
+                            c4.038,4.039,9.332,6.058,14.625,6.058c5.293,0,10.587-2.019,14.624-6.057C514.018,497.866,514.018,484.771,505.942,476.694z"/>
+                            </g>
+                        </svg>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel"></h4>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="hidden">
+
+            <!-- Modal confirmation Désactivation du compte -->
+            <div class="content-modal-disable-account">
+                Voulez-vous désactiver ce compte ?
+                <div class="guide">
+                    <a class="cta jaune accountDesactivation">Oui</a>
+
+                    <a class="close cta jaune" data-dismiss="modal" aria-label="Close">Non</a>
+                </div>
+            </div>
+
+
+            <!-- Modal Logout confirmation -->
+            <div class="content-modal-logout">
+                {{ sessionItga.popin.logout.content }}
+                <div class="guide">
+                    <a class="cta jaune" href="/user/logout">Oui</a>
+
+                    <a class="close cta jaune" data-dismiss="modal" aria-label="Close">Non</a>
+                </div>
+            </div>
+
+            <!-- Modal présence comptes inactifs -->
+            <div class="content-modal-compte-inactifs">
+                <p style="margin-bottom:30px;">Un ou plusieurs compte(s) ont été réintégrés et sont en attente de validation de votre part. Vous n'avez plus qu'à confirmer, modifier ou refuser leur création.</p>
+            </div>
+
+            <!-- Modal absence comptes -->
+            <div class="content-modal-absence-comptes">
+                <p style="margin-bottom: 30px;">Vous pouvez ajouter des collaborateurs à votre espace de gestion.</p>
+                <button class="btn btn-default create-account">Oui, je crée leur profil</button>
+                <button class="btn btn-default open-another-popin">Non, je créerai leur profil plus tard</button>
+            </div>
+
+            <!-- Modal how to create account -->
+            <div class="content-modal-another-popin">
+                <p>Vous pouvez à tout moment créer des profils utilisateurs</p>
+                <img src="/themes/itgatheme/assets/images/tuto-add-account.jpg" alt="">
+            </div>
+
+            <!-- Modal activation de compte-->
+            <div class="content-modal-activation-compte">
+                <p style="margin-bottom:30px;">Votre demande a bien été prise en considération. Votre collaborateur recevra un email pour activer son compte personnel MonEspace.ITGA</p>
+            </div>
+
+            <!-- Modal First Connexion admin principal AVEC compte rattachés-->
+            <div class="content-modal-first-connexion-admin-with-account">
+                {{ sessionItga.popin.FirstConnexionAdminPrincipalWithAccount.content|raw }}
+                <form id="firstconnexion" method="">
+                    <div class="conditions">
+                        <input type="checkbox" id="macheckbox-connexion-admin" name="macheckbox-connexion-admin" class="checkbox-first-connexion"/>
+                        <label for="macheckbox-connexion-admin">
+                            <span></span>
+                            Je valide les <a target="_blank" href="/cgu">Conditions Générales d'Utilisation</a>
+                        </label>
+                    </div>
+                    <div class="btn-first-connexion">N'attendez plus et découvrez votre espace</div>
+                    <p class="error" style="display:none;color:red;">Merci d'accepter les CGU pour accéder à votre espace.</p>
+                </form>
+            </div>
+
+            <!-- Modal First Connexion admin principal SANS compte rattachés -->
+            <div class="content-modal-first-connexion-without-account">
+                {{ sessionItga.popin.FirstConnexionAdminPrincipalWithoutAccount.content|raw }}
+                <form id="firstconnexion" method="">
+                    <div class="conditions">
+                        <input type="checkbox" id="macheckbox-first-connexion-labo" name="macheckbox-first-connexion-labo" class="checkbox-first-connexion"/>
+                        <label for="macheckbox-first-connexion-labo">
+                            <span></span>
+                            Je valide les <a target="_blank" href="/cgu">Conditions Générales d'Utilisation</a>
+                        </label>
+                    </div>
+                    <div class="btn-first-connexion">N'attendez plus et découvrez votre espace</div>
+                    <p class="error" style="display:none;color:red;">Merci d'accepter les CGU pour accéder à votre espace.</p>
+                </form>
+            </div>
+
+            <!-- Modal First Connexion admin delegate -->
+            <div class="content-modal-first-connexion-admin-delegate">
+                {{ sessionItga.popin.FirstConnexionAdminDelegate.content|raw }}
+                <form id="firstconnexion" method="">
+                    <div class="conditions">
+                        <input type="checkbox" id="macheckbox-connexion-admin-delegate" name="macheckbox-connexion-admin-delegate" class="checkbox-first-connexion"/>
+                        <label for="macheckbox-connexion-admin-delegate">
+                            <span></span>
+                            Je valide les <a target="_blank" href="/cgu">Conditions Générales d'Utilisation</a>
+                        </label>
+                    </div>
+                    <div class="btn-first-connexion">N'attendez plus et découvrez votre espace</div>
+                    <p class="error" style="display:none;color:red;">Merci d'accepter les CGU pour accéder à votre espace.</p>
+                </form>
+            </div>
+
+            <!-- Modal First Connexion autre profil -->
+            <div class="content-modal-first-connexion-others">
+                {{ sessionItga.popin.FirstConnexionDefault.content|raw }}
+                <form id="firstconnexion" method="">
+                    <div class="conditions">
+                        <input type="checkbox" id="macheckbox-first-connexion-others" name="macheckbox-first-connexion-others" class="checkbox-first-connexion"/>
+                        <label for="macheckbox-first-connexion-others">
+                            <span></span>
+                            Je valide les <a target="_blank" href="/cgu">Conditions Générales d'Utilisation</a>
+                        </label>
+                    </div>
+                    <div class="btn-first-connexion">N'attendez plus et découvrez votre espace</div>
+                    <p class="error" style="display:none;color:red;">Merci d'accepter les CGU pour accéder à votre espace.</p>
+                </form>
+            </div>
+
+
+            <pre>
+                {{ dump(sessionItga.popin) }}
+            </pre>
+
+
+        </div>
+
+
+
+
+        <js-bottom-placeholder token="{{ placeholder_token }}">
+
+
+{#
+            <pre>
+                {{ dump(sessionItga.popin) }}
+            </pre>
+#}
+
+
+        <script>
+            jQuery(function ($) {
+                $(document).ready(function() {
+
+                    if(!getCookie('cgu-accepted')){
+                        {% if sessionItga.popin.FirstConnexionAdminPrincipalWithAccount.activeModal %}
+                            openModalFirstConnexion('.content-modal-first-connexion-admin-with-account');
+                        {% endif %}
+
+                        {% if sessionItga.popin.FirstConnexionAdminPrincipalWithoutAccount.activeModal %}
+                        openModalFirstConnexion('.content-modal-first-connexion-without-account');
+                        {% endif %}
+
+                        {% if sessionItga.popin.FirstConnexionAdminDelegate.activeModal %}
+                            openModalFirstConnexion('.content-modal-first-connexion-admin-delegate');
+                        {% endif %}
+
+                        {% if sessionItga.popin.FirstConnexionDefault.activeModal %}
+                            openModalFirstConnexion('.content-modal-first-connexion-others');
+                        {% endif %}
+                    }
+
+
+                    {% if sessionItga.popin.FirstConnexionAdminPrincipalWithAccount.activeModal or
+                        sessionItga.popin.FirstConnexionAdminPrincipalWithoutAccount.activeModal or
+                        sessionItga.popin.FirstConnexionAdminDelegate.activeModal or
+                        sessionItga.popin.FirstConnexionDefault.activeModal
+                    %}
+
+                        $('.btn-first-connexion').click(function(e){
+                            console.log('click');
+                            e.preventDefault();
+                            e.stopPropagation();
+                            if ($('.checkbox-first-connexion').is(':checked')) {
+                                console.log('checked');
+                                $('#modal-generic').modal('hide');
+                                setCookie('cgu-accepted', true, 1);
+                            }
+                            else {
+                                $('.btn-first-connexion + .error').show();
+                            }
+                        });
+                    {% endif %}
+
+
+                });
+
+                if(window.location.pathname == "/contact") {
+                    $('form input[name=subject]').attr('value', "{{ sessionItga.apiAccount.Account }}");
+                    $('form input[name=numero_client_itga]').attr('value', "{{ sessionItga.apiUser.AccountId }}");
+                    $('form input[name=name]').attr('value', "{{ sessionItga.apiUser.LastName }}");
+                    $('form input[name=votre_prenom]').attr('value', "{{ sessionItga.apiUser.FirstName }}");
+                    $('form input[name=email]').attr('value', "{{ sessionItga.apiUser.Email }}");
+                    $('form input[name=votre_numero_de_telephone]').attr('value', "{{ sessionItga.apiUser.WorkPhone }}");
+                }
+
+                function openModalFirstConnexion(element) {
+                    if(window.location.pathname != "/cgu") {
+                        $('#modal-generic .modal-body').html('');
+                        $('#modal-generic .modal-title').text('Bienvenue sur votre Espace ITGA !');
+                        $('#modal-generic .modal-body').html($(element).html());
+                        $('.modal-header .close').hide();
+                        $('#modal-generic').modal({
+                            backdrop: 'static',
+                            keyboard: false
+                        });
+                    }
+                }
+
+                function setCookie(cname, cvalue, exdays) {
+                    var d = new Date();
+                    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                    var expires = "expires="+ d.toUTCString();
+                    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                }
+
+                function getCookie(cname) {
+                    var name = cname + "=";
+                    var decodedCookie = decodeURIComponent(document.cookie);
+                    var ca = decodedCookie.split(';');
+                    for(var i = 0; i <ca.length; i++) {
+                        var c = ca[i];
+                        while (c.charAt(0) == ' ') {
+                            c = c.substring(1);
+                        }
+                        if (c.indexOf(name) == 0) {
+                            return c.substring(name.length, c.length);
+                        }
+                    }
+                    return "";
+                }
+
+
+
+            });
+
+
+
+
+
+        </script>
+
+            {#{{ sessionItga.popin.FirstConnexionAdminPrincipalWithAccount.content }}#}
+    </body>
+</html>

@@ -1,0 +1,115 @@
+<div class="mon-compte">
+    <form id="monCompteUpdate">
+        <div class="flex">
+
+            <div class="form-item js-form-type-textfield js-form-type-textfield">
+                <span>Société</span>
+                <div class="value"><input type="text" name="account.Account" value="{{ sessionItga.apiAccount.Account }}" readonly disabled /><span>{{ sessionItga.apiAccount.Account }}</span></div>
+            </div>
+
+            <div class="form-item js-form-type-textfield">
+                <span>Numéro de compte ITGA</span>
+                <div class="value"><input type="text" name="user.AccountId" value="{{ sessionItga.apiAccount.ClientCode }}" readonly disabled /><span>{{ sessionItga.apiAccount.ClientCode }}</span></div>
+            </div>
+
+            <div class="form-item js-form-type-textfield js-form-type-textfield required">
+                <span>Prénom</span>
+                <div class="value"><input type="text" data-validate-field="text" name="userFirstName" value="{{ sessionItga.apiUser.FirstName }}" required /><span>{{ sessionItga.apiUser.FirstName }}</span></div>
+            </div>
+
+            <div class="form-item js-form-type-textfield required">
+                <span>Nom</span>
+                <div class="value"><input type="text" data-validate-field="text" name="userLastName" value="{{ sessionItga.apiUser.LastName }}" /><span>{{ sessionItga.apiUser.LastName }}</span></div>
+            </div>
+
+            <div class="form-item js-form-type-textfield required">
+                <span>Fonction</span>
+                <div class="value"><input type="text" data-validate-field="text" name="userTitle" value="{{ sessionItga.apiUser.Title }}" /><span>{{ sessionItga.apiUser.Title }}</span></div>
+            </div>
+
+            {% if sessionItga.apiUser.Profiles is not empty %}
+                <div class="form-item js-form-type-textfield">
+                    <span>Profil</span>
+                    <div class="value"><input type="text" name="user.Profil" value="{{ sessionItga.apiUser.Profiles[0].Description }}" readonly disabled /><span>{{ sessionItga.apiUser.Profiles[0].Description }}</span></div>
+                </div>
+            {% endif %}
+
+            <div class="form-item js-form-type-textfield">
+                <span>Adresse</span>
+                <div class="value"><input type="text" name="account.Address" value="{{ sessionItga.apiAccount.Address }}" readonly disabled /><span>{{ sessionItga.apiAccount.Address }}</span></div>
+            </div>
+
+            <div class="form-item js-form-type-textfield">
+                <span>Code postal</span>
+                <div class="value"><input type="text" name="account.PostalCode" value="{{ sessionItga.apiAccount.PostalCode }}" readonly disabled /><span>{{ sessionItga.apiAccount.PostalCode }}</span></div>
+
+            </div>
+
+            <div class="form-item js-form-type-textfield">
+                <span>Ville</span>
+                <div class="value"><input type="text" name="account.City" value="{{ sessionItga.apiAccount.City }}" readonly disabled /><span>{{ sessionItga.apiAccount.City }}</span></div>
+            </div>
+
+            <div class="form-item js-form-type-textfield js-form-type-textfield required">
+                <span>Numéro de téléphone</span>
+                <div class="value"><input type="text" data-validate-field="phone" name="userWorkPhone" value="{{ sessionItga.apiUser.WorkPhone }}" required /><span>{{ sessionItga.apiUser.WorkPhone }}</span></div>
+            </div>
+
+            <div class="form-item js-form-type-textfield js-form-type-textfield">
+                <span>Adresse email</span>
+                <div class="value"><input type="text" name="user.Email" value="{{ sessionItga.apiUser.Email }}" readonly disabled /><span>{{ sessionItga.apiUser.Email }}</span></div>
+            </div>
+
+            <div class="form-item js-form-type-textfield js-form-type-textfield required change-password">
+                <span></span>
+                <div class="value"><span><a href="https://apiextranetauth.itga.fr/api/Auth/View/forgot-password" target="_blank">Changer de mot de passe</a></span></div>
+            </div>
+
+
+            <div class="form-item js-form-type-textfield js-form-type-textfield hidden">
+                <p class="" style="width: 100%;margin-top: 20px;"><span style="color: #D80027;display:inline;">*</span> Champs obligatoires</a></p>
+            </div>
+
+
+
+
+{#            <div class="form-item js-form-type-textfield js-form-type-textfield">
+                <span>Numéro de téléphone mobile</span>
+                <div class="value">
+                    <input type="text" name="userMobilePhone" value="" readonly disabled />
+                    <span>xx xx xx xx xx</span>
+                </div>
+            </div>#}
+
+
+
+
+
+
+
+
+
+
+
+            <p class="hidden" style="width: 100%;text-align: center;margin-top: 20px;">D'autres informations à nous <a target="_blank" href="/contact">communiquer</a> ?</p>
+
+
+            <input type="submit" name="submit" value="Valider" class="btn hidden edit-account" />
+
+        </div>
+    </form>
+
+    <div class="link" style="text-align: center;">
+        <a href="javascript://" class="changeProfil btn" userId="{{ accountUser.Id }}">Modifier mes informations</a>
+    </div>
+
+</div>
+
+
+<form class="userChangeinformation flex" userId="">
+    <div>
+
+    </div>
+
+    <div class="send"><input class="save" type="submit" name="submit" value="Enregistrer"/></div>
+</form>

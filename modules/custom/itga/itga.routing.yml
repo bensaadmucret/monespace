@@ -1,0 +1,308 @@
+###########################################
+# Signin, première connexion...
+###########################################
+
+# page d'identificationCreamy blowjob watching World Cup when window open with neighbour next door
+itga.signin:
+  path: '/signin'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::signin'
+    _title: 'Identification'
+  requirements:
+    _permission: 'access content'
+
+# Validation identification ajax
+itga.signinajax:
+  path: '/signin/ajax'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::signinAjax'
+  requirements:
+    _permission: 'access content'
+
+# Check ajax si deja client
+itga.signin.dejaclient:
+  path: '/signin/deja-client/ajax'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::dejaClient'
+  requirements:
+    _permission: 'access content'
+
+# Première connexion
+itga.premiereconnexion:
+  path: '/premiere-connexion'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::premiereConnexion'
+    _title: 'Première connexion'
+  requirements:
+    _permission: 'access content'
+
+# Première connexion ajax
+itga.premiereconnexionajax:
+  path: '/premiere-connexion/ajax'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::premiereConnexionAjax'
+  requirements:
+    _permission: 'access content'
+
+# Première connexion finalisation
+itga.premiereconnexionfinalise:
+  path: '/premiere-connexion/finalise'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::premiereConnexionFinalise'
+    _title: 'Finalisation  de la première connexion'
+  requirements:
+    _permission: 'access content'
+
+itga.premiereconnexionfinalisenajax:
+  path: '/premiere-connexion/finalise/{email}/{hash}/ajax'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::premiereConnexionFinaliseAjax'
+  requirements:
+    _permission: 'access content'
+
+###########################################
+# Mon compte
+###########################################
+
+# Mon profil
+itga.moncompte:
+  path: '/mon-compte'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::monCompte'
+    _title: 'Mon profil'
+  requirements:
+    _permission: 'access content'
+
+#Mon profil ajax
+itga.moncompte.ajax:
+  path: '/mon-compte/ajax'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::monCompteAjax'
+  requirements:
+    _permission: 'access content'
+
+# Mon compte - Mon agence
+itga.moncompte.monagence:
+  path: '/mon-compte/mon-agence-itga'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::monAgenceItga'
+    _title: 'Mon agence ITGA'
+  requirements:
+    _permission: 'access content'
+
+# Activités collaborateurs
+itga.moncompte.activitescollaborateur:
+  path: '/mon-compte/activites-collaborateurs'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::activitesCollaborateur'
+    _title: 'Activités collaborateurs'
+  requirements:
+    _permission: 'access content'
+
+# Gestion des comptes de l'entreprise
+itga.moncompte.gestiondescomptes:
+  path: '/mon-compte/gestion-des-comptes'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::gestionDescomptes'
+    _title: 'Gestion des comptes'
+  requirements:
+    _role: 'diag_admin_principal+diag_admin_delegate+diag_manager_lab+diag_manager_form+prel_admin_principal+prel_admin_delegate+prel_manager_lab'
+
+# Détails des droits d'un compte
+itga.moncompte.gestiondescomptes.addmembre:
+  path: '/mon-compte/gestion-des-comptes/add-membre'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::gestionDescomptesAddMembre'
+  requirements:
+    _role: 'diag_admin_principal+diag_admin_delegate+diag_manager_lab+diag_manager_form+prel_admin_principal+prel_admin_delegate+prel_manager_lab'
+
+# Détails des droits d'un compte
+itga.moncompte.gestiondescomptes.detailscompte:
+  path: '/mon-compte/gestion-des-comptes/details/{id}'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::gestionDescomptesDetails'
+  requirements:
+    _role: 'diag_admin_principal+diag_admin_delegate+diag_manager_lab+diag_manager_form+prel_admin_principal+prel_admin_delegate+prel_manager_lab'
+
+# Détails d'un compte
+itga.moncompte.gestiondescomptes.detailscomptemembre:
+  path: 'mon-compte/gestion-des-comptes/details-compte/{id}'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::gestionDescomptesDetailsCompte'
+  requirements:
+    _role: 'diag_admin_principal+diag_admin_delegate+diag_manager_lab+diag_manager_form+prel_admin_principal+prel_admin_delegate+prel_manager_lab'
+
+# Mise à jour des roles d'un compte
+itga.moncompte.gestiondescomptes.detailscompte.updaterole:
+  path: '/mon-compte/gestion-des-comptes/details/{id}/updaterole'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::gestionDescomptesDetailsUpdateRoles'
+  requirements:
+    _role: 'diag_admin_principal+diag_admin_delegate+diag_manager_lab+diag_manager_form+prel_admin_principal+prel_admin_delegate+prel_manager_lab'
+
+# Mise à jour d'un compte (rôles + fields)
+itga.moncompte.gestiondescomptes.detailscompte.updateAccount:
+  path: '/mon-compte/gestion-des-comptes/details/{id}/updateAccount'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::updateAccount'
+  requirements:
+    _role: 'diag_admin_principal+diag_admin_delegate+diag_manager_lab+diag_manager_form+prel_admin_principal+prel_admin_delegate+prel_manager_lab'
+
+# Activation d'un compte (isArchived = true)
+itga.moncompte.gestiondescomptes.activeuser:
+  path: '/mon-compte/gestion-des-comptes/activeuser/{id}'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::gestionDescomptesActivateUser'
+  requirements:
+    _role: 'diag_admin_principal+diag_admin_delegate+diag_manager_lab+diag_manager_form+prel_admin_principal+prel_admin_delegate+prel_manager_lab'
+
+# Désactivation d'un compte (isArchived = false)
+itga.moncompte.gestiondescomptes.deactiveuser:
+  path: '/mon-compte/gestion-des-comptes/desactiveuser/{id}'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::gestionDescomptesDesactivateUser'
+  requirements:
+    _role: 'diag_admin_principal+diag_admin_delegate+diag_manager_lab+diag_manager_form+prel_admin_principal+prel_admin_delegate+prel_manager_lab'
+
+# Mes factures
+itga.moncompte.mesfactures:
+  path: '/mon-compte/mes-factures'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::mesFactures'
+    _title: 'Mes factures'
+  requirements:
+    _role: 'diag_admin_principal+diag_admin_delegate+diag_manager_lab+diag_manager_form+diag_facturation+prel_admin_principal+prel_admin_delegate+prel_manager_lab+prel_facturation'
+
+# Mes factures
+itga.moncompte.mesfactures.download:
+  path: '/mon-compte/mes-factures/download/{id}'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::mesFacturesDownload'
+    _title: 'Mes factures'
+  requirements:
+    _role: 'diag_admin_principal+diag_admin_delegate+diag_manager_lab+diag_manager_form+diag_facturation+prel_admin_principal+prel_admin_delegate+prel_manager_lab+prel_facturation'
+
+###########################################
+# Suivi de commandes (labo)
+###########################################
+
+# Liste des commandes
+itga.labo:
+  path: '/suivi-commandes'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::labo'
+    _title: 'Suivi commandes'
+  requirements:
+    _role: 'diag_admin_principal+diag_admin_delegate+diag_manager_lab+diag_suivi_cmd_mat+diag_suivi_cmd_fltr+diag_suivi_cmd_legio+prel_admin_principal+prel_admin_delegate+prel_manager_lab+prel_suivi_cmd_fltr+prel_cmd_conso'
+    name: '[a-z]+'
+
+# Liste des commandes par types
+itga.labobytype:
+  path: '/suivi-commandes/{type}'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::labo'
+    _title: 'Suivi commandes'
+  requirements:
+    _role: 'diag_admin_principal+diag_admin_delegate+diag_manager_lab+diag_suivi_cmd_mat+diag_suivi_cmd_fltr+diag_suivi_cmd_legio+prel_admin_principal+prel_admin_delegate+prel_manager_lab+prel_suivi_cmd_fltr+prel_cmd_conso'
+
+# Planification
+itga.planification:
+  path: '/planification'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::planification'
+    _title: 'Planification'
+  requirements:
+    _role: 'diag_admin_principal+diag_admin_delegate+diag_manager_lab+diag_manager_form+diag_facturation+prel_admin_principal+prel_admin_delegate+prel_manager_lab+prel_facturation+planification'
+
+
+# Export excel
+itga.laboExcel:
+  path: '/suivi-commandes/excel'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::laboCommandesToExcel'
+    _title: 'Suivi commandes to excel'
+  requirements:
+    _role: 'diag_admin_principal+diag_admin_delegate+diag_manager_lab+diag_suivi_cmd_mat+diag_suivi_cmd_fltr+diag_suivi_cmd_legio+prel_admin_principal+prel_admin_delegate+prel_manager_lab+prel_suivi_cmd_fltr+prel_cmd_conso'
+
+# Liste des échantillons d'une commande
+itga.labocommandedetails:
+  path: '/labo/commande/details'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::laboCommandeDetails'
+    _title: 'Détails de la commande'
+  requirements:
+    _role: 'diag_admin_principal+diag_admin_delegate+diag_manager_lab+diag_suivi_cmd_mat+diag_suivi_cmd_fltr+diag_suivi_cmd_legio+prel_admin_principal+prel_admin_delegate+prel_manager_lab+prel_suivi_cmd_fltr+prel_cmd_conso'
+
+# Rapport d'une commande
+itga.laborapportcommande:
+  path: '/labo/commande/rapport'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::laboCommandeRapport'
+    _title: 'Labo'
+  requirements:
+    _role: 'diag_admin_principal+diag_admin_delegate+diag_manager_lab+diag_suivi_cmd_mat+diag_suivi_cmd_fltr+diag_suivi_cmd_legio+prel_admin_principal+prel_admin_delegate+prel_manager_lab+prel_suivi_cmd_fltr+prel_cmd_conso'
+
+# Rapport d'un échantillon
+itga.laborapportechantillon:
+  path: '/labo/commande/rapport/echantillon/{type}'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::laboCommandeRapportEchantillon'
+    _title: 'Labo'
+  requirements:
+    _role: 'diag_admin_principal+diag_admin_delegate+diag_manager_lab+diag_suivi_cmd_mat+diag_suivi_cmd_fltr+diag_suivi_cmd_legio+prel_admin_principal+prel_admin_delegate+prel_manager_lab+prel_suivi_cmd_fltr+prel_cmd_conso'
+
+###########################################
+# Pages diverses
+###########################################
+
+# Liste des actus
+itga.actu:
+  path: '/actualites'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::actualites'
+    _title: 'Actualités'
+  requirements:
+    _permission: 'access content'
+
+# Liste des actus par tag
+itga.actutag:
+  path: '/actualites/tag/{tag}'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::actualites'
+    _title: 'Actualités'
+  requirements:
+    _permission: 'access content'
+
+# Bibliothèque PDF
+itga.fichierpdf:
+  path: '/bibliotheque-pdf'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::bibliothequePdf'
+    _title: 'Bibliothèque de PDF'
+  requirements:
+    _permission: 'access content'
+
+# Liste des agences
+itga.agence:
+  path: '/agences'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::agences'
+    _title: 'Agences'
+  requirements:
+    _permission: 'access content'
+
+
+
+
+###########################################
+# Pour le dev
+###########################################
+
+# Page de test
+itga.pagedetest:
+  path: '/pagedetest'
+  defaults:
+    _controller: '\Drupal\itga\Controller\ItgaController::pagedetest'
+    _title: 'Page de test'
+  requirements:
+    _permission: 'access content'

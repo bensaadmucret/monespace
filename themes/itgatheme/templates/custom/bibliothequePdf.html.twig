@@ -1,0 +1,11 @@
+<div>
+    {% for term in terms %}
+        <div>
+            <h2>{{ term.name }}</h2>
+            {% for node in term.nodes %}
+                <div>{{ node.title }} ({{ node.date }})</div><br />
+            {% endfor %}
+        </div>
+        <br />
+    {% endfor %}
+</div>

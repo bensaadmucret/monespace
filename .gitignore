@@ -1,0 +1,23 @@
+# Created by .ignore support plugin
+### Drupal template
+
+/.idea
+/.dump
+/themes/itgatheme/node_modules
+
+# Ignore paths that contain generated content.
+/sites/default/settings.local.php
+/sites/default/settings.php
+/sites/*/files
+/sites/*/private
+
+# Ignore default text files
+/CHANGELOG.txt
+/COPYRIGHT.txt
+/INSTALL*.txt
+/LICENSE.txt
+/MAINTAINERS.txt
+/UPGRADE.txt
+/README.txt
+/modules/README.txt
+/themes/README.txt

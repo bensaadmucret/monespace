@@ -1,0 +1,142 @@
+{#
+/**
+ * @file
+ * Bartik's theme implementation to display a single page.
+ *
+ * The doctype, html, head and body tags are not in this template. Instead they
+ * can be found in the html.html.twig template normally located in the
+ * core/modules/system directory.
+ *
+ * Available variables:
+ *
+ * General utility variables:
+ * - base_path: The base URL path of the Drupal installation. Will usually be
+ *   "/" unless you have installed Drupal in a sub-directory.
+ * - is_front: A flag indicating if the current page is the front page.
+ * - logged_in: A flag indicating if the user is registered and signed in.
+ * - is_admin: A flag indicating if the user has permission to access
+ *   administration pages.
+ *
+ * Site identity:
+ * - front_page: The URL of the front page. Use this instead of base_path when
+ *   linking to the front page. This includes the language domain or prefix.
+ *
+ * Page content (in order of occurrence in the default page.html.twig):
+ * - node: Fully loaded node, if there is an automatically-loaded node
+ *   associated with the page and the node ID is the second argument in the
+ *   page's path (e.g. node/12345 and node/12345/revisions, but not
+ *   comment/reply/12345).
+ *
+ * Regions:
+ * - page.header: Items for the header region.
+ * - page.highlighted: Items for the highlighted region.
+ * - page.primary_menu: Items for the primary menu region.
+ * - page.secondary_menu: Items for the secondary menu region.
+ * - page.featured_top: Items for the featured top region.
+ * - page.content: The main content of the current page.
+ * - page.sidebar_first: Items for the first sidebar.
+ * - page.sidebar_second: Items for the second sidebar.
+ * - page.featured_bottom_first: Items for the first featured bottom region.
+ * - page.featured_bottom_second: Items for the second featured bottom region.
+ * - page.featured_bottom_third: Items for the third featured bottom region.
+ * - page.footer_first: Items for the first footer column.
+ * - page.footer_second: Items for the second footer column.
+ * - page.footer_third: Items for the third footer column.
+ * - page.footer_fourth: Items for the fourth footer column.
+ * - page.footer_fifth: Items for the fifth footer column.
+ * - page.breadcrumb: Items for the breadcrumb region.
+ *
+ * @see template_preprocess_page()
+ * @see html.html.twig
+ */
+#}
+<div class="wrapper">
+    <div id="page" class="sign-in-page">
+        <div id="pageContent">
+            <div class="left-sign-in">
+                <div class="content">
+                    {{ page.content }}
+                    <a href="/en_savoir_plus">
+                      En savoir plus
+                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 129 129">
+                        <g>
+                          <path d="m40.4,121.3c-0.8,0.8-1.8,1.2-2.9,1.2s-2.1-0.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8,0l53.9,53.9c1.6,1.6 1.6,4.2 0,5.8l-53.9,53.9z"/>
+                        </g>
+                      </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-signin">
+                <form id="signin">
+                  <a href="{{ base_path }}">
+                      <img src="{{ logopath }}" />
+                  </a>
+
+                  <div>
+                      <input placeholder="Identifiant" type="email" name="email" value="" required oninvalid="this.setCustomValidity('Veuillez saisir une adresse email valide')" oninput="setCustomValidity('')"/>
+                  </div>
+                  <div>
+                      <input placeholder="Mot de passe" type="password" name="password" value="" required />
+                  </div>
+                  <div>
+                      <input type="submit" name="submit" value="Connexion" />
+                  </div>
+                  <a href="http://apiextranetauth.itga.fr/api/Auth/View/forgot-password" class="forgot-password" target="_blank">Mot de passe oublié ?</a>
+
+
+
+
+                  <div class="no-account">
+                      <em>Vous n'avez pas de compte ?</em>
+                      <a href="javascript://" class="btn request-account">Demander un compte</a>
+                  </div>
+                </form>
+
+                <div class="footer">
+                    <img src="/sites/default/files/inline-images/footer-logo.jpg">
+                      <p>{{ "now"|date("Y") }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal demande compte -->
+<div class="modal fade" id="modal-request-account" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">.path-node-46
+                      <g>
+                      <path d="M505.943,6.058c-8.077-8.077-21.172-8.077-29.249,0L6.058,476.693c-8.077,8.077-8.077,21.172,0,29.249
+                          C10.096,509.982,15.39,512,20.683,512c5.293,0,10.586-2.019,14.625-6.059L505.943,35.306
+                          C514.019,27.23,514.019,14.135,505.943,6.058z"/>
+                    </g>
+                    <g>
+                      <path d="M505.942,476.694L35.306,6.059c-8.076-8.077-21.172-8.077-29.248,0c-8.077,8.076-8.077,21.171,0,29.248l470.636,470.636
+                          c4.038,4.039,9.332,6.058,14.625,6.058c5.293,0,10.587-2.019,14.624-6.057C514.018,497.866,514.018,484.771,505.942,476.694z"/>
+                    </g>
+                  </svg>
+              </button>
+              <h4 class="modal-title" id="myModalLabel">Demander un compte</h4>
+          </div>
+          <div class="modal-body">
+            <ul>
+                <li><a href="javascript://" class="dejaClientItga">Déjà client ITGA ?</a></li>
+                <li><a href="/form/je-ne-suis-pas-client-itga">Pas encore client ITGA</a></li>
+            </ul>
+              <form id="dejaClient" class="hidden">
+                  <p>Veuillez indiquer votre numéro de compte client ITGA.</p>
+                  <p>Retrouvez le sur vos factures ou rapprochez-vous de votre contact commercial.</p>
+                  <input placeholder="Numéro de compte client" type="text" name="numero" value="" />
+                  <input type="submit" name="submit" value="Envoyer"  />
+                  <span class="error" style="display:none;color:red">Veuillez renseigner ce champ.</span>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

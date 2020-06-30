@@ -1,0 +1,30 @@
+{%
+set classes = [
+'paragraph',
+'paragraph--type--' ~ paragraph.bundle|clean_class,
+view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+<div{{ attributes.addClass(classes) }}>
+    <h2>{{ content.field_titre|field_value }}</h2>
+
+    <ul>
+        {% if content.field_fichier['#items'] is not empty %}
+            {% for fichier in content.field_fichier['#items'] %}
+                {% if fichier.description is not empty %}
+                    <li><a target="_blank" href="{{ file_url(fichier.entity.uri.value) }}">{{ fichier.description }}</a></li>
+                {%  endif %}
+            {% endfor %}
+        {%  endif %}
+
+        {% if content.field_liens['#items'] is not empty %}
+            {% for lien in content.field_liens['#items'] %}
+                {% if lien.url is not empty %}
+                    <li><a target="{{ lien.options.attributes.target }}" href="{{ lien.url }}">{{ lien.title }}</a></li>
+                {%  endif %}
+            {% endfor %}
+        {%  endif %}
+    </ul>
+</div>
+
+

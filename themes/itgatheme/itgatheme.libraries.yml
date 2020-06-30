@@ -1,0 +1,12 @@
+global-styling:
+  version: 1.0
+  css:
+    theme:
+     #assets/css/bundle.css: {}
+     assets/css/main.min.css: {}
+  js:
+    assets/js/vendors.min.js: {}
+    assets/js/custom.min.js: {}
+  dependencies:
+     #- core/jquery
+     - core/jquery.once

@@ -1,0 +1,133 @@
+
+<article>
+    <section class="chapeau_agence">
+        <div class="mot">{{ descriptionAgence | raw }}</div>
+        <div class="responsable">{{ nomResponsableAgence }}</div>
+    </section>
+
+    <div class="wysiwyg">
+        {{ wysiwygAgence | raw }}
+    </div>
+
+    {% if idYoutubeAgence is not empty %}
+        <section class="video_agence">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ idYoutubeAgence }}" frameborder="0" allowfullscreen></iframe>
+        </section>
+    {% endif %}
+
+    <section class="map_adresse">
+        <div class="google-map">
+            <div id="map" style="height:100%;"></div>
+        </div>
+
+
+        <div class="description-google-map">
+            <p><strong>{{ nomAgence }}</strong></p>
+            <p>{{ adresseAgence }} {{ villeAgence }} </p>
+
+            {% if cpAgence is not empty %}
+                <p>{{ cpAgence }} {{ villeAgence }}</p>
+            {% endif %}
+            <br/>
+
+            {% if telAgence is not empty %}
+                <p>Tel: {{ telAgence }}</p>
+            {% endif %}
+
+            {% if faxAgence is not empty %}
+                <p>Fax: {{ faxAgence }}</p>
+            {% endif %}
+
+            {% if emailAgence is not empty %}
+                <p>Email : {{ emailAgence }}</p>
+            {% endif %}
+        </div>
+    </section>
+
+
+    {% for key, equipes in equipeAgence %}
+        {% if key is not empty %}
+            <section class="equipe">
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-single">
+                            <h3>
+                                {{ key }}
+                                <img class="chevron" src="{{ base_path ~ directory }}/assets/images/chevron.svg" />
+                            </h3>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="member-list">
+                                {% for equipe in equipes %}
+                                    <div class="member-item">
+
+                                        {% if equipe.image|length %}
+                                            <div class="member-image" style="background-image:url({{ equipe.image }});">
+                                            </div>
+                                        {% else %}
+                                            <div class="member-image default">
+                                            </div>
+                                        {% endif %}
+                                        <div class="member-content">
+                                            <p><strong>{{ equipe.fonction }}</strong></p>
+                                            <p>{{ equipe.nom }} - {{ equipe.prenom }}</p>
+                                            <p>{{ equipe.email }}</p>
+                                            <p>{{ equipe.telephone_fixe }}</p>
+                                            <p>{{ equipe.telephone_portable }}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                <div class="flex-fix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+    {% endfor %}
+</article>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEMAfY6Ga2JSl21n73zmBDdxUujVU3_rY&callback=initMap&libraries=places"
+        async defer></script>
+
+
+<script>
+    var map;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 8
+        });
+
+        var request = {
+            query: '{{ adresseAgence }} {{ cpAgence }} {{ cpVille }}',
+            fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry'],
+        };
+
+        service = new google.maps.places.PlacesService(map);
+        service.findPlaceFromQuery(request, callback);
+    }
+
+    function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                var place = results[i];
+                if(!results[i].name.includes('LEROY') && !results[i].name.includes('Optimum')) {
+                    createMarker(results[i]);
+                }
+
+            }
+        }
+    }
+
+    function createMarker(place) {
+        new google.maps.Marker({
+            position: place.geometry.location,
+            map: map
+        });
+
+        map.setCenter(place.geometry.location);
+        map.setZoom(14);
+    }
+
+</script>

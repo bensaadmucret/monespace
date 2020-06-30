@@ -1,0 +1,1207 @@
+@media (max-width:1385px) {
+  .wrap {
+    width: 96%;
+  }
+}
+
+@media (max-width:1320px) {
+  .cd-nav-trigger { opacity: 1; top: 18px; z-index: 101; }
+  .cd-nav-trigger.fixed { top: 20px; }
+
+  #leftContent > div > *,
+  header > .wrap > div {
+    display: none;
+  }
+}
+
+@media (max-width:1235px) {
+    .container {
+        width: 100%;
+        padding: 0;
+    }
+
+    .header-table {
+        flex-wrap: wrap;
+        height: 120px;
+        padding: 15px;
+
+        input[type="text"] {
+            flex-grow: 2;
+        }
+
+        .dropdown-group {
+
+            .dropdown:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+
+    .logo-mon-espace {
+        min-width: unset;
+    }
+}
+
+@media (max-width:1000px) {
+    /* footer */
+    footer .inner>div>* {
+      width: 25%;
+    }
+
+    /* page signin */
+    .sign-in-page #pageContent {
+    flex-wrap: wrap;
+
+    .left-sign-in {
+      width: 100%;
+      order: 2;
+
+      .content {
+        margin: 35px auto;
+      }
+    }
+
+    #signin {
+      width: 100%;
+      display: block;
+      padding: 20px;
+      text-align: center;
+
+      form {
+        margin: 0 auto;
+
+        img {
+          margin-bottom: 30px;
+        }
+      }
+    }
+    }
+
+    .page-node-type-home-page #pageContent section .agencecompte,
+    .page-node-type-home-page .slider-one,
+    .page-node-type-home-page .actus {
+        width: 100%
+    }
+
+    .page-node-type-home-page #pageContent section .agencecompte {
+        order:1;
+    }
+
+    .page-node-type-home-page .slider-one {
+        order: 2;
+    }
+
+    .page-node-type-home-page .actus {
+        order: 3;
+        margin-bottom: 25px;
+    }
+
+    .page-node-type-home-page .monprogramme, .page-node-type-home-page .slider-two, .page-node-type-home-page .slider-three {
+        width: 48%;
+        order: 4;
+    }
+
+    .page-node-type-home-page .slider-three {
+        margin: 0 auto;
+
+        .paragraph--type--slider .slide {
+            height: 315px;
+        }
+
+    }
+
+    .box:last-child div {
+        margin-bottom: 0;
+    }
+
+    .labo-suivi-commandes,
+    .mesFactures,
+    .path-node-46 {
+
+        table {
+            display: block;
+
+
+            tr,
+            tbody {
+                display: block;
+                height: auto;
+            }
+
+            thead {
+                display: none;
+            }
+
+            td {
+                display: block;
+                width: 100% !important;
+                height: auto;
+
+                &:before {
+                    content: attr(data-th);
+                    display: block;
+                    color:#9e9d9d;
+                }
+
+                .header-detail-commande {
+                    flex-direction: column;
+                    height: auto;
+                    padding: 10px 0;
+
+                    input[type="text"] {
+                        min-width: auto;
+                        height: 30px;
+                        width: 80%;
+                        margin: 10px;
+                    }
+                }
+
+                span {
+                    white-space: normal;
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width:900px) {
+.path-mon-compte .userList>.flex>* {
+  width: 60%;
+  margin: 0 auto 20px;
+}
+
+.actu-grid.grid-3.has-gutter-xl article {
+  width: 48%;
+  margin: 0 1% 22px;
+}
+
+}
+   //phone
+    @media (min-width:$minphone) and (max-width:$maxphone) {
+
+
+        body {
+            position: relative;
+
+            header {
+                .container {
+                    flex-direction: column;
+                    align-items: left;
+                    >div {
+                        width: 100%;
+                    }
+                    nav {
+                        >ul {
+                            display: flex;
+                            justify-content: space-around;
+                            li {
+                                position: static;
+                                ul {
+                                    top: 135px;
+                                    width: 100%;
+                                    li {
+                                        a {
+                                            height: 50px;
+                                        }
+                                    }
+                                }
+                                a {
+                                    width: 60px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .container {
+            width: 100%;
+            padding: 0 10px;
+            #content {
+                position: relative;
+                #block-itgatheme-page-title {
+                    height: auto;
+                    padding: 10px 30px;
+                    min-height: 80px;
+                }
+                .submenu-container {
+                    position: absolute;
+                    top: 25px;
+                    width: 100%;
+                }
+            }
+            #block-itgatheme-breadcrumbs {
+                position: relative;
+            }
+        }
+        .page-node-type-home-page {
+            #pageContent {
+                padding: 0;
+                section {
+                    .agencecompte {
+                        padding-right: 0;
+                        .compte {
+                            .top {
+                                h2 {
+                                    &:before {
+                                        content: '';
+                                        margin: 0 15px 0 0;
+                                    }
+                                }
+                            }
+                        }
+                        .agence {
+                            .top {
+                                h2 {
+                                    &:before {
+                                        content: '';
+                                        margin: 0 15px 0 0;
+                                    }
+                                }
+                            }
+                            .mapadresse {
+                                margin-bottom: 15px;
+                                .map-home {
+                                    padding: 0;
+                                }
+                                .adresse-home {
+                                    padding: 0;
+                                }
+                            }
+                        }
+                    }
+                    .monprogramme {
+                        .top {
+                            h2 {
+                                font-size: 16px;
+                                &:before {
+                                    content: '';
+                                    margin: 0 10px 0 0;
+                                }
+                            }
+                        }
+                    }
+                }
+                section.middle {
+                    .box.first {
+                        margin-right: 0;
+                    }
+                }
+                section.bottom {
+                    .actus-container {
+                        background-color: transparent;
+                        margin-right: 0;
+                        .actus-featured {
+                            padding: 20px;
+                            margin-bottom: 15px;
+                            background-color: #FFFFFF;
+                            h3 {
+                                margin: 10px 0 20px 0;
+                            }
+                            .img-actu-home {
+                                img {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                        .actus-listing {
+                            background-color: #FFFFFF;
+                            .actus-feed {
+                                ul {
+                                    padding: 0;
+                                }
+                            }
+                            .actus-btn {
+                                position: static;
+                            }
+                        }
+                    }
+                    .box:last-child {
+                        margin-top: 15px
+                    }
+                }
+            }
+        }
+        #block-itgatheme-content {
+            .contact-form {
+                padding: 0;
+            }
+            .webform-submission-form {
+                padding: 0;
+                input[type="submit"] {
+                    background-color: $bgFormations;
+                }
+            }
+        }
+        .page-node-type-actualite {
+            #block-itgatheme-page-title {
+                a {
+                    padding: 5px 10px;
+                    text-align: center;
+                }
+            }
+            section.header-actu {
+                .field--name-field-tags-actu {
+                    .field__items {
+                        position: static;
+                    }
+                }
+            }
+        }
+        .path-actualites {
+            #block-itgatheme-page-title {
+                a {
+                    padding: 5px 10px;
+                    text-align: center;
+                }
+            }
+            #block-itgatheme-content {
+                padding: 0;
+                .tags {
+                    flex-wrap: wrap;
+                }
+                .actu-grid {
+                    article {
+                        .article_detail {
+                            height: auto;
+                            .post_tags {
+                                position: static;
+                                text-align: right;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .path-agences {
+            #block-itgatheme-content {
+                padding-top: 65px;
+                .accordion {
+                    .accordion-item {
+                        .accordion-content {
+                            padding: 0 15px;
+                        }
+                    }
+                }
+            }
+        }
+        .path-node-14 {
+            #block-itgatheme-content {
+                padding: 30px 15px;
+            }
+        }
+        footer {
+            #block-footerbranding {
+                margin: auto;
+                padding-top: 0;
+            }
+            #block-agencefooter {
+                text-align: center;
+                padding-bottom: 15px;
+                border-bottom: 1px solid $MainBackgroundColor;
+                width: 100%;
+                h2 {
+                    cursor: pointer;
+                    margin: 0;
+                    img.chevron {
+                        margin-left: 10px;
+                        width: 10px;
+                        height: 10px;
+                        -webkit-transition: all .1s ease-in-out;
+                        -moz-transition: all .1s ease-in-out;
+                        transition: all .1s ease-in-out;
+                        transform: rotate(0);
+                    }
+                }
+                h2.rotated img {
+                    transform: rotate(90deg);
+                }
+            }
+            nav#block-itgatheme-footer {
+                text-align: center;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                border-bottom: 1px solid $MainBackgroundColor;
+                width: 100%;
+                h2 {
+                    cursor: pointer;
+                    margin: 0;
+                    img.chevron {
+                        margin-left: 10px;
+                        width: 10px;
+                        height: 10px;
+                        -webkit-transition: all .1s ease-in-out;
+                        -moz-transition: all .1s ease-in-out;
+                        transition: all .1s ease-in-out;
+                        transform: rotate(0);
+                    }
+                }
+                h2.rotated img {
+                    transform: rotate(90deg);
+                }
+            }
+            #block-views-block-liste-actus-footer-block-1 {
+                text-align: center;
+                width: 100%;
+                padding-top: 15px;
+                h2 {
+                    cursor: pointer;
+                    margin: 0;
+                    img.chevron {
+                        margin-left: 10px;
+                        width: 10px;
+                        height: 10px;
+                        -webkit-transition: all .1s ease-in-out;
+                        -moz-transition: all .1s ease-in-out;
+                        transition: all .1s ease-in-out;
+                        transform: rotate(0);
+                    }
+                }
+                h2.rotated img {
+                    transform: rotate(90deg);
+                }
+            }
+            .inner {
+                .separateur {
+                    display: none;
+                }
+                >div {
+                    flex-direction: column;
+                    margin: 15px;
+
+                    > *,
+                    #block-footerbranding-2 {
+                      width: 100%;
+                    }
+
+                     h2 {
+                      margin: 25px 0 0;
+                  }
+                }
+            }
+            .sub-footer {
+                ul {
+                    flex-direction: column;
+                    >li {
+                        font-size: 10px;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+        .page-node-type-agence {
+            #block-itgatheme-page-title {
+                padding: 0 10px;
+                a {
+                    padding: 5px;
+                    text-align: center;
+                }
+            }
+        }
+        section.map_adresse {
+            flex-direction: column;
+            .description-google-map {
+                padding-top: 15px;
+            }
+        }
+        .page-node-type-agence {
+            article {
+                section.equipe {
+                    .accordion {
+                        h3 {
+                            background-color: #5b5959;
+                            color: #fff;
+                            padding: 15px;
+                            cursor: pointer;
+                            width: 100%;
+                            margin-bottom: 15px;
+                            img.chevron {
+                                float: right;
+                                width: 25px;
+                                height: 25px;
+                                -webkit-transition: all .1s ease-in-out;
+                                -moz-transition: all .1s ease-in-out;
+                                transition: all .1s ease-in-out;
+                                transform: rotate(0);
+                            }
+                        }
+                        .accordion-item {
+                            .member-list {
+                                flex-direction: column;
+                                .member-item {
+                                    width: 100%;
+                                    flex-direction: column;
+
+                                    .member-content {
+                                        text-align: center;
+                                        margin-top: 20px;
+                                        width: 100%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #block-itgatheme-content {
+            .webform-submission-form {
+                .form-item.js-form-type-select {
+                    select {
+                        float: none;
+                        width: 100%;
+                        padding: 5px;
+                        margin-top: -5px;
+                    }
+                }
+            }
+        }
+        .js-form-type-select {
+            select {
+                float: none;
+                width: 100%;
+                padding: 5px;
+                margin-top: -5px;
+            }
+            label {
+                display: block;
+                padding-bottom: 15px;
+            }
+        }
+        .path-webform-commande-consommables {
+            #block-itgatheme-content {
+                .webform-submission-form {
+                    padding: 0;
+                    .js-form-item {
+                        label {
+                            span {
+                                h3 {
+                                    left: 38px;
+                                    font-size: 16px;
+                                    padding: 5px;
+                                }
+                                .detail {
+                                    height: auto;
+                                    em {
+                                        width: 100%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .js-form-item.js-form-item-sachet-amiante-pour-l-application-i-demat-compatible-ios-android {
+                        label {
+                            span {
+                                h3 {
+                                    left: 14px;
+                                    width: 210px;
+                                    text-align: center;
+                                    font-size: 16px;
+                                }
+                                .detail {
+                                    padding: 50px 20px 20px 20px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #modal-first-connection.custom-modal {
+            position: absolute;
+            top: 10px;
+            .custom-modal-body {
+                width: 90%;
+                height: auto;
+            }
+        }
+
+
+        .header-table {
+            flex-wrap: wrap;
+            height: 120px;
+            padding: 15px;
+
+            input[type="text"] {
+                flex-grow: 2;
+            }
+
+            .dropdown-group {
+
+                .dropdown:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
+
+        .header-table {
+            flex-direction: column;
+            height: auto;
+
+            input[type="text"] {
+                flex-grow: 2;
+            }
+
+            .searchResultsCount {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            .dropdown-group {
+                flex-direction: column;
+                width: 100%;
+
+                .dropdown {
+                    margin-bottom: 20px;
+                    margin-left: 0;
+                    width: 100%;
+
+                    .dropdown-toggle {
+                        overflow: hidden;
+                        width: 100%;
+                        font-size: 11px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (min-width:$minphonelandscape) and (max-width:$maxphone) {
+        .page-node-type-home-page {
+            #pageContent {
+                section {
+                    margin-bottom: 25px;
+                    flex-direction: column;
+                    .agencecompte {
+                        .agence {
+                            .mapadresse {
+                                margin-bottom: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        /*.path-webform-commande-consommables #block-itgatheme-content .webform-submission-form .js-form-item input.form-number {
+            right: auto;
+            top: 79%;
+            margin-left: 15px;
+        }
+        .path-webform-commande-consommables #block-itgatheme-content .webform-submission-form .js-form-item .description {
+            right: auto;
+            top: 81%;
+            left: 164px;
+        }*/
+        section.middle .box .slider .slick-next {
+            right: 20px;
+        }
+        section.middle .box .slider .slick-prev {
+            left: 20px;
+        }
+    }
+
+    //tabs
+    @media (min-width:$mintab) and (max-width:$maxtab) {
+        body {
+            position: relative;
+
+            header {
+                .container {
+                    flex-direction: row;
+                    align-items: left;
+                    >a {
+                        margin-left: -60px;
+                    }
+                    nav {
+                        >ul {
+                            li {
+                                position: static;
+                                ul {
+                                    top: 85px;
+                                    left: auto;
+                                    width: auto;
+                                    li {
+                                        a {
+                                            height: 50px;
+                                        }
+                                    }
+                                }
+                                a {
+                                    width: 63px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .container {
+            width: 80%;
+            padding: 0 10px;
+            #content {
+                position: relative;
+                /*.submenu-container {
+                    position: absolute;
+                    top: 25px;
+                    width: 100%;
+                }*/
+            }
+            #block-itgatheme-breadcrumbs {
+                position: relative;
+                margin: 15px 0 15px 0;
+            }
+        }
+        .page-node-type-page {
+            #block-itgatheme-page-title {
+                margin-top: 40px;
+            }
+        }
+        .page-node-type-home-page {
+            #pageContent {
+                padding: 0;
+                section {
+                    .agencecompte {
+                        .compte {
+                            .top {
+                                h2 {
+                                    &:before {
+                                        content: '';
+                                        margin: 0 15px 0 0;
+                                    }
+                                }
+                            }
+                        }
+                        .agence {
+                            .top {
+                                h2 {
+                                    &:before {
+                                        content: '';
+                                        margin: 0 15px 0 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .monprogramme {
+                        .top {
+                            h2 {
+                                &:before {
+                                    content: '';
+                                    margin: 0 10px 0 0;
+                                }
+                            }
+                        }
+                    }
+                }
+                section.bottom {
+                    .actus-container {
+                        background-color: transparent;
+                        .actus-featured {
+                            padding: 20px;
+                            margin-bottom: 15px;
+                            background-color: #FFFFFF;
+                        }
+                        .actus-listing {
+                            background-color: #FFFFFF;
+                            .actus-feed {
+                                ul {
+                                    padding: 0;
+                                }
+                            }
+                            .actus-btn {
+                                position: static;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #block-itgatheme-content {
+            .contact-form {
+                padding: 0;
+            }
+            .webform-submission-form {
+                padding: 0;
+                input[type="submit"] {
+                    background-color: $bgFormations;
+                }
+            }
+        }
+        .page-node-type-actualite {
+            section.header-actu {
+                .field--name-field-tags-actu {
+                    .field__items {
+                        position: static;
+                    }
+                }
+            }
+        }
+        section.map_adresse {
+            .description-google-map {
+                padding-left: 15px;
+            }
+        }
+
+    }
+
+    //tabs landscape
+    @media (min-width:$mintablandscape) and (max-width:$maxtab) {
+        body {
+            .container {
+                width: 98%;
+            }
+        }
+        body {
+            header {
+                .container {
+                    width: 80%;
+                }
+            }
+        }
+        section.bottom {
+            .actus-container {
+                margin-right: 25px;
+            }
+        }
+        .page-node-type-home-page {
+            #pageContent {
+                section.bottom {
+                    .actus-container {
+                        .actus-featured {
+                            margin-bottom: 0;
+                        }
+                        .actus-listing {
+                            .actus-btn {
+                                position: absolute;
+                                bottom: 0px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .page-node-type-actualite {
+            #block-itgatheme-page-title {
+                a {
+                    padding: 5px 10px;
+                    text-align: center;
+                }
+            }
+            section.header-actu {
+                .field--name-field-tags-actu {
+                    .field__items {
+                        position: static;
+                    }
+                }
+            }
+        }
+
+        .path-mon-compte .userList>.flex>.userBlock {
+            padding: 20px 15px;
+
+            li a {
+                font-size: 11px;
+            }
+        }
+    }
+
+  @media (max-width:769px) {
+      .path-mon-compte .userList>.flex>.userBlock,
+      .path-mon-compte .validation-users>.flex>.userBlock {
+          width: 48%;
+      }
+
+      .path-mon-compte-mon-agence-itga article section.equipe .accordion .accordion-item {
+          .member-list {
+              flex-direction: column;
+              .member-item {
+                  width: 100%;
+                  .member-image {
+                      margin-bottom: 15px;
+                  }
+                  .member-content {
+                      width: auto;
+                  }
+              }
+          }
+      }
+
+      .page-node-type-home-page .monprogramme  {
+
+          .top {
+              height: 70px;
+          }
+
+          .box-body {
+              height: 245px;
+          }
+      }
+
+      .page-node-type-home-page #pageContent #block-itgatheme-content .is-not-admin-itga .slider-three {
+          width: 48%;
+          margin-right: 0;
+      }
+
+      .is-not-admin-itga .slider-two .slider {
+          height: 315px;
+
+          .slide {
+              height: 315px;
+          }
+      }
+
+
+
+  }
+
+  @media (max-width:765px) {
+      /* mon compte */
+        .mon-compte .flex>* .value {
+          max-width: 90%;
+      }
+
+
+      .page-node-type-home-page .monprogramme,
+      .page-node-type-home-page .slider-two,
+      .page-node-type-home-page .slider-three {
+        margin: 0 auto 25px;
+        width: 100%;
+    }
+
+    .page-node-type-home-page .monprogramme,
+    .page-node-type-home-page .slider-three {
+      max-width: 350px;
+    }
+
+    .sign-in-page #pageContent .left-sign-in .content {
+      width: 100%;
+    }
+
+    .path-mon-compte .intro-gestion-compte input {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .container #content .submenu-container {
+        position: static;
+
+        ul.submenu_page {
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0;
+
+            li {
+
+                margin: 5px;
+                flex-grow: 2;
+                text-align: center;
+
+                a {
+                    color: white;
+                    background: $mainBackground;
+                    padding: 10px;
+                    display: block;
+
+                    &.active {
+                        background: $bgLaboratoire;
+                    }
+
+                    &:before {
+                        content: none;
+                    }
+                }
+            }
+        }
+
+    }
+
+      .path-actualites .container #content .submenu-container {
+          margin-top: 30px;
+
+          &:before {
+              content: "Filtres";
+              display: block;
+              text-align: center;
+              font-weight: bold;
+          }
+      }
+
+
+      #monCompteUpdate .flex>* {
+          width: 100%!important;
+
+          .value {
+              max-width: 100%!important;
+          }
+      }
+
+      .path-mon-compte {
+
+          .header-gestion-user {
+              flex-direction: column;
+
+              .user-text {
+                  margin-right: 0;
+                  margin-bottom: 0;
+              }
+
+              input[name="searchUser"] {
+                  width: 100%;
+              }
+
+              .add-account {
+                  width: 100%;
+              }
+          }
+
+
+          .validation-users {
+
+              h2 {
+                  font-size: 14px;
+              }
+
+              .flex .userBlock {
+                  width: 100%;
+
+              }
+          }
+
+          .userList {
+
+              li a {
+                  font-size: 11px!important;
+              }
+
+
+              >.flex>* {
+                  padding: 15px;
+              }
+
+          }
+
+      }
+
+      #modal-edit-account,
+      #modal-request-account,
+      #modal-change-information {
+          top: 0;
+          transform: none;
+          bottom: 0;
+          overflow: scroll;
+      }
+
+      .page-node-type-home-page #pageContent #block-itgatheme-content .is-not-admin-itga .slider-three,
+      .page-node-type-home-page #pageContent #block-itgatheme-content .slider-three {
+          width: 100%;
+      }
+
+
+  }
+
+  @media (max-width:641px) {
+    .actu-grid.grid-3.has-gutter-xl article {
+        width: 98%;
+    }
+
+    .mon-compte .flex>* .value {
+      max-width: 100%;
+    }
+
+    .mon-compte .flex>* .flex .bloc:first-child .value {
+      max-width: 75%;
+    }
+
+    .mon-compte .flex>* .flex .bloc:last-child {
+      width: 62%;
+    }
+
+    .path-actualites h1 {
+      margin-bottom: 0;
+    }
+
+    .mon-compte .flex>* {
+      width: 100%;
+    }
+
+      .path-mon-compte input[name="searchUser"] {
+          width: 100%;
+      }
+  }
+
+
+  @media (max-width:500px) {
+    .path-mon-compte .userList>.flex> .userBlock {
+      width: 100%;
+    }
+  }
+
+
+  @media (max-width:500px) {
+    .path-mon-compte .userRoles div {
+        margin:6px 0;
+        width: 100%;
+    }
+
+    .path-mon-compte #modal-edit-account .modal-content {
+      min-width: 100%;
+    }
+
+      #modal-edit-account,
+      #modal-request-account,
+      #modal-change-information{
+          .modal-content {
+              min-width: 100%;
+
+              input[type="text"] {
+                  width: 100%;
+              }
+
+              input[type="submit"] {
+                  margin-left: 0;
+              }
+          }
+      }
+
+      .path-webform-je-ne-suis-pas-client-itga,
+      .path-webform-deja-client-itga {
+          #block-itgatheme-page-title h1 {
+              padding-right: 80px;
+          }
+      }
+
+      .pager__items {
+          flex-wrap: wrap;
+      }
+
+      .path-mon-compte .userList>.flex ul li,
+      .path-mon-compte .validation-users>.flex ul li {
+          width: 100%;
+          margin-bottom: 10px;
+
+          &:last-child {
+              margin-bottom: none;
+          }
+      }
+  }
+
+
+  @media (max-width:425px) {
+    .path-webform-commande-consommables #block-itgatheme-content .webform-submission-form .js-form-item input.form-number {
+      width: 100px;
+    }
+  }
+
+  @media (max-width:355px) {
+    .path-webform-commande-consommables #block-itgatheme-content .webform-submission-form .js-form-item input.form-number {
+      width: 75px;
+    }
+
+    .sign-in-page #pageContent #signin input[type="email"],
+    .sign-in-page #pageContent #signin input[type="password"] {
+      width: 100%;
+    }
+  }
+

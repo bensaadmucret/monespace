@@ -1,0 +1,17 @@
+{% set vars = {
+    'nomAgence': sessionItga.agence.label,
+    'descriptionAgence': sessionItga.agence.field_description.value,
+    'nomResponsableAgence': sessionItga.agence.field_nom_responsable.value,
+    'wysiwygAgence': sessionItga.agence.field_description2.value,
+    'equipeAgence': sessionItga.agence.agence.equipes,
+    'idYoutubeAgence': sessionItga.agence.field_id_youtube.value,
+    'adresseAgence': sessionItga.agence.field_adresse.value,
+    'cpAgence': sessionItga.agence.field_code_postale.value,
+    'villeAgence': sessionItga.agence.field_ville.value,
+    'telAgence': sessionItga.agence.field_tel.value,
+    'faxAgence': sessionItga.agence.field_fax.value,
+    'emailAgence': sessionItga.agence.field_email.value,
+}
+%}
+
+{% include 'themes/itgatheme/templates/node/agence-tpl.html.twig' with vars %}

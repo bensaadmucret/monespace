@@ -1,0 +1,769 @@
+/***************************************** MON PROFIL *****************************************/
+.mon-compte #monCompteUpdate {
+
+  .flex {
+    justify-content: space-between;
+
+    .form-item > span {
+      font-weight: bold;
+    }
+
+    & > * {
+      width: 46%;
+      margin-bottom: 8px;
+
+
+      span {
+        display: block;
+        margin-bottom: 5px;
+        min-height: 19px;
+        display: block;
+        font: 400 16px 'Lato',sans-serif;
+      }
+
+      .value {
+        max-width: 100%;
+        min-height: 25px;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #dedede;
+      }
+
+      input[type="text"] {
+        display: none;
+      }
+
+      .flex {
+        justify-content: flex-start;
+        max-width: 75%;
+
+        .bloc:first-child {
+          width: 44%;
+        }
+
+        .bloc .value {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+#newCompte {
+
+  .link {
+    text-align: center;
+    margin-top: 20px;
+
+    .btn {
+      width: initial;
+    }
+  }
+}
+
+.userChangeinformation {
+  display: none;
+
+  #modal-change-information .modal-body & {
+    display: block;
+  }
+}
+
+/***************************************** GESTION DES COMPTES *****************************************/
+.path-mon-compte {
+  /* page gestion des comptes */
+
+  .header-gestion-user {
+    flex-wrap: nowrap;
+  }
+
+  .user-text {
+    margin-bottom: 40px;
+    font-size: 14px;
+    line-height: 22px;
+    margin-right: 40px;
+
+    ul {
+      margin: 10px 0;
+
+      li {
+        margin-left: 20px;
+      }
+    }
+
+  }
+
+  .intro-gestion-compte {
+    justify-content: space-between;
+    margin-bottom: 50px;
+
+    .add-account {
+      @extend %btn;
+      background: $mainBackground;
+      border: 1px solid $secondBackground;
+      cursor: pointer;
+      width: 140px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+    }
+  }
+
+  input[name="searchUser"] {
+    border: 0;
+    background: $MainBackgroundColor;
+    font: 400 16px 'Lato',sans-serif;;
+    color: #666;
+    width: 40%;
+    padding: 10px;
+    outline: none;
+    margin-bottom: 20px;
+  }
+
+
+
+  .userList,
+  .validation-users {
+    h2,
+    label {
+      font: 400 20px 'Lato',sans-serif;
+      color: #fff;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      background: $secondBackground;
+      margin-bottom: 25px;
+      position: relative;
+      display: block;
+      cursor: pointer;
+      @extend %transition;
+    }
+
+    & >.flex {
+      justify-content: space-between;
+
+      .flex-fix {
+        display: block;
+        flex: 0 0 32%;
+        border: none;
+        border: 0;
+        padding: 0;
+        margin: 0;
+      }
+
+      & > .userBlock {
+        width: 31.3%;
+        margin:5px 1% 20px;
+        border: 1px solid #d2d2d2;
+        padding: 20px 25px;
+
+
+        li.accountReactivation {
+          display: block;
+        }
+
+        &.to-validate {
+
+          li:nth-child(2),
+          li:nth-child(3),
+          li:nth-child(4),
+          li:last-child{
+            display: none;
+          }
+        }
+
+        &.waiting-first-connexion {
+          li:first-child,
+          li:nth-child(3),
+          li:nth-child(4),
+          li:nth-child(5){
+            display: none;
+          }
+        }
+
+        &.active {
+          li:first-child,
+          li:nth-child(3),
+          li:nth-child(5){
+            display: none;
+          }
+        }
+
+        &.disabled {
+          li:first-child,
+          li:nth-child(5),
+          li:nth-child(4),
+          li:last-child{
+            display: none;
+          }
+          .validation {
+            background: $bgApplications;
+          }
+        }
+
+        p {
+          align-items: center;
+          margin-bottom: 15px;
+          text-transform: capitalize;
+
+          svg {
+            width: 21px;
+            height: 23px;
+            margin-right: 15px;
+            fill: $secondBackground;
+          }
+
+          a {
+            color: $secondBackground;
+            text-transform: none;
+          }
+        }
+
+
+      }
+
+      ul {
+        list-style: none;
+        justify-content: center;
+        margin-top: 35px;
+
+        li {
+          width: 31%;
+          text-align: center;
+          margin: 0 1%;
+
+          a {
+            @extend %btn;
+            width: 100%;
+            background: $bgFormations;
+            display: block;
+            line-height: 16px;
+            text-transform: none;
+            font-size: 12px;
+            height: 36px;
+
+            &.edit {
+              background: $mainBackground;
+            }
+
+            &.validation {
+              background: #a6a5a5;
+            }
+          }
+        }
+
+      }
+    }
+
+    .userBlock h3 {
+      margin-bottom: 25px;
+      font: 600 18px 'Lato',sans-serif;
+      text-align: center;
+    }
+
+
+
+  /* Acordeon styles */
+  &.tab {
+    position: relative;
+    margin-bottom: 1px;
+    width: 100%;
+    overflow: hidden;
+
+    input {
+      position: absolute;
+      opacity: 0;
+      z-index: -1;
+    }
+
+
+    .tab-content {
+      max-height: 0;
+      @extend %transition;
+    }
+
+    /* :checked */
+    input:checked ~ .tab-content {
+      max-height: max-content;
+    }
+
+    input:checked ~ label img {
+      transform: rotate(90deg);
+    }
+
+    input:checked ~ label {
+      background: $HoverBtn;
+    }
+
+    label svg {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 5;
+      stroke-miterlimit: 10;
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      right: 15px;
+    }
+
+  }
+
+  }
+
+  .validation-users {
+    border: 1px solid #d2d2d2;
+    margin-bottom: 40px;
+    position: relative;
+    padding: 35px 18px 18px;
+
+    h2 {
+      background:#fff;
+      color: $secondBackground;
+      position: absolute;
+      top: -15px;
+      left: 25px;
+      padding-left: 55px;
+      padding-right: 20px;
+
+      svg {
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        left: 18px;
+      }
+    }
+
+  }
+
+
+  .userRoles {
+    display: none;
+    justify-content: space-between;
+
+       > div {
+        margin:6px 0;
+        width: 48%;
+      }
+
+    #monCompteUpdate {
+      width: 100%;
+    }
+
+    input[type="checkbox"]:checked + label ~ .sub-role {
+      display: block;
+    }
+  }
+
+  #modal-edit-account .newMembre {
+    #newCompte.userRoles {
+
+      border: 2px solid $mainBackground;
+      padding: 15px;
+      margin: 20px 0;
+      flex-direction: row;
+    }
+
+    input[type=submit] {
+      display: block;
+      margin: auto;
+      border: none;
+      width: 160px;
+      margin-top: 40px;
+      max-width: 100%;
+    }
+  }
+
+
+  #modal-edit-account {
+
+    .modal-body .userRoles {
+      display: flex;
+      flex-direction: column;
+    }
+
+
+  }
+}
+
+#modal-edit-account {
+  background: none!important;
+
+  h4 {
+    font: 400 20px 'Lato',sans-serif;
+    text-transform: uppercase;
+    color: #003684;
+  }
+
+  #monCompteUpdate {
+    padding: 15px;
+    border: 2px solid $mainBackground;
+    margin-bottom: 20px;
+  }
+
+  .userRolesContent {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid $mainBackground;
+    margin-top: 20px;
+
+    .first {
+      > label {
+        text-transform: uppercase;
+      }
+
+      .sub-role {
+        padding-left: 40px;
+      }
+    }
+
+    label {
+      margin-bottom: 10px;
+    }
+  }
+
+  .add-email-row {
+    -webkit-appearance: none;
+    color: white;
+    width: 18px;
+    height: 18px;
+    border: 2px solid $bgApplications;
+    color: $bgApplications;
+    line-height: 13px;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+
+  .email-row {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+
+    input[type="text"]{
+      border: none;
+      border-bottom: 1px solid $mainBackground;
+      flex-grow: 2;
+      height: 35px;
+      margin-right: 15px;
+
+      &:focus {
+        outline: none;
+        border-bottom: 2px solid $mainBackground;
+      }
+    }
+
+    button {
+      -webkit-appearance: none;
+      color: white;
+      line-height: 15px;
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      border: 2px solid $bgApplications;
+      color: $bgApplications;
+      text-align: center;
+
+      &.remove-email-row {
+        border: 2px solid $bgMateriel;
+        color: $bgMateriel;
+        border-radius: 50%;
+      }
+
+    }
+
+  }
+
+  #monCompteUpdate,
+  #newCompte {
+
+    .flex {
+      justify-content: space-between;
+
+      & > * {
+        width: 46%;
+        margin: 6px 0;
+
+        .js-validate-error-label + span {
+          display: none;
+        }
+
+
+        span {
+          display: block;
+          margin-bottom: 5px;
+          min-height: 19px;
+          display: block;
+        }
+
+        .value {
+          max-width: 100%;
+          min-height: 25px;
+          margin-bottom: 8px;
+
+          input {
+            border-bottom: 1px solid #dedede;
+          }
+        }
+
+        .flex {
+          justify-content: flex-start;
+          max-width: 75%;
+
+          .bloc:first-child {
+            width: 44%;
+          }
+
+          .bloc .value {
+            max-width: 100%;
+          }
+        }
+      }
+    }
+
+    .form-item.required .value {
+      width: 100%;
+
+      input {
+        border: none!important;
+        border-bottom: 2px solid $mainBackground!important;
+        background-image: url(../images/asterisk-symbol.svg);
+        background-size: 7px;
+        background-position: right 4px top 4px;
+        background-repeat: no-repeat;
+      }
+    }
+
+    input[type="text"] {
+      display: block;
+      border: none;
+      padding-bottom: 5px;
+      font: 400 16px 'Lato',sans-serif;
+      width: 100%;
+
+      &:focus {
+        outline: none;
+      }
+
+      & + span {
+        display: none;
+        color: #dedede;
+      }
+    }
+
+    input[type="text"]:disabled {
+      display: none;
+
+      & + span {
+        display: block;
+      }
+    }
+
+    .btn.edit-account {
+      border: none;
+      margin: auto;
+    }
+  }
+}
+
+
+
+/* modal */
+#modal-edit-account,
+#modal-request-account,
+#modal-change-information {
+  /*
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: initial;
+  overflow: visible;
+  */
+
+  .modal-content {
+    min-width: 450px;
+  }
+
+
+  .send {
+    width: 100%;
+    margin-top: 25px;
+  }
+
+  .save {
+    @extend %btn;
+    background: $bgFormations;
+    border: 0;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .details {
+    .save {
+      display: none;
+    }
+  }
+}
+
+.modal-title {
+  font: 400 20px 'Lato',sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  color: $mainBackground;
+}
+
+    /** effets checkbox ***/
+    label.option,
+    .modal-body label,
+    .dropdown-menu label {
+      display: inline-block; // to make it easier to click
+      cursor: pointer;
+      position: relative; // important
+
+    // Now we'll create the checkbox object
+
+    > span {
+      display: inline-block;
+      position: relative;
+      background-color: transparent;
+      width: 18px;
+      height: 18px;
+      transform-origin: center;
+      border: 2px solid $mainBackground;
+      vertical-align: -4px;
+      margin-right: 10px;
+      transition: background-color 150ms 200ms, transform 350ms cubic-bezier(.78,-1.22,.17,1.89);
+
+      &:before {
+          content: "";
+          width: 0px;
+          height: 2px;
+          border-radius: 2px; // so that the tick has nice rounded look
+          background:$mainBackground;
+          position: absolute;
+          transform: rotate(45deg);
+          top: 7px; // you'll need to experiment with placement depending on the dimensions you've chosen
+          left: 4px; // you'll need to experiment with placement depending on the dimensions you've chosen
+          transition: width 50ms ease 50ms;
+          transform-origin: 0% 0%;
+      }
+
+      &:after {
+          content: "";
+          width: 0;
+          height: 2px;
+          border-radius: 2px; // so that the tick has nice rounded look
+          background: $mainBackground;
+          position: absolute;
+          transform: rotate(305deg);
+          top: 11px; // you'll need to experiment with placement depending on the dimensions you've chosen
+          left: 5px; // you'll need to experiment with placement depending on the dimensions you've chosen
+          transition: width 50ms ease;
+          transform-origin: 0% 0%;
+      }
+  }
+
+  &:hover {
+      span {
+          &:before {
+              width: 5px;
+              transition: width 100ms ease;
+          }
+
+          &:after {
+              width: 10px;
+              transition: width 150ms ease 100ms;
+          }
+      }
+  }
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+      display: none; // hide the system checkbox
+
+      &[disabled] + label {
+          cursor: auto;
+      }
+
+      &[disabled] + label span,
+      &[disabled]:checked + label span {
+          background:#dedede;
+          border: 2px solid #dedede;
+          transform: scale(1);
+
+          &:before,
+          &:after {
+              background:#999;
+          }
+      }
+
+      &[disabled] + label:hover span {
+          background-color: #dedede;
+          transform: scale(1);
+          cursor: auto;
+
+          &:before,
+          &:after {
+              background:#dedede;
+          }
+      }
+
+      &[disabled]:checked + label:hover span {
+          background-color: #dedede;
+          transform: scale(1);
+          cursor: auto;
+
+          &:before,
+          &:after {
+              background:#999;
+          }
+      }
+
+  &:checked {
+      + label {
+          > span {
+              background-color: $mainBackground;
+              transform: scale(1.10); // enlarge the box
+
+              &:after {
+                  width: 10px;
+                  background: #fff;
+                  transition: width 150ms ease 100ms; // enlarge the tick
+              }
+
+              &:before {
+                  width: 5px;
+                  background: #fff;
+                  transition: width 150ms ease 100ms; // enlarge the tick
+              }
+          }
+
+          &:hover {
+              > span {
+                  background-color: $mainBackground;
+                  transform: scale(1.20); // enlarge the box
+
+                  &:after {
+                      width: 10px;
+                      background: #fff;
+                      transition: width 150ms ease 100ms; // enlarge the tick
+                  }
+
+                  &:before {
+                      width: 5px;
+                      background: #fff;
+                      transition: width 150ms ease 100ms; // enlarge the tick
+                  }
+              }
+          }
+      }
+  }
+}
+
+input[type="radio"] + label > span {
+  border-radius: 50%;
+}

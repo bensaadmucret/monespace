@@ -1,0 +1,318 @@
+.sign-in-page {
+
+    #pageContent {
+        display: flex;
+        height: 100vh;
+
+        .left-sign-in {
+            width: calc(100vw - 40%);
+            background-image: url(../images/sign-in-bg.jpg);
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            box-sizing: content-box;
+
+            .content {
+                padding: 20px;
+                color: #FFFFFF;
+                position: relative;
+                margin: 70px auto;
+                font-family: 'Lato';
+                font-size: 15px;
+                line-height: 24px;
+                width: 570px;
+                text-align: center;
+
+                #block-itgatheme-page-title,
+                #block-itgatheme-content {
+                  display: none;
+                }
+
+                p {
+                    margin-bottom: 20px;
+                    position: relative;
+                    z-index: 2;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: #FFFFFF;
+                    position: relative;
+                    z-index: 2;
+
+                    &::before {
+                      @extend %before_link;
+                      background: #fff;
+                    }
+
+                    & svg {
+                      width: 15px;
+                      height: 15px;
+                      fill:#fff;
+                      position: absolute;
+                      right: -18px;
+                      bottom: 1px;
+                    }
+
+                    &:hover {
+
+                      &::before {
+                        @extend %before_link_hover;
+                      }
+                    }
+                }
+
+                &:before {
+                    content: "";
+                    filter: blur(45px);
+                    -webkit-filter: blur(45px);
+                    -moz-filter: blur(45px);
+                    -o-filter: blur(45px);
+                    -ms-filter: blur(45px);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    background: rgba(0,0,0,0.5);
+                    z-index: 1;
+                }
+            }
+        }
+
+        .forgot-password {
+          color: #2a2929;
+          font-size: 14px;
+          text-decoration: underline;
+
+          &:hover {
+            color: $mainBackground;
+          }
+        }
+
+        .col-signin {
+            width: 40%;
+            padding: 50px;
+            background: white;
+            display: flex;
+            flex-direction: column;
+
+            form > p {
+              margin-bottom: 10px;
+              width: 310px;
+            }
+
+            .no-account {
+              margin-top: 80px;
+
+              em {
+                display: block;
+                font: 400 16px 'Lato',sans-serif;
+              }
+
+              .request-account {
+                background: #34b098;
+                @extend %btn;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                width: 230px;
+                max-width: 100%;
+                line-height: 23px;
+              }
+            }
+
+            #signin {
+              max-width: 310px;
+              flex: 1 1 0%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+
+              img {
+                display: block;
+                margin-bottom: 70px;
+              }
+            }
+
+            .footer {
+              text-align: center;
+              margin-top: auto;
+              height: 75px;
+            }
+
+            > a {
+                margin-bottom: 70px;
+            }
+
+            input[type="email"],
+            input[type="password"] {
+                height: 32px;
+                border: 1px solid #d4d4d4;
+                width: 300px;
+                max-width: 100%;
+                margin-bottom: 17px;
+                padding: 10px;
+                font-size: 14px;
+                color: #858484!important;
+                font-size: 12px;
+                color: #858484 !important;
+                -webkit-appearance: none;
+                border-radius: 0;
+            }
+
+            input[type="submit"] {
+              cursor: pointer;
+              border: 0;
+              @extend %btn;
+              background: #f9b21e;
+              margin-bottom: 20px;
+              width: 230px;
+              max-width: 100%;
+              outline: none;
+              -webkit-appearance: none;
+              border-radius: 0;
+            }
+        }
+
+    }
+}
+
+#modal-request-account {
+  .modal-header {
+    padding-bottom: 0;
+  }
+
+  #dejaClient {
+    display: flex;
+    flex-wrap: wrap;
+
+    p + p {
+      font-style: italic;
+      font-size: 12px;
+    }
+
+    .errorMsgDejaClient {
+      margin-top: 20px;
+    }
+
+  }
+
+  ul {
+    list-style-type: none;
+    text-align: center;
+
+    a {
+      background: $mainBackground;
+      @extend %btn;
+      line-height: 40px;
+      font-size: 18px;
+      display: inline-block;
+      padding: 0 15px;
+      width: 260px;
+      max-width: 100%;
+    }
+
+    li + li a {
+      background: $YellowBtn;
+      margin-top: 20px;
+    }
+  }
+
+  input[type="text"] {
+    height: 32px;
+    border: 1px solid #d4d4d4;
+    width: 300px;
+    max-width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 14px;
+    color: #858484!important;
+    font-size: 12px;
+    color: #858484 !important;
+  }
+
+  input[type="submit"] {
+    cursor: pointer;
+    border: 0;
+    background: #f9b21e;
+    margin-top: 20px;
+    width: 230px;
+    max-width: 100%;
+    height: 32px;
+    color: white;
+    text-transform: uppercase;
+    flex-grow: 2;
+    margin-left: 15px;
+  }
+
+  .modal-body {
+    padding: 15px 15px 35px;
+  }
+
+
+}
+
+// Page en Savoir Plus (ne pas modifier la page, cela doit rester le Node 46)
+.path-node-46 {
+
+  header {
+    background: none;
+    border: none;
+
+    .wrap {
+      padding: 15px 0 0;
+      margin: 0 auto;
+      max-width: 1130px;
+      height: auto;
+      text-align: center;
+      justify-content: center;
+
+      img {
+        width: 350px;
+        height: auto;
+      }
+    }
+  }
+
+  #block-itgatheme-breadcrumbs,
+  #block-menutop-2 {
+    display: none;
+  }
+
+  #content {
+    position: relative;
+  }
+}
+
+.return-signin {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+// tablette portrait
+
+@media (max-width:900px) {
+
+  .sign-in-page #pageContent {
+
+    .col-signin {
+      width: 100%;
+      padding: 0;
+      display: block;
+
+      .footer {
+        height: auto;
+        padding-bottom: 15px;
+      }
+    }
+
+    #signin {
+      margin: auto;
+    }
+
+  }
+
+
+}

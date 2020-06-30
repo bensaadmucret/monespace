@@ -1,0 +1,271 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - node.getCreatedTime() will return the node creation timestamp.
+ *   - node.hasField('field_example') returns TRUE if the node bundle includes
+ *     field_example. (This does not indicate the presence of a value in this
+ *     field.)
+ *   - node.isPublished() will return whether the node is published or not.
+ *   Calling other methods, such as node.delete(), will result in an exception.
+ *   See \Drupal\node\Entity\Node for a full list of public properties and
+ *   methods for the node object.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+
+{%
+set classes = [
+'node',
+'node--type-' ~ node.bundle|clean_class,
+node.isPromoted() ? 'node--promoted',
+node.isSticky() ? 'node--sticky',
+not node.isPublished() ? 'node--unpublished',
+view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+]
+%}
+
+{% if isAdminItga %}
+  <section class="flex is-admin-itga">
+{% else %}
+  <section class="flex is-not-admin-itga">
+{% endif %}
+
+  <div class="agencecompte anim grid">
+
+
+    <div class="compte">
+      <div class="top">
+        <h2><a href="/mon-compte">Mon compte</a></h2>
+      </div>
+      <div class="infos-compte">
+        <div class="nom">
+          <p>Bienvenue</p>
+          <p><a href="/mon-compte">{{ sessionItga.apiUser.FirstName }} {{ sessionItga.apiUser.LastName }}</a></p>
+        </div>
+        <div class="detail">
+          <p>Société : {{ sessionItga.apiAccount.Account }}</p>
+          {% if sessionItga.apiUser.Profiles is not empty %}
+            <p>Profil : {{ sessionItga.apiUser.Profiles.0.Description }}</p>
+          {% endif %}
+          <p>N°Client : <span>{{ sessionItga.apiAccount.ClientCode }}</span></p>
+          <a href="/mon-compte">
+            Mon profil
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 129 129">
+              <g>
+                <path d="m40.4,121.3c-0.8,0.8-1.8,1.2-2.9,1.2s-2.1-0.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8,0l53.9,53.9c1.6,1.6 1.6,4.2 0,5.8l-53.9,53.9z"/>
+              </g>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="agence">
+      <div class="top">
+        <h2><a href="/mon-compte/mon-agence-itga">Mon agence {{ sessionItga.agence.label }}</a></h2>
+      </div>
+      <div class="mapadresse">
+        <div class="map-home">
+          <div id="map" style="height:100%;"></div>
+        </div>
+        <div class="adresse-home">
+          <p>{{ sessionItga.agence.field_adresse.value }}</p>
+          <p>{{ sessionItga.agence.field_code_postale.value }} {{ sessionItga.agence.field_ville.value }}</p>
+          <p><strong>Contact privilégié</strong></p>
+          <p>{{ sessionItga.apiAccount.Manager.FirstName }} {{ sessionItga.apiAccount.Manager.LastName }}</p>
+          <a href="mailto:{{ sessionItga.apiAccount.Manager.Email }}">{{ sessionItga.apiAccount.Manager.Email }}</a>
+          <p>{{ sessionItga.apiAccount.Manager.WorkPhone }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="monprogramme anim" title="Bientôt disponible !">
+    <div class="top">
+      <h2>Mon programme fidélité</h2>
+    </div>
+
+
+    <div class="box-body" style="background-image:url({{ file_url(node.imageProgrammeFidelite) }})">
+
+    </div>
+  </div>
+
+  <div class="box anim slider-one">
+    <div>
+        {{content.field_carousel_home_top|field_value}}
+    </div>
+  </div>
+  <div class="box anim slider-two">
+    <div>
+        {{content.field_carousel|field_value}}
+    </div>
+  </div>
+  <div class="box anim actus">
+    <div class="actus-container grid">
+
+      {% for actu in node.promotedActu %}
+        <div class="actus-featured">
+
+
+
+         {% if loop.first %}
+           <h2><a href="/actualites">Actus</a> /
+                {% for tag in actu.tags %}
+                    {% if not loop.last %}
+                      <a href="/actualites/tag/{{ tag.id }}">{{ tag.name }}</a> -
+                    {% else %}
+                      <a href="/actualites/tag/{{ tag.id }}">{{ tag.name }}</a>
+                    {% endif %}
+                {% endfor %}
+            </h2>
+          {% endif %}
+
+          <div class="img-actu-home">
+            <a href="{{ actu.url }}"><img src="{{ actu.image }}" /></a>
+          </div>
+
+          <a href="{{ actu.url }}">
+            <h3>{{ actu.title }}</h3>
+          </a>
+          <div class="actus-content">
+            <p>{{ actu.description }}</p>
+            <a href="{{ actu.url }}">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 129 129">
+                <g>
+                  <path d="m40.4,121.3c-0.8,0.8-1.8,1.2-2.9,1.2s-2.1-0.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8,0l53.9,53.9c1.6,1.6 1.6,4.2 0,5.8l-53.9,53.9z"/>
+                </g>
+              </svg>
+              Lire la suite
+            </a>
+          </div>
+        </div>
+
+      {% endfor %}
+
+      <div class="actus-listing">
+        <div class="actus-feed">
+          <ul>
+              {% for actu in node.relatedActus %}
+
+                <li>
+                  <a href="{{ path('entity.node.canonical', {'node': actu.id}) }}">
+                    {{ actu.label }}
+                  </a>
+                </li>
+              {% endfor %}
+          </ul>
+        </div>
+        <div class="actus-btn">
+          <a href="/actualites">Toutes nos actus</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="box anim slider-three slider-no-title">
+      {{content.field_slider_pub|field_value}}
+  </div>
+</section>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEMAfY6Ga2JSl21n73zmBDdxUujVU3_rY&callback=initMap&libraries=places"
+      async defer></script>
+
+<script>
+
+
+    var map;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 8
+        });
+
+        var request = {
+            query: '{{ sessionItga.agence.field_adresse.value }} {{ sessionItga.agence.field_code_postale.value }} {{ sessionItga.agence.field_ville.value }}',
+            fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry'],
+        };
+
+        service = new google.maps.places.PlacesService(map);
+        service.findPlaceFromQuery(request, callback);
+    }
+
+    function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                var place = results[i];
+                if(!results[i].name.includes('LEROY') && !results[i].name.includes('Optimum')) {
+                    createMarker(results[i]);
+                }
+            }
+        }
+    }
+
+    function createMarker(place) {
+        new google.maps.Marker({
+            position: place.geometry.location,
+            map: map
+        });
+
+        map.setCenter(place.geometry.location);
+        map.setZoom(14);
+    }
+
+</script>

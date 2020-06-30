@@ -1,0 +1,18 @@
+{%
+    set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+<div{{ attributes.addClass(classes) }}>
+    <div class="google-map">
+        <div class="iframeContainer">
+            {{ content.field_embed_google_map|field_value|raw }}
+        </div>
+    </div>
+
+    <div class="description-google-map">
+        {{ content.field_description_google_map|field_value }}
+    </div>
+</div>

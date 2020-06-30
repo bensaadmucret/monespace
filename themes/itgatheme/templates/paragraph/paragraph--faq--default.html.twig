@@ -1,0 +1,13 @@
+{%
+set classes = [
+'paragraph',
+'paragraph--type--' ~ paragraph.bundle|clean_class,
+view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+<div{{ attributes.addClass(classes) }}>
+    <h3>{{ content.field_titre|field_value }}</h3>
+    <div>
+        {{ content.field_texte|field_value }}
+    </div>
+</div>

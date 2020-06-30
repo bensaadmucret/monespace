@@ -1,0 +1,23 @@
+#######################################################################
+# The only thing you can modify in this file is the PHP Version value #
+#######################################################################
+name: itga
+recipe: drupal8
+config:
+  webroot: .
+  php: '7.0' # You can modify this value. To get the supported PHP versions : https://docs.devwithlando.io/services/php.html
+  xdebug: true
+  ssl: true
+  drupal: true
+services:
+  # phpmyadmin
+  pma:
+    type: phpmyadmin
+    hosts:
+      - database
+events:
+  # Backup database on lando start in the .dump directory in the project
+  # This folder is created if not  already exists
+  # Don't forget to add the .dump directory in the .gitignore file
+  post-start:
+    - echo 'Backuping Mysql database for this project... ' && sleep 2 && mkdir -p /app/.dump/ && mysqldump --opt -h database -u drupal8 -pdrupal8 drupal8 | gzip -9 > /app/.dump/$(date '+ %Y-%m-%d_%H-%M-%S').sql.gz && echo 'Backuping done !\n\nMay the force be with you !\n\n::\`--._,`.::.`._.--`/::::\n::::.  ` __::__ `  .::::::\n::::::-:.``..``.:-::::::::\n::::::::\ `--` /::::::::::\n\n'

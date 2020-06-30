@@ -1,0 +1,35 @@
+{%
+    set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+<div{{ attributes.addClass(classes) }}>
+    <div class="accordion">
+        <div class="accordion-item">
+            <div class="accordion-single">
+                <h3>{{ content.field_titre|field_value }}<img class="chevron" src="/{{ base_path ~ directory }}/assets/images/chevron.svg" /></h3>
+            </div>
+            <div class="accordion-content">
+                <div class="member-list">
+                    {% for item in content.field_membre['#items'] %}
+                        <div class="member-item">
+                            <div class="member-image" style="background-image:url({{ file_url(item.entity.field_image.entity.fileuri) }});">
+                            </div>
+                            <div class="member-content">
+                                <p><strong>{{ item.entity.field_fonction.value }}</strong></p>
+                                <p>{{ item.entity.field_nom.value }} - {{ item.entity.field_prenom.value }}</p>
+                                <p>{{ item.entity.field_email.value }}</p>
+                                <p>{{ item.entity.field_telephone_fixe.value }}</p>
+                                <p>{{ item.entity.field_telephone_portable.value }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="flex-fix"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+{% include 'themes/itgatheme/templates/mails/header-email.html.twig' %}
+Bonjour,<br />
+<br />
+Une demande de contact a été réalisée par un utilisateur sur l'extranet.<br />
+<br />
+Date de soumission du formulaire : {{ date | raw }}<br />
+
+Soumission du formulaire par : {{ user | raw }}<br />
+
+Voici les informations relatives à la demande :<br />
+<br />
+{{ droits | raw }}<br />
+{% include 'themes/itgatheme/templates/mails/footer-email.html.twig' %}

@@ -1,0 +1,328 @@
+<?php
+
+require 'vendor/autoload.php';
+
+use Drupal\image\Entity\ImageStyle;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use Drupal\Core\Form\FormStateInterface;
+
+function itga_theme($existing, $type, $theme, $path){
+    return [
+        'actualites' => [
+            'variables' => ['nodes' => NULL, 'terms' => NULL, 'selectedTerm' => NULL, 'actualTag' => NULL],
+            'path' => $path . '/templates/custom',
+        ],
+        'bibliothequePdf' => [
+            'variables' => ['terms' => NULL],
+            'path' => $path . '/templates/custom',
+        ],
+        'agences' => [
+            'variables' => ['nodes' => NULL],
+            'path' => $path . '/templates/custom',
+        ],
+
+        'labo' => [
+            'variables' => ['commandes' => NULL, 'nbCommandes' => NULL],
+            'path' => $path . '/templates/custom',
+        ],
+        'commande-details' => [
+            'variables' => ['details' => NULL],
+            'path' => $path . '/templates/custom',
+        ],
+        'signin' => [
+            'variables' => [],
+            'path' => $path . '/templates/user',
+        ],
+        'premiere-connexion' => [
+            'variables' => [],
+            'path' => $path . '/templates/user',
+        ],
+        'finalise-premiere-connexion' => [
+            'variables' => ['email' => NULL, 'hash' => NULL],
+            'path' => $path . '/templates/user',
+        ],
+        'gestion-compte' => [
+            'variables' => ['roles' => NULL, 'accountUsers' => NULL, 'thisUser' => NULL],
+            'path' => $path . '/templates/user',
+        ],
+        'mon-compte' => [
+            'variables' => ['thisUser' => NULL],
+            'path' => $path . '/templates/user',
+        ],
+        'mon-agence-itga' => [
+            'variables' => ['content' => NULL],
+            'path' => $path . '/templates/user',
+        ],
+        'activites-collaborateurs' => [
+            'variables' => ['thisUser' => NULL],
+            'path' => $path . '/templates/user',
+        ],
+        'mes-factures' => [
+            'variables' => ['thisUser' => NULL, 'factures' => NULL],
+            'path' => $path . '/templates/user',
+        ],
+        'planification' => [
+            'variables' => ['thisUser' => NULL, 'planificationList' => NULL],
+            'path' => $path . '/templates/user',
+        ],
+        
+        // MAIL
+        'mail_generique' => [
+            'variables' => ['thisUser' => NULL, 'planificationList' => NULL],
+            'path' => $path . '/templates/mails',
+        ],
+    ];
+}
+
+function itga_node_load($nodes, $types = ''){
+    foreach ($nodes as $node){
+        switch($node->type->getString()){
+            case 'agence':
+                $nodes[$node->nid->getString()]->agence = [];
+
+                $listeEquipe = $node->field_equipe->getValue();
+                $agenceEquipe = [];
+
+                foreach ($listeEquipe as $equipe){
+                    $equipeDetails = \Drupal\paragraphs\Entity\Paragraph::load($equipe['target_id']);
+
+                    foreach ($equipeDetails->field_membre->getValue() as $membre){
+                        $membreDetails = \Drupal\paragraphs\Entity\Paragraph::load($membre['target_id']);
+
+                        $imgUrl = '';
+
+                        if(!empty($membreDetails->field_image->entity)){
+                            //echo '<pre>';var_dump($membreDetails->field_image->entity);echo '</pre>';
+                            $imgUrl = ImageStyle::load('thumbnail')->buildUrl($membreDetails->field_image->entity->getFileUri());
+                        }
+                        //echo '<pre>';print_r($styled_image_url);echo '</pre>'; exit;
+
+                        $agenceEquipe[$equipeDetails->field_titre->value][] = [
+                            'image' => $imgUrl,
+                            'nom' => $membreDetails->field_nom->value,
+                            'prenom' => $membreDetails->field_prenom->value,
+                            'fonction' => $membreDetails->field_fonction->value,
+                            'email' => $membreDetails->field_email->value,
+                            'telephone_fixe' => $membreDetails->field_telephone_fixe->value,
+                            'telephone_portable' => $membreDetails->field_telephone_portable->value,
+                        ];
+
+                    }
+                }
+                $nodes[$node->nid->getString()]->agence['equipes'] = $agenceEquipe;
+                break;
+
+            case 'home_page':
+    
+                //$userAccount = \user_load_by_mail('gual.tieri.nicolas@gmail.com');
+                //\user_delete(70);
+                //echo '<pre>'; print_r($userAccount); echo '</pre>'; exit;
+                //$userAccount->removeRole('DIAG_ADMIN_PRINCIPAL');
+
+
+                $imageProgrammeFidelite = $nodes[$node->nid->getString()]->get('field_programme_fidelite')->getValue();
+                $imageProgrammeFidelite = \Drupal\file\Entity\File::load($imageProgrammeFidelite[0]['target_id']);
+                $path = $imageProgrammeFidelite->getFileUri();
+
+                $nodes[$node->nid->getString()]->imageProgrammeFidelite = $path;
+
+
+
+                // Dernière actu mise en avant
+                $nbPromotedActus = 2;
+                $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+
+                if(in_array("diag_admin_principal", $user->getRoles())) {
+                    $nbPromotedActus = 1;
+                }
+
+
+                $nids = \Drupal::entityQuery('node')
+                    ->condition('type', 'actualite')
+                    ->condition('promote', 1)
+                    ->condition('status', 1)
+                    ->sort('created' , 'DESC')
+                    ->range(0, $nbPromotedActus);
+                $nids = $nids->execute();
+
+                $nodes[$node->nid->getString()]->promotedActu = [];
+
+/*                echo '<pre>';
+                //print_r($nodes[$node->nid->getString()]);
+                echo '</pre>';
+                exit;*/
+
+                if(count($nids) > 0) {
+                    foreach($nids as $nid){
+                        $promoteActu = \Drupal\node\Entity\Node::load($nid);
+
+                        $terms = $promoteActu->field_tags_actu->referencedEntities();
+
+
+                        $tags = array();
+
+                        foreach ($terms as $term){
+                            $tags[] = ['name' => $term->getName(), 'id' =>  $term->id()];
+                        }
+
+                        $description = $promoteActu->field_description->getValue();
+
+
+                        if(strlen($description[0]['value']) > 135) {
+                            $description[0]['value'] = substr($description[0]['value'], 0, 135).'...';
+                        }
+
+
+                        $nodes[$node->nid->getString()]->promotedActu[] = [
+                            'title' => $promoteActu->getTitle(),
+                            'description' => $description[0]['value'],
+                            'url' => $promoteActu->toUrl(),
+                            'tags' => $tags,
+                            'image' => ImageStyle::load('343x75')->buildUrl($promoteActu->field_image->entity->getFileUri()),
+                        ];
+                    }
+
+
+                    //exit;
+
+                    //echo '<pre>'; print_r(count($nodes[$node->nid->getString()]->promotedActu)); echo '</pre>'; exit;
+                }
+
+                // liste actu
+                $nids = \Drupal::entityQuery('node')
+                    ->condition('type', 'actualite')
+                    ->condition('status', 1)
+                    ->condition('promote', 0)
+                    ->sort('created' , 'DESC')
+                    ->range(0, 5);
+                $nids = $nids->execute();
+
+                //echo '<pre>'; print_r(count($nids)); echo '</pre>'; exit;
+
+                $nodes[$node->nid->getString()]->relatedActus = [];
+
+                if(count($nids) > 0) {
+                    $nodes[$node->nid->getString()]->relatedActus = \Drupal\node\Entity\Node::loadMultiple($nids);
+                }
+
+                //echo '<pre>'; print_r(count($nodes[$node->nid->getString()]->relatedActus)); echo '</pre>'; exit;
+                //echo '<pre>'; print_r($nodes['relatedActus']); echo '</pre>'; exit;
+            break;
+
+        }
+
+    }
+}
+
+/**
+ * Implements hook_mail().
+ */
+function itga_mail($key, &$message, $params) {
+    switch ($key) {
+        case 'itga':
+            $message['from'] = \Drupal::config('system.site')->get('mail');
+            $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed; delsp=yes';
+            $message['subject'] = $params['subject'];
+            $message['body'][] = $params['message'];
+            $message['options'] = [];
+            if (isset($params['options']) && !empty($params['options'])) {
+                foreach ($params['options'] as $key => $value) {
+                    $message['options'][$key] = $value;
+                }
+            }
+            break;
+    }
+}
+
+/**
+ * @param $tpl
+ * @param array $params [subject, toEmail, toName, keys]
+ * @throws Exception
+ */
+function itga_send_mail($tpl, $params = []){
+    $debug = '0';
+    if(!empty($params['debug'])){
+        $debug = $params['debug'];
+    }
+
+    $params['keys']['base_path'] = \Drupal::request()->getHost();
+    
+    $mail = new PHPMailer(true);
+    //Server settings
+    $mail->SMTPDebug = $debug;                                 // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = SMTP_URL;  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = SMTP_MAIL;                 // SMTP username
+    $mail->Password = SMTP_PASSWORD;                           // SMTP password
+    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;                                    // TCP port to connect to
+    
+    $fromEmail = 'monespace@itga.fr';
+    $fromName = 'MonEspace.ITGA';
+    if(!empty($params['fromEmail'])){
+        $fromEmail = $params['fromEmail'];
+    }
+    if(!empty($params['fromName'])){
+        $fromName = $params['fromName'];
+    }
+    $mail->setFrom($fromEmail, $fromName);
+    
+    $toEmail = $params['toEmail'];
+    $toName = '';
+    if(!empty($params['toName'])){
+        $toName = $params['toName'];
+    }
+    $mail->addAddress($toEmail, $toName);     // Add a recipient
+    
+    //$mail->addCC('monespace@itga.fr', 'MonEspace.ITGA');     // Add a recipient
+    $mail->addBCC('ngualtieri@expertime.com', 'Nicolas');     // Add a recipient
+    $mail->addBCC('lparmentier@expertime.com', 'Lucie');     // Add a recipient
+    
+    //Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = utf8_decode($params['subject']);
+    
+    $twig = \Drupal::service('twig');
+    $template = $twig->loadTemplate(drupal_get_path('theme', 'itgatheme') . '/templates/mails/'.$tpl.'.html.twig');
+    $html = $template->render($params['keys']);
+    
+    $mail->Body    = utf8_decode($html);
+    
+    return $mail->send();
+}
+/**
+ * Implements hook_install().
+ */
+function itga_install() {
+    $config = \Drupal::configFactory()->getEditable('system.mail');
+    $mail_plugins = $config->get('interface');
+    if (in_array('itga', array_keys($mail_plugins))) {
+        return;
+    }
+    
+    $mail_plugins['itga'] = 'itga_mail';
+    $config->set('interface', $mail_plugins)->save();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function itga_uninstall() {
+    $config = \Drupal::configFactory()->getEditable('system.mail');
+    $mail_plugins = $config->get('interface');
+    if (!in_array('itga', array_keys($mail_plugins))) {
+        return;
+    }
+    
+    unset($mail_plugins['itga']);
+    $config->set('interface', $mail_plugins)->save();
+}
+
+
+function itga_user_logout(){
+    unset($_SESSION['itga']);
+    unset($_COOKIE['cgu-accepted']);
+    setcookie('cgu-accepted', null, -1, '/');
+}

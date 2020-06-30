@@ -1,0 +1,5 @@
+services:
+  itga.breadcrumb.itga:
+    class: Drupal\itga\Breadcrumb\ItgaBreadcrumb
+    tags:
+      - { name: breadcrumb_builder, priority: 100 }

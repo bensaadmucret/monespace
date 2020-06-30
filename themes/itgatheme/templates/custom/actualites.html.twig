@@ -1,0 +1,37 @@
+
+<h1>Les actualités ITGA</h1>
+
+<div class="submenu-container">
+    <ul class="submenu_page">
+        <li><a href="/actualites/" class="home_actus">Tout</a></li>
+        {% for term in terms %}
+            <li><a href="{{ term.url }}" {% if actualTag == term.id %}class="active" {% endif %}>{{ term.name }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="actu-grid grid-3 has-gutter-xl">
+    {% if nodes is empty %}
+        <div class="no-actus">
+            <p>Il n'y a aucune actualité pour cette rubrique</p>
+        </div>
+    {% else %}
+        {% for node in nodes %}
+            <article>
+                <a href="{{ node.url }}">
+                    <div class="article_thumb">
+                      <img src="{{ node.image }}" />
+                    </div>
+                </a>
+                <div class="article_detail">
+                    <h2><a href="{{ node.url }}">{{ node.title }}</a></h2>
+                    <div class="post_tags">
+                        {% for tag in node.tags %}
+                            <a href="/actualites/tag/{{ tag.id }}">/ {{ tag.label }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </article>
+        {% endfor %}
+    {% endif %}
+</div>

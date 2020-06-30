@@ -1,0 +1,85 @@
+<div class="header-detail-commande">
+    <h3>Options pour cette commande</h3>
+    <input type="text" name="searchEchantillon" value="" placeholder="Rechercher dans les échantillons : "/> <span class="searchResultsCount">Nombre d'échantillons : {{ details|length }}/{{ details|length }}</span>
+</div>
+<table class="detailsEchantillon">
+    <thead>
+        <tr>
+            <th class="NumeroEchantillon">N° éch.</th>
+            <th class="ref ReferenceClientEchantillon">Réf. éch. client</th>
+            <th class="DatePrelevement">Date prlvt.</th>
+            <th class="TypeEchantillon">Type</th>
+            <th class="Typefiltre">Type de filtre</th>
+            <th class="Statut">Statut</th>
+            <th class="DateReception">Date réception</th>
+            <th class="DateRendu">Date Rendue</th>
+            <th class="RapportEchantillon">Rapport</th>
+            <th class="Indication">Indication</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% if details is empty %}
+        <tr>
+            <td colspan="10">Aucun échantillon dans cette commande.</td>
+        </tr>
+    {% else %}
+        {% for detail in details %}
+            <tr>
+                <td data-th="N° éch." class="NumeroEchantillon">{{detail.NumeroEchantillonITGA }}</td>
+                <td data-th="Réf. éch. client" class="ref ReferenceClientEchantillon">{{detail.ReferenceEchantillonClient }}</td>
+                <td data-th="Date prlvt." class="DatePrelevement">{{detail.DatePrelevement|date('d/m/Y') }}</td>
+                <td data-th="Type" class="TypeEchantillon">{{detail.Type }}</td>
+                <td data-th="Type de filtre" class="Typefiltre">
+                    {% if detail.SurOperateur == null %}
+                        Poste fixe
+                    {% else %}
+                        Sur opérateur
+                    {% endif %}
+                </td>
+                <td data-th="Statut" class="Statut">{{detail.Statut }}</td>
+                <td data-th="Date réception" class="DateReception">{{detail.DateEnregistrement|date('d/m/Y') }}</td>
+                <td data-th="Date Rendue" class="DateRendu">{{detail.DatePrevue|date('d/m/Y') }}</td>
+                <td data-th="Rapport" class="RapportEchantillon"><a href="/labo/commande/rapport/echantillon/mat?ref={{ ref }}" target="_blank">Rapport</a></td>
+                {% if "Amiante détecté" in detail.ResultatDetail.0.Resultat or "Non Analysé" in detail.ResultatDetail.0.Resultat or "Présence de fibres" in detail.ResultatDetail.0.Resultat %}
+                    <td data-th="Indication" data-sort-initial-order="desc" class="Indication amiante">{{detail.ResultatDetail.0.Resultat }}</td>
+                {% else %}
+                    <td data-th="Indication" data-sort-initial-order="desc" class="Indication no-amiante">{{detail.ResultatDetail.0.Resultat }}</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    {% endif %}
+    </tbody>
+</table>
+
+{#
+<td><a href="/labo/commande/rapport/echantillon/materiaux?ref={{ commande.ReferenceCommandeClient }}" target="_blank">Rapport</a></td>
+{
+    "ReferenceCommandeClient": "MA DE DOUAI ",
+    "NumeroCommandeITGA": "IT0217-12556",
+    "NumeroEchantillonITGA": "IT021710-11835",
+    "Statut": "Termine",
+    "CodeLaboratoire": "IT02",
+    "LibelleLaboratoire": "Lille",
+    "NumeroAccreditationLaboratoire": "",
+    "VersionRapport": 1,
+    "DatePrelevement": "2017-10-24T00:00:00",
+    "DatePrevue": "2017-10-26T20:59:34",
+    "ReferenceDossierClient": "-",
+    "ReferenceEchantillonClient": "MA Douai 001 - Colle faïence - lingerie",
+    "Type": "MAT",
+    "DateEnregistrement": "2017-10-24T11:13:09",
+    "NombreFraction": 1,
+    "IdSIClient": "",
+    "ResultatDetail": [
+        {
+            "FractionAnalysee": "Colle grise + carrelage",
+            "Resultat": "Amiante non détecté",
+            "CodeResultat": "AmianteNonDetecte",
+            "CodeAnalyse": "Met",
+            "VarieteAmiante": "",
+            "MateriauRoutier": 0
+        }
+    ]
+}
+
+#}

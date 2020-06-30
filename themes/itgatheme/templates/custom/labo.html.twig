@@ -1,0 +1,167 @@
+<div class="labo-suivi-commandes">
+    {% if commandes is empty %}
+        <p class="no-feeds">Vous n'avez aucune commande de ce type</p>
+    {% else %}
+
+        <div class="header-table">
+{#
+            <input type="text" placeholder="Rechercher dans les commandes : " name="searchCommandes" value="" /><span class="searchResultsCount">Nombre de commandes : {{ commandes|length }}/{{ commandes|length }}</span>
+#}
+            <p>Liste des échantillons au {{ "now"|date("d/m/Y à H:i") }}</p>
+
+            <div class="dropdown-group">
+                <div class="dropdown">
+                    <button class="btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Liste des colonnes pour les commandes
+                    </button>
+                    <div class="dropdown-menu table-columns-configuration" aria-labelledby="dropdownMenuButton">
+                        <input type="checkbox" id="DateDeLaCommande" name="DateDeLaCommande" value="DateDeLaCommande" checked disabled>
+                        <label for="DateDeLaCommande" class="dropdown-item">
+                            <span></span>
+                            Date de la commande
+                        </label>
+
+                        <input type="checkbox" id="NumeroDeLaCommande" name="NumeroDeLaCommande" value="NumeroDeLaCommande" checked disabled>
+                        <label for="NumeroDeLaCommande" class="dropdown-item">
+                            <span></span>
+                            Numéro de la commande
+                        </label>
+
+                        <input type="checkbox" id="Client" name="Client" value="Client" checked autocomplete="off">
+                        <label for="Client" class="dropdown-item">
+                          <span></span>
+                          Client
+                        </label>
+
+                        <input type="checkbox" id="ReferenceClientCommande" name="ReferenceClientCommande" value="ReferenceClientCommande" checked autocomplete="off">
+                        <label for="ReferenceClientCommande" class="dropdown-item">
+                          <span></span>
+                          Référence client
+                        </label>
+
+                        <input type="checkbox" id="DestinataireResultat" name="DestinataireResultat" value="DestinataireResultat" checked autocomplete="off">
+                        <label for="DestinataireResultat" class="dropdown-item">
+                          <span></span>
+                            Destinataire Résultat
+                        </label>
+
+                        <input type="checkbox" id="NbEchantillons" name="NbEchantillons" value="NbEchantillons" checked autocomplete="off">
+                        <label for="NbEchantillons" class="dropdown-item">
+                          <span></span>
+                          Nb échantillons
+                        </label>
+
+                        <input type="checkbox" id="TypeEchantillons" name="TypeEchantillons" value="TypeEchantillons" checked autocomplete="off">
+                        <label for="TypeEchantillons" class="dropdown-item">
+                          <span></span>
+                          Type d'échantillons
+                        </label>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Liste des colonnes pour les échantillons
+                    </button>
+
+                    <div class="dropdown-menu table-columns-configuration" aria-labelledby="dropdownMenuButton">
+                        <input type="checkbox" id="NumeroEchantillon" name="NumeroEchantillon" value="NumeroEchantillon" checked disabled>
+                        <label for="NumeroEchantillon" class="dropdown-item">
+                          <span></span>
+                          Numéro de l'échantillon
+                        </label>
+
+                        <input type="checkbox" id="ReferenceClientEchantillon" name="ReferenceClientEchantillon" value="ReferenceClientEchantillon" checked disabled>
+                        <label for="ReferenceClientEchantillon" class="dropdown-item">
+                          <span></span>
+                          Référence Client de l'échantillon
+                        </label>
+
+                        <input type="checkbox" id="DatePrelevement" name="DatePrelevement" value="DatePrelevement" checked autocomplete="off">
+                        <label for="DatePrelevement" class="dropdown-item">
+                          <span></span>
+                             Date Prélevement de l'échantillon<br />
+                        </label>
+
+                        <input type="checkbox" id="TypeEchantillon" name="TypeEchantillon" value="TypeEchantillon" checked autocomplete="off">
+                        <label for="TypeEchantillon" class="dropdown-item">
+                          <span></span>
+                          Type d'échantillon
+                        </label>
+
+                        <input type="checkbox" id="Typefiltre" name="Typefiltre" value="Typefiltre" checked autocomplete="off">
+                        <label for="Typefiltre" class="dropdown-item">
+                          <span></span>
+                          Type de filtre et de prélevement
+                        </label>
+
+                        <input type="checkbox" id="Statut" name="Statut" value="Statut" checked autocomplete="off">
+                        <label for="Statut" class="dropdown-item">
+                          <span></span>
+                          Statut de l'échantillon
+                        </label>
+
+                        <input type="checkbox" id="DateReception" name="DateReception" value="DateReception" checked autocomplete="off">
+                        <label for="DateReception" class="dropdown-item">
+                          <span></span>
+                          Date de réception de l'échantillon
+                        </label>
+
+                        <input type="checkbox" id="DateRendu" name="DateRendu" value="DateRendu" checked autocomplete="off">
+                        <label for="DateRendu" class="dropdown-item">
+                          <span></span>
+                          Date de rendu de l'échantillon
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <a href="/suivi-commandes/excel" class="export-excel" title="Export Excel"></a>
+        </div>
+
+
+        <p class="warning-commandes">Dans le tableau ci-dessous , l’indication de concentration (ou de présence) ne constitue pas le résultat proprement dit de l’analyse effectuée par ITGA. Il s’agit d’une information donnée à titre indicatif. Seul le rapport d’analyse validé par ITGA contient le résultat complet et certifié de l’analyse.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th class="DateDeLaCommande">
+                    <div class="asc-desc-container">Date
+                        <div class="flex-header-container">
+                            <a class="order-asc" href="{{ url('<current>') }}?o=date&s=asc"></a><a class="order-desc" href="{{ url('<current>') }}?o=date&s=desc"></a>
+                        </div>
+                    </div>
+                </th>
+                <th class="NumeroDeLaCommande">N° de commande</th>
+                <th class="DestinataireResultat">Destinataire</th>
+                <th class="Client">Client</th>
+                <th class="ReferenceClientCommande">
+                    <div class="asc-desc-container">Référence client
+                        <div class="flex-header-container">
+                            <a class="order-asc" href="{{ url('<current>') }}?o=ref&s=asc"></a><a class="order-desc" href="{{ url('<current>') }}?o=ref&s=desc"></a>
+                        </div>
+                    </div>
+                </th>
+                <th class="NbEchantillons">Nb Echantillons</th>
+                <th class="TypeEchantillons">Type</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+            <tbody>
+                {% for commande in commandes %}
+                    <tr class="detailsCommande" nbEchantillons="{{ commande.echantillonsStats.NombreTotalEchantillons }}" nbEchantillonsMateriaux="{{ commande.echantillonsStats.NombreTotalEchantillonsMateriaux }}" nbEchantillonsFiltres="{{ commande.echantillonsStats.NombreTotalEchantillonsFiltres }}" nbEchantillonsFiltresSurOperateur="{{ commande.echantillonsStats.NombreTotalEchantillonsFiltresSurOperateur }}" nbEchantillonsFiltresPosteFixe="{{ commande.echantillonsStats.NombreTotalEchantillonsFiltresPosteFixe }}" nbEchantillonsLegionelles="{{ commande.echantillonsStats.NombreTotalEchantillonsLegionelles }}" nbEchantillonsLegionelles="{{ commande.echantillonsStats.NombreTotalEchantillonMes }}">
+                        <td data-th="Date" class="DateDeLaCommande">{{ commande.DateEnregistrement|date('d/m/Y') }}</td>
+                        <td data-th="N° de commande" class="NumeroDeLaCommande">{{ commande.NumeroCommandeITGA }}</td>
+                        <td data-th="Destinataire" class="DestinataireResultat">{{ commande.NomDestinataireResultat }}</td>
+                        <td data-th="Client" class="Client">{{ commande.Client }}</td>
+                        <td data-th="Référence client" class="ReferenceClientCommande">{{ commande.ReferenceCommandeClient }}</td>
+                        <td data-th="Nb échantillons" class="NbEchantillons">{{ commande.echantillonsStats.NombreTotalEchantillons - commande.echantillonsStats.NombreTotalEchantillonMes }}</td>
+                        <td data-th="Type" class="TypeEchantillons">{{ commande.echantillonsStats.type }}</td>
+                        <td><a href="/labo/commande/rapport?ref={{ commande.ReferenceCommandeClient }}" target="_blank">Synthèse</a></td>
+                        <td><a href="javascript://" class="detailMateriaux" attr-ref="{{ commande.ReferenceCommandeClient }}">Détails</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>

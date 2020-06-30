@@ -1,0 +1,27 @@
+{% set vars = {
+    'nomAgence': node.label,
+    'descriptionAgence': node.field_description.value,
+    'nomResponsableAgence': node.field_nom_responsable.value,
+    'wysiwygAgence': node.field_description2.value,
+    'equipeAgence': node.agence.equipes,
+    'idYoutubeAgence': node.field_id_youtube.value,
+    'adresseAgence': node.field_adresse.value,
+    'cpAgence': node.field_code_postale.value,
+    'villeAgence': node.field_ville.value,
+    'telAgence': node.field_tel.value,
+    'faxAgence': node.field_fax.value,
+    'emailAgence': node.field_email.value,
+}
+%}
+
+{% include 'themes/itgatheme/templates/node/agence-tpl.html.twig' with vars %}
+{#%
+    set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+]
+%#}

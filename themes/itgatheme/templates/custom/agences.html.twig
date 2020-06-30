@@ -1,0 +1,27 @@
+<div class="carte-agence">
+    <img src="/sites/default/files/2018-03/Slider-nos-agences.jpg" alt="">
+</div>
+
+<div class="accordion">
+    {% for key, type_agence in nodes %}
+    <div class="accordion-item">
+        <div class="accordion-single">
+            <h3> {{key }} <img class="chevron" src="{{ base_path ~ directory }}/assets/images/chevron.svg" /></h3>
+        </div>
+        <div class="accordion-content">
+            <div class="agences-list grid-3 has-gutter-xl">
+                {% for agence in type_agence %}
+                <div>
+                    <h4><a href="{{ agence.url }}">{{ agence.title }}</a></h4>
+                    <p>{{ agence.agence.adresse }}</p>
+                    <p>{{ agence.agence.cp }} {{ agence.agence.ville }}</p>
+                    <p>Tél. : {{ agence.agence.tel }}</p>
+                    <p>Fax : {{ agence.agence.fax }}</p>
+                    <p>{{ agence.agence.email }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
